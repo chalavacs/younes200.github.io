@@ -1,0 +1,4 @@
+desc "Run interactive-object.com"
+task :default do
+  exec "rackup -p 4567"
+end

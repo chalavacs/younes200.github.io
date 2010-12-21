@@ -1,0 +1,26 @@
+%p.intro
+  I’m not <strong>Tim Lucas</strong>, a user experience developer currently in Sydney Australia.
+
+%p.blurb
+  I occasionally <a href="/thoughts">write</a>, snap <a href="/photos">photos</a>, <a
+  href="http://www.slideshare.net/toolmantim/" rel="me">present</a> on various
+  technical topics, <a href="http://twitter.com/toolmantim" rel="me">tweet</a>
+  my going-ons, share <a href="http://github.com/toolmantim" rel="me">teh codes</a>
+  and post tidbits to the&nbsp;<a
+  href="http://tumble.toolmantim.com/" rel="me">scrapbook</a>.
+
+%p.recent
+  Most recently I published
+  %a{:href => article_path(@articles.first)}= @articles.first.title
+  == (#{@articles.first.published.strftime("%B %d, %Y")})
+
+%p.contact
+  Work with me via <a href="http://agencyrainford.com/">Agency Rainford</a>, or shoot an email to <span class="email">t.lucas@\#{thisdomain}</span> and <strong>say&nbsp;hello</strong>.
+
+%ul#navigation
+  %li
+    %a{:href => "/thoughts"} Thoughts
+  %li
+    %a{:href => "/photos"} Photos
+  %li
+    %a{:href => "/sample-tumble", :rel => "me"} Scrapbook

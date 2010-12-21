@@ -1,0 +1,49 @@
+- @hide_about = @hide_skip_nav = @hide_quip = true
+- @body_class = "photo"
+
+- title = (@photo/:title).text.strip
+- title = "Untitled" if title.length == 0
+- @page_title = "#{title} - a photo by Tim Lucas"
+
+- image_padding = 20
+- photo_size = @sizes.find {|s| s[:label] == "Large"} || @sizes.find {|s| s[:label] == "Original"}
+- @head_content = %(<style type="text/css" media="screen">#body-inner { width: #{photo_size[:width].to_i + image_padding * 2}px }</style>)
+
+.photo
+  %a.main{:href => flickr_url(@photo)}
+    %img{:src => photo_size[:source], :width => photo_size[:width], :height => photo_size[:height], :alt => @photo[:title]}/
+
+  %h1
+    %a{:href => flickr_url(@photo)}= title
+
+  .description
+    - description_paras = (@photo/:description).text.strip.split("\n\n").reject {|s| s =~ /(best viewed)|(viewed large)|(on black)|(toolmantim\.com)/i}
+    - for p in description_paras
+      %p= p
+
+  %p.comments
+    %a{:href => flickr_url(@photo) + "#DiscussPhoto", :title => "Read and leave comments on Flickr" }
+      = pluralize((@photo/:comments).text, "comment")
+
+  %p.license
+    %a{:rel => "license", :href => "http://creativecommons.org/licenses/by/2.5/au/"}
+      %img{:src => "http://i.creativecommons.org/l/by/2.5/au/80x15.png", :alt => "Creative Commons Attribution License 2.5"}/
+
+  %p.tags
+    Tags:
+    = (@photo/:tag).map {|t| %(<a rel="tag" href="http://www.flickr.com/photos/younes/tags/#{t.html}" title="Other flickr photos tagged with '#{t[:raw]}'">#{t[:raw]}</a>) }.join(", ")
+
+  .more-photos
+    %ul
+      - if @prev_photo
+        %li.prev
+          %a{:href => photo_path(@prev_photo), :title => @prev_photo[:title]}= flickr_square(@prev_photo)
+      %li.current
+        %span= flickr_square(@photo)
+      - if @next_photo
+        %li.next
+          %a{:href => photo_path(@next_photo), :title => @next_photo[:title]}= flickr_square(@next_photo)
+
+
+  %p.more
+    %a{:href => "/photos#featured"} and more&hellip;

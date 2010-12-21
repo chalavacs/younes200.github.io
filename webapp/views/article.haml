@@ -1,0 +1,41 @@
+- @page_title = @article.title
+
+:ruby
+  if custom_title_size = @article.custom_title_size
+    @head_content = capture_haml do
+      haml_tag :style,
+               ".article .about h1 { width: #{custom_title_size.first}px; height: #{custom_title_size.last}px; background-image: url(/images/thoughts/#{@article.slug}/title.png); }",
+               {:type => "text/css"}
+    end
+  end
+
+.article
+  .about
+    %h1{:class => ("custom-title" if custom_title_size)}= @article.title
+
+    %p.published
+      Published
+      = @article.published.strftime("%B %d, %Y")
+      - if @article.updated
+        %span.updated
+          \-
+          Updated
+          = @article.updated.strftime("%B %d, %Y")
+
+  .content= article_html(@article)
+
+  - previous_article, next_article = previous_article(@article), next_article(@article)
+
+  - if (previous_article || next_article)
+    .more-reading
+      - if previous_article
+        %p
+          Previously:
+          %a{:href => article_path(previous_article)}== #{previous_article.title}
+      - if next_article
+        %p
+          Next up:
+          %a{:href => article_path(next_article)}== #{next_article.title}
+
+%h1.major
+  %a{:href => "/articles"} Thoughts
