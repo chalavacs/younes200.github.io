@@ -4,9 +4,11 @@ __DIR__ = File.dirname(__FILE__)
 
 ENV['TZ'] = 'France/Paris'
 
-File.file?(gems_file = "#{__DIR__}/.gems") && File.read(gems_file).each do |gem_decl|
-  gem_name, version = gem_decl[/^([^\s]+)/,1], gem_decl[/--version '?([^\s]+)'?/,1]
-  version ? gem(gem_name, version) : gem(gem_name)
+File.file?(gems_file = "#{__DIR__}/.gems") && File.open(gems_file, 'r') do |f1|
+	while gem_decl = f1.gets  
+		gem_name, version = gem_decl[/^([^\s]+)/,1], gem_decl[/--version '?([^\s]+)'?/,1]	
+		version ? gem(gem_name, version) : gem(gem_name)
+	end 
 end
 
 require 'sinatra'
