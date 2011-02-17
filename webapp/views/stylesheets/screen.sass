@@ -2,14 +2,19 @@
 @import views/stylesheets/code_highlighting.sass
 
 !bright_blue = #7ab8f8
-!standard_text = #b8bdc1
+!standard_text = #8c8979
 !very_bright_text = #fff
 !bright_text = #d6dbde
+!strong_text = #666
 !slightly_dull_text = #939ba4
 !dull_text = #5b6168
 !very_dull_text = #4c5156
 !grey_background = #393e44
- 
+!black_link = #262526
+
+!green_background = #97B250
+!green_text = #333230
+
 =standard_text_size
   :font-size 1.4em
   :line-height 1.5em
@@ -24,14 +29,14 @@
 =highlight_link
   :font-family "Lucida Grande", arial, sans-serif
   :display block
-  :color = !standard_text
+  :color = !green_text
   :padding 0 0.8em 0 0.8em
-  :background-color = !very_dull_text
+  :background-color = !green_background
   :line-height 2.2em
 
 =highlight_link_hover
-  :color = !very_bright_text
-  :background-color = !dull_text
+  :color = !green_background
+  :background-color = !green_text
 
 =highlight_after
   :content ' →'
@@ -39,20 +44,23 @@
 / Site-wide element styles
 
 a
-  :color = !bright_blue
+  :color = !black_link
   :text-decoration none
+  :border-bottom = 1px solid #ccc
 
 a:hover, a:active
-  :color = !very_bright_text
+  :color = !strong_text
 
 strong
-  :color = !bright_text
+  :color = !strong_text
 
 /* Layout styles
-/*  :background #31363c url(/images/background.gif)
+/*url(/images/background.gif)
+
 html
   :font-size 100%
-  :background #1d5a73
+  /:background #c4c4c4 
+  :background #f2f2f2 
   
 body
   :font-size 62.5%
@@ -80,7 +88,7 @@ body
 
 #about
   :clear both
-  :background-color = !grey_background
+  :background-color = #333230
   :-webkit-border-radius 5px
   :-moz-border-radius 5px
   :padding 20px 20px 15px 20px
