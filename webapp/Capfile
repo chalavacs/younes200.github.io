@@ -2,7 +2,7 @@ load 'deploy'
 
 default_run_options[:pty] = true
 
-set :application, 'toolmantim'
+set :application, 'interactiveobject'
 
 set :repository,  "git://github.com/toolmantim/toolmantim.git" 
 set :deploy_to, "/var/www/toolmantim.com/app" 

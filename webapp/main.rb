@@ -12,6 +12,7 @@ File.file?(gems_file = "#{__DIR__}/.gems") && File.open(gems_file, 'r') do |f1|
 end
 
 require 'sinatra'
+require 'sinatra-sammy'
 require 'haml'
 require 'sass'
 
@@ -45,10 +46,10 @@ helpers do
     "/stylesheets/#{stylesheet}.css?" + File.mtime(File.join(Sinatra::Application.views, "stylesheets", "#{stylesheet}.sass")).to_i.to_s
   end
   def versioned_js(js)
-    "/javascripts/#{js}.js?" + File.mtime(File.join(Sinatra::Application.public, "javascripts", "#{js}.js")).to_i.to_s
+    "/javascripts/#{js}.js?" + File.mtime(File.join(settings.public_folder, "javascripts", "#{js}.js")).to_i.to_s
   end
   def versioned_favicon
-    "/favicon.ico?" + File.mtime(File.join(Sinatra::Application.public, "favicon.ico")).to_i.to_s
+    "/favicon.ico?" + File.mtime(File.join(Sinatra::Application.public_folder, "favicon.ico")).to_i.to_s
   end
   def partial(name)
     haml(:"_#{name}", :layout => false)

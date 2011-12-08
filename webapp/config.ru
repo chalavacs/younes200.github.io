@@ -1,2 +1,3 @@
-require "website"
+$: << "." 
+require "main"
 run Sinatra::Application

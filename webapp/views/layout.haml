@@ -24,6 +24,9 @@
     %script{:type => "text/javascript", :src => "http://use.typekit.com/giz5uom.js"}
     %script{:type => "text/javascript"} try { Typekit.load(); } catch (e) {}
       
+    / Set :element_selector to the element that 'yields'
+    = sammy(:element_selector => '#main')
+	
     = @head_content
 
   %body{:class => @body_class}
@@ -32,8 +35,9 @@
         #top
           %p
             %a{:href => "#about"} Skip to navigation
-  
-      = yield
+		
+      #main
+        = yield
 
       - unless @hide_about
         = partial :site_header
