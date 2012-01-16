@@ -23,3 +23,16 @@ $(function() {
     return true;
   });
 });
+
+
+
+$(document).ready(function() {
+	
+		
+
+       
+       $.backstretch("images/bg.jpg", {speed: 150});
+       
+              				
+});
+

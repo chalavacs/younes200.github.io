@@ -1,0 +1,107 @@
+
+.tumble
+  color: $standard_text
+  width: 400px
+  margin-left: 210px
+  margin-bottom: 50px
+  .post
+    margin-bottom: 50px
+    position: relative
+    .info
+      position: absolute
+      top: 5px
+      left: -15em
+      width: 12em
+      text-align: right
+      .date
+        text-transform: uppercase
+        font-size: 1.2em
+        color: $dull_text
+      .permalink
+        margin-top: 0.3em
+        font-size: 2.4em
+        a
+          color: $dull_text
+        a:hover
+          color: $bright_blue
+    > a
+      position: absolute
+      top: 0
+      right: -2em
+      color: $dull_text
+      font-weight: bold
+      font-size: 1.4em
+    > a:hover
+      color: $bright_blue
+  .quote
+    .source
+      font-size: 1.2em
+      line-height: 1.5em
+    .quote_text
+      color: white
+      font-weight: bold
+      margin-bottom: 1em
+      .short
+        font-size: 3.6em
+        line-height: 1.2em
+      .medium
+        font-size: 2.7em
+        line-height: 1.4em
+      .long
+        font-size: 1.8em
+        line-height: 1.6em
+  .link
+    +standard_text_size
+    a
+      font-size: (1.8em / 1.4em)
+  .caption
+    +standard_text_size
+    margin-top: 1em
+    p + p
+      margin-top: 0.5em
+  .regular
+    h2
+      font-size: 1.8em
+      line-height: 1.5em
+      margin-bottom: 0.5em
+      a
+        color: $very_bright_text
+      a:hover
+        color: $bright_blue
+    p, li
+      +standard_text_size
+      font-size: 1.4em
+      line-height: 1.7em
+    ul, ol
+      padding-left: 2em
+    ul li, ol li
+      margin-left: 1em
+      margin-bottom: 0.2em
+    ul li
+      list-style: disc
+    ol li
+      list-style: decimal
+    p, ul, ol, blockquote
+      margin-bottom: 1em
+      code
+        font-size: 1.2em
+    pre
+      font-family: Monaco, courier
+      font-size: 1.6em
+      margin-bottom: 1em
+      line-height: 1.1em
+      color: $bright_text
+  .prevnext
+    font-size: 1.4em
+    text-align: center
+    a
+      +highlight_link
+      &.prev
+        float: left
+      &.next
+        float: right
+      &:hover
+        +highlight_link_hover
+    .page
+      line-height: 2.5em
+      color: $dull_text

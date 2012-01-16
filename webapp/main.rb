@@ -12,7 +12,6 @@ File.file?(gems_file = "#{__DIR__}/.gems") && File.open(gems_file, 'r') do |f1|
 end
 
 require 'sinatra'
-require 'sinatra-sammy'
 require 'haml'
 require 'sass'
 
