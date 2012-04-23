@@ -1,0 +1,28 @@
+* { margin: 0; padding: 0; outline: none; }
+body { margin: 0 auto; padding: 0; }
+
+#main { display: block; 
+  position: relative; 
+  width: 610px; 
+  height: 145px; 
+  padding: 35px 0 35px 75px; 
+  background-color: rgba(255,255,255, 1); 
+  -webkit-box-shadow: 0px 0px 10px #000; 
+  -moz-box-shadow: 0px 0px 10px #000; 
+  box-shadow: 0px 0px 10px #000; 
+  margin-top: 20%;
+  }
+
+	#text { display: block; float: left; margin: 0; padding: 0; width: 365px; text-align: left; position: relative; }
+	
+
+	#social { display: block; float: left; margin: 0; padding: 0; width: 120px; text-align: left; }
+
+
+/* TEXT STYLES AND JUNK */
+
+
+h1 { display: block; width: 100%; margin-bottom: 5px; font-size: 25px; line-height: 25px; text-transform: uppercase; font-family: "museo-sans-1","museo-sans-2",sans-serif; color: #111; font-weight: 100; }
+h2 { display: block; font-size: 12px; line-height: 19px; font-family: "museo-sans-1","museo-sans-2",sans-serif; color: #111; font-weight: 300; }
+h2 a { color: #222; text-decoration: none; border-bottom: 1px solid #999; }
+h2 a:hover { color: #555; border-bottom: 1px solid #333; text-decoration: none; }
