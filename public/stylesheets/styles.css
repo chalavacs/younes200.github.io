@@ -2,19 +2,19 @@
 body { margin: 0 auto; padding: 0; }
 
 #main { display: block; 
-  position: relative; 
-  width: 610px; 
-  height: 145px; 
-  padding: 35px 0 35px 75px; 
-  background-color: rgba(255,255,255, 0.8); 
-  
-  margin-top: 20%;
+  background-color: rgba(255, 255, 255, 0.8);
+      height: 145px;
+      margin-left: 50%;
+      margin-top: 10%;
+      padding: 35px 0 20px 50px;
+      position: relative;
+      width: 600px;
   }
 
-	#text { display: block; float: left; margin: 0; padding: 0; width: 365px; text-align: left; position: relative; }
+	#text { display: block; float: left; margin: 0; padding: 0;  text-align: left; position: relative; }
 	
 
-	#social { display: block; float: left; margin: 0; padding: 0; width: 120px; text-align: left; }
+	#social { display: block; float: left; margin: 0; padding: 0;  text-align: left; }
 
 
 /* TEXT STYLES AND JUNK */
