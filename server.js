@@ -59,5 +59,5 @@ io.sockets.on('connection', function (socket) {
   
 });
 //this line is necessary for heroku
-var port = process.env.PORT || 3000;
+var port = process.env.PORT || 3003;
 server.listen(port);
