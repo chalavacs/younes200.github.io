@@ -20,6 +20,7 @@ server.get('/', function(req, res){
 	res.render('index.ejs', {locals:{mes:mes}});
 });
 
+/*
 var io = require('socket.io');
 var _ = require('underscore')._;
 
@@ -36,28 +37,21 @@ var users = {};
 io.sockets.on('connection', function (socket) {
   var user;
 
-  socket.emit('users-connected', _.values(users));
-
   socket.on('new-user', function (data) {
     user = data
+    user.socket = socket;
     users[user.id] = data
     socket.broadcast.emit('user-connected', data);
   });
 
-  socket.on('message', function(msgInfo){
-    msgInfo.isFromMe = false;
-    socket.broadcast.emit('receive-message', msgInfo);
-  });
-  
   socket.on('disconnect', function(){
     if(user){
       delete users[user.id];
       socket.broadcast.emit('user-disconnected', user);
     };
   })
-  
-  
 });
+*/
 //this line is necessary for heroku
 var port = process.env.PORT || 3003;
 server.listen(port);
