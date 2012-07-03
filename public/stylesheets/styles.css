@@ -11,6 +11,8 @@ margin: 0 auto;
 padding: 0;
 overflow-x: hidden;
 overflow-y: hidden;
+background:url(/images/loading.gif);
+cursor:default;
 }
 
 #main {
