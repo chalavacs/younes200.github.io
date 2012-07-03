@@ -52,6 +52,15 @@ position: relative;
   
 }
 
+
+#canvas { 
+    cursor: pointer;
+}
+
+#canvas:active { 
+    cursor: hand;
+}?
+
 /* TEXT STYLES AND JUNK */
 
 
