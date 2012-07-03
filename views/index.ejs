@@ -9,10 +9,6 @@
 	<meta name="distribution" content="global"></meta>
 	<meta name="description" content="Younes BENAOMAR. Developper."></meta>
 	<meta name="keywords" content="personal,graphic design, photography, younes benaomar"></meta>
-
-
-
-
 	
 	<link rel="stylesheet" media="screen" type="text/css" href="stylesheets/styles.css" />
 	
@@ -36,6 +32,8 @@
 <body>
 
 
+  <canvas id="canvas"></canvas>
+  
 <div id="main">
 	<div id="text">
 		<h1>Hello </h1>
@@ -58,32 +56,123 @@
 	<br />
 </div>
 
+
+
 <div id="cursor_container">
 <div id="cursor" class="cursor"><div class="label"></div></div>
 </div>
+
+
+
 
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 <script type="text/javascript" src="/javascripts/underscore.js"></script>
 <script type="text/javascript" src="/javascripts/socket.io.js"></script>
 <script type="text/javascript" src="/javascripts/jquery.backstretch.min.js"></script>
-
 <script>
   
   
   $(document).ready(function() {	
   
   
-       $.backstretch("http://farm7.staticflickr.com/6071/6030065568_c4a957f90f_b_d.jpg", {speed: 150});
-       initialize();
-	   
+    // flicker
+    // http://api.flickr.com/services/rest/?method=flickr.people.getPublicPhotos&api_key=e606900de034115b34006a4dcf2c5766&user_id=58821970@N00&format=json
+    $.backstretch("http://farm7.staticflickr.com/6071/6030065568_c4a957f90f_b_d.jpg", {speed: 150});
+    initialize();
+
+
+    var lastPoints = [];
+    var easing = 0.4;
+    
+     
   
-  var canvas = document.getElementById('canvas'),
-            context = canvas.getContext('2d');
+    var canvas = document.getElementById("canvas");
+    var context = canvas.getContext('2d');
 
     // resize the canvas to fill browser window dynamically
     window.addEventListener('resize', resizeCanvas, false);
 
+    if (context) {
+      context.fillStyle = "solid";
+      context.strokeStyle = "#ECD018";
+      context.lineWidth = 5;
+      context.lineCap = "round";
+      //context.fillStyle = "rgba(0, 0, 200, 0.5)";
+      
+      canvas.onmousedown = startDraw;
+      canvas.onmouseup = stopDraw;
+      canvas.ontouchstart = startDraw;
+      canvas.ontouchstop = stopDraw;
+      canvas.ontouchmove = drawMouse;
+      		
+    }
+  
+  
+    function startDraw(e) {
+    	if (e.touches) {
+    		// Touch event
+    		for (var i = 1; i <= e.touches.length; i++) {
+    			lastPoints[i] = getCoords(e.touches[i - 1]); // Get info for finger #1
+    		}
+    	}
+    	else {
+    		// Mouse event
+    		console.log( getCoords(e));
+    		lastPoints[0] = getCoords(e);
+    		canvas.onmousemove = drawMouse;
+    	}
 
+    	return false;
+    }
+
+    // Called whenever cursor position changes after drawing has started
+    function stopDraw(e) {
+    	e.preventDefault();
+    	canvas.onmousemove = null;
+    }
+
+    function drawMouse(e) {
+    	if (e.touches) {
+    		// Touch Enabled
+    		for (var i = 1; i <= e.touches.length; i++) {
+    			var p = getCoords(e.touches[i - 1]); // Get info for finger i
+    			lastPoints[i] = drawLine(lastPoints[i].x, lastPoints[i].y, p.x, p.y);
+    		}
+    	}
+    	else {
+    		// Not touch enabled
+    		var p = getCoords(e);
+    		lastPoints[0] = drawLine(lastPoints[0].x, lastPoints[0].y, p.x, p.y);
+    	}
+    	context.stroke();
+    	context.closePath();
+    	context.beginPath();
+
+    	return false;
+    }
+
+    // Draw a line on the canvas from (s)tart to (e)nd
+    function drawLine(sX, sY, eX, eY) {
+    	context.moveTo(sX, sY);
+    	context.lineTo(eX, eY);
+    	return { x: eX, y: eY };
+    }
+
+    // Get the coordinates for a mouse or touch event
+    function getCoords(e) {
+    	if (e.offsetX) {
+    		return { x: e.offsetX, y: e.offsetY };
+    	}
+    	else if (e.layerX) {
+    		return { x: e.layerX, y: e.layerY };
+    	}
+    	else {
+    		return { x: e.pageX - canvas.offsetLeft, y: e.pageY - canvas.offsetTop };
+    	}
+    }
+    
+    
+    
     
     function resizeCanvas() {
             canvas.width = window.innerWidth;
@@ -95,11 +184,15 @@
              */
             drawStuff(); 
     }
-    resizeCanvas();
+   
 
     function drawStuff() {
             // do your drawing stuff here
     }
+    
+
+       resizeCanvas();
+     
     
 
 });
@@ -110,9 +203,7 @@
   {
   
    var users =[];
-      var map;
-       
-          
+      
       // sockets
       var socket = io.connect('http://');
       
@@ -129,7 +220,7 @@
           
           $('#cursor').clone().appendTo('#cursor_container').attr('id',"cursor-"+current.id);
           
-          setCursor(current.id, current.cursor.x, current.cursor.y);
+          if(current.cursor) setCursor(current.id, current.cursor.x, current.cursor.y);
           //create cursor here
           users[current.id] = current;
         }
@@ -155,31 +246,41 @@
       socket.emit("new-user", {id:  Math.round(Math.random() * 10000)});
       
       
-      	   $(document).bind('mousemove', function(e){
+     $(document).bind('mousemove', function(e){
         socket.emit('mousemove', { x:  e.pageX/$(window).width()  , y:   e.pageY/$(window).height()  });
-    });
+      });
+      
     
+      
    
   }
   
+     
+      
+      function draw(x, y, type) {
+        if (type === "dragstart") {
+          context.beginPath();
+          return context.moveTo(x, y);
+        } else if (type === "drag") {
+          context.lineTo(x, y);
+          return context.stroke();
+        } else {
+          return context.closePath();
+        }
+      };
+      
   
-  function setCursor(id, x, y)
-  {
-    
-          var pageX = x * $(window).width();
-          var pageY = y * $(window).height();
-
-          $("#cursor-"+id).css({
-                left:  pageX,
-                top:   pageY
-                });
+  function setCursor(id, x, y){
+    var pageX = x * $(window).width();
+    var pageY = y * $(window).height();
+    $("#cursor-"+id).css({left:  pageX, top:   pageY });
   }
   
 
     
 </script>
 
-<canvas id="canvas"></canvas>
+
 
 </body>
 </html>
