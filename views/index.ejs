@@ -17,7 +17,19 @@
 	<link rel="stylesheet" media="screen" type="text/css" href="stylesheets/styles.css" />
 	
 
+<script type="text/javascript">
 
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-33129420-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
 </head>
 
 
@@ -28,16 +40,27 @@
 	<div id="text">
 		<h1>Hello </h1>
 
-		  <h2>I’m <strong>Younes BENAOMAR</strong>, a user experience developer currently in Toulouse France.I occasionally snap <a href="http://www.flickr.com/photos/younes">photos</a>,
+		  <h2>I’m <strong>Younes BENAOMAR</strong>, a user experience developer currently in Toulouse France.<br/> I occasionally snap <a href="http://www.flickr.com/photos/younes">photos</a>,
 		 <a href="http://twitter.com/interactobject" rel="me">tweet</a>
       my going-ons, share <a href="https://github.com/interactiveobject" rel="me">tech codes</a>
       and post to my&nbsp;<a href="http://thumblr.interactive-object.com/" rel="me">scrapbook</a>.
-</h2>
+	  </h2>
+	  <h1>Experiments</h1>
+	  <h2>
+		<ul>
+			<li>Real time Map geolocatization with Nodejs : <a href="http://afternoon-moon-6385.herokuapp.com/" rel="me" target="_blank">link</a>.</li>
+		</ul>
+
+		
+		</h2>
 	</div>	
 	
 	<br />
 </div>
 
+<div id="cursor_container">
+<div id="cursor" class="cursor"><div class="label"></div></div>
+</div>
 
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 <script type="text/javascript" src="/javascripts/underscore.js"></script>
@@ -48,8 +71,36 @@
   
   
   $(document).ready(function() {	
+  
+  
        $.backstretch("http://farm7.staticflickr.com/6071/6030065568_c4a957f90f_b_d.jpg", {speed: 150});
        initialize();
+	   
+  
+  var canvas = document.getElementById('canvas'),
+            context = canvas.getContext('2d');
+
+    // resize the canvas to fill browser window dynamically
+    window.addEventListener('resize', resizeCanvas, false);
+
+
+    
+    function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            /**
+             * Your drawings need to be inside this function otherwise they will be reset when 
+             * you resize the browser window and the canvas goes will be cleared.
+             */
+            drawStuff(); 
+    }
+    resizeCanvas();
+
+    function drawStuff() {
+            // do your drawing stuff here
+    }
+    
 
 });
 
@@ -58,58 +109,77 @@
   function initialize()
   {
   
-  
-    var users =[];
-
-    /*sockets
-    var socket = io.connect('http://');
-    
-    socket.on('user-connected', function (data) {
-      console.log("user connected :",data.id);
-      users[data.id] = data;
-    });
-    
-    socket.on('users-connected', function(data){
+   var users =[];
+      var map;
+       
+          
+      // sockets
+      var socket = io.connect('http://');
       
-      for (i=0;i<data.length;i++){
-        var current = data[i]
-        users[current.id] = current;
-      }
+      socket.on('user-connected', function (data) {
+        console.log("user connected :",data.id);
+        users[data.id] = data;
+        $('#cursor').clone().appendTo('#cursor_container').attr('id',"cursor-"+data.id);
+      });
+      
+      socket.on('users-connected', function(data){
+        
+        for (i=0;i<data.length;i++){
+          var current = data[i];
+          
+          $('#cursor').clone().appendTo('#cursor_container').attr('id',"cursor-"+current.id);
+          
+          setCursor(current.id, current.cursor.x, current.cursor.y);
+          //create cursor here
+          users[current.id] = current;
+        }
+
+      });
+      
+      socket.on('user-disconnected', function (data) {
+        console.log("user disconnected :",data);
+        var user = users[data.id]
+        if(user){
+        
+          // delete cursor here
+          $("#cursor-"+data.id).remove();
+          delete users[user.id];
+        }
+      });
+      
+       socket.on('receive-mousemove', function (data) {
+        setCursor(data.id, data.cursor.x, data.cursor.y);
+       });
+       
+      // TODO register id in cookie
+      socket.emit("new-user", {id:  Math.round(Math.random() * 10000)});
+      
+      
+      	   $(document).bind('mousemove', function(e){
+        socket.emit('mousemove', { x:  e.pageX/$(window).width()  , y:   e.pageY/$(window).height()  });
     });
     
-    socket.on('user-disconnected', function (data) {
-      console.log("user disconnected :",data);
-      var user = users[data.id]
-      user.marker.setMap(null);
-      delete users[user.id];
-    });
-    
-  
-     // register to server
-    socket.emit("new-user", {id:  Math.round(Math.random() * 10000)});
-   */
    
   }
   
   
+  function setCursor(id, x, y)
+  {
+    
+          var pageX = x * $(window).width();
+          var pageY = y * $(window).height();
+
+          $("#cursor-"+id).css({
+                left:  pageX,
+                top:   pageY
+                });
+  }
+  
+
+    
 </script>
 
-
-	
-
-<script type="text/javascript">
-
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-XXXXXXXXX']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-
-</script>
+<canvas id="canvas"></canvas>
 
 </body>
 </html>
