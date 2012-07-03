@@ -20,38 +20,6 @@ server.get('/', function(req, res){
 	res.render('index.ejs', {locals:{mes:mes}});
 });
 
-/*
-var io = require('socket.io');
-var _ = require('underscore')._;
-
-io = io.listen(server);
-io.configure(function(){
-  io.set("transports", ["xhr-polling"]); 
-  io.set("polling duration", 10); 
-  io.set("close timeout", 10);
-  io.set("log level", 1);
-})
-
-var users = {};
-
-io.sockets.on('connection', function (socket) {
-  var user;
-
-  socket.on('new-user', function (data) {
-    user = data
-    user.socket = socket;
-    users[user.id] = data
-    socket.broadcast.emit('user-connected', data);
-  });
-
-  socket.on('disconnect', function(){
-    if(user){
-      delete users[user.id];
-      socket.broadcast.emit('user-disconnected', user);
-    };
-  })
-});
-*/
 //this line is necessary for heroku
 var port = process.env.PORT || 3003;
 server.listen(port);
