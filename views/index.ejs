@@ -75,19 +75,7 @@
 <script>
   
   
-  function jsonFlickrApi(data){
-    if (data.stat != "ok"){
-
-      // something broke!
-      return;
-    }
-    var photo = data.photoset.photo[Math.floor(Math.random()*data.photoset.photo.length)];
-    var url = "http://farm"+photo.farm+".static.flickr.com/"+photo.server+"/"+photo.id+"_"+photo.secret+"_b_d.jpg"
-    
-    $.backstretch(url, {speed: 150});
-  }
-  
-
+ 
   
   
   $(document).ready(function() {	
@@ -117,8 +105,7 @@
       		
     }
   
-  resizeCanvas();
-  
+ 
   
   
       
@@ -162,7 +149,7 @@
        
        socket.on('receive-draw', function (line) {
         drawing.push(line);
-        drawline(line)
+        
        });
        
        
@@ -241,11 +228,9 @@
   
   function drawlines(lines){
   
-    console.log("drawlines", lines.length);
     for(var i=0; i<lines.length;i++)
         {
           var line = lines[i];
-          console.log("draw line",i);
           drawline(line);
         }
   }
@@ -280,11 +265,31 @@
              * you resize the browser window and the canvas goes will be cleared.
              */
              
-             console.log("resizeCanvas", drawing.length);
             drawlines(drawing);
            
     }
    
+    $.getJSON("http://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key=e606900de034115b34006a4dcf2c5766&user_id=58821970@N00&photoset_id=72157629696932450&format=json&jsoncallback=?", function(data){
+      
+       
+        if (data.stat != "ok"){
+
+      // something broke!
+      return;
+    }
+    var photo = data.photoset.photo[Math.floor(Math.random()*data.photoset.photo.length)];
+    var url = "http://farm"+photo.farm+".static.flickr.com/"+photo.server+"/"+photo.id+"_"+photo.secret+"_b_d.jpg"
+    
+    $.backstretch(url, {speed: 500}, 
+    function()
+    {
+    resizeCanvas();
+    });
+    
+      
+    });
+
+
 
 
        
@@ -296,7 +301,6 @@
     
 </script>
 
-<script type="text/javascript" src="http://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key=e606900de034115b34006a4dcf2c5766&user_id=58821970@N00&photoset_id=72157629696932450&format=json"></script>
 
 </body>
 </html>
