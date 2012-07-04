@@ -20,7 +20,7 @@ server.get('/', function(req, res){
 	res.render('index.ejs', {locals:{mes:mes}});
 });
 
-var redis = require('redis-url').connect(process.env.REDISTOGO_URL);
+var redis = require('redis-url').connect(process.env.REDISTOGO_URL|| "redis://localhost:6379");
 
 
 var io = require('socket.io');
@@ -36,16 +36,48 @@ io.configure(function(){
 
 var users = {};
 
+// clear draw data
+redis.del("drawdata");
+
 io.sockets.on('connection', function (socket) {
   var user = {}
+  var has_draw = false;
+  
+  
+  
+  
+  redis.get("drawdata" , function(err, data) {
+    if(data){
+     has_draw = true;
+    }
+  });
+  
+  
+  
+
 
   socket.emit('users-connected', _.values(users));
+  
+  
+  redis.get("drawdata" , function(err, data) {
+    
+    if(data){
+      
+      try { var drawdata = JSON.parse("["+data+"]") }
+      catch (SyntaxError) { return false; }
+      socket.emit('receive-draw-bulk', drawdata);
+       has_draw = true;
+    }
+  });
 
   socket.on('new-user', function (data) {
     user = data
     user.cursor = {x:0,y:0}
     users[user.id] = data
     socket.broadcast.emit('user-connected', data);
+    
+    
+
   });
 
   socket.on('message', function(msgInfo){
@@ -61,6 +93,13 @@ io.sockets.on('connection', function (socket) {
   
   socket.on('draw', function (data) {
     socket.broadcast.emit('receive-draw', data);
+    if(has_draw)
+    {
+      redis.append('drawdata', ","+JSON.stringify(data));
+    }else {
+      redis.set('drawdata',JSON.stringify(data));
+      has_draw = true;
+    }
   });
   
   socket.on('disconnect', function(){
@@ -69,9 +108,28 @@ io.sockets.on('connection', function (socket) {
       socket.broadcast.emit('user-disconnected', user);
     };
   })
-  
-  
 });
+
+/*
+redis.subscribeTo("draw_stream", function(channel, message, pattern) {
+    try { var draw_data = JSON.parse(message); }
+    catch (SyntaxError) { return false; }
+
+    if ( flight.origin.iata == "BOS" || flight.destination.iata == "BOS") {
+        socket.broadcast.emit('receive-draw', data);
+    }
+});
+*/
+
+//console.log(Math.round(new Date().getTime() / 1000).toString());
+//redis.del("drawdata");
+
+
+
+
+//redis.del("drawdata");
+
+
 
 
 //this line is necessary for heroku

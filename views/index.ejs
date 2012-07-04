@@ -96,8 +96,10 @@
 
     var lastPoints = [];
     var easing = 0.4;
+    var drawing = [];
+    var users =[];
+    var drawbuffer;
     
-     
   
     var canvas = document.getElementById("canvas");
     var context = canvas.getContext('2d');
@@ -115,73 +117,10 @@
       		
     }
   
-  
-  var drawbuffer
-  $('#canvas').live('drag dragstart dragend', function(e) {
-  
-    var type = e.handleObj.type;
-    draw(e.clientX , e.clientY, type);
-    
-  });
+  resizeCanvas();
   
   
-      
-      function draw(x, y, type) {
-        if (type === "dragstart") {
-          drawbuffer = [];
-          context.beginPath();
-          drawbuffer.push({x: x,y: y});
-          return context.moveTo(x, y);
-        } else if (type === "drag") {
-          drawbuffer.push({x: x,y: y});
-          context.lineTo(x, y);
-          return context.stroke();
-        } else {
-          socket.emit('draw', drawbuffer);
-          
-          return context.closePath();
-        }
-      };
-      
-
-    // Get the coordinates for a mouse or touch event
-    function getCoords(e) {
-    	if (e.offsetX) {
-    		return { x: e.offsetX, y: e.offsetY };
-    	}
-    	else if (e.layerX) {
-    		return { x: e.layerX, y: e.layerY };
-    	}
-    	else {
-    		return { x: e.pageX - canvas.offsetLeft, y: e.pageY - canvas.offsetTop };
-    	}
-    }
-    
-    
-    
-    
-    function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-
-            /**
-             * Your drawings need to be inside this function otherwise they will be reset when 
-             * you resize the browser window and the canvas goes will be cleared.
-             */
-            drawStuff(); 
-    }
-   
-
-    function drawStuff() {
-            // do your drawing stuff here
-    }
-    
-
-       resizeCanvas();
-     
-    
-
-   var users =[];
+  
       
       // sockets
       var socket = io.connect('http://');
@@ -194,7 +133,7 @@
       
       socket.on('users-connected', function(data){
         
-        for (i=0;i<data.length;i++){
+        for (var i=0;i<data.length;i++){
           var current = data[i];
           
           $('#cursor').clone().appendTo('#cursor_container').attr('id',"cursor-"+current.id);
@@ -221,34 +160,107 @@
         setCursor(data.id, data.cursor.x, data.cursor.y);
        });
        
-       socket.on('receive-draw', function (data) {
-       
-
-          context.beginPath();
-         context.moveTo(data[0].x, data[0].y);
-         for (i=1;i<data.length;i++){
-          var p = data[i];
-          context.lineTo(p.x, p.y);
-        } 
-        context.stroke();
-        context.closePath();
+       socket.on('receive-draw', function (line) {
+        drawing.push(line);
+        drawline(line)
        });
        
+       
+       socket.on('receive-draw-bulk', function (lines) {
+       
+        for(var i=0; i<lines.length;i++){
+          // add lines to local draw buffer
+          drawing.push(lines[i]);
+        }
+        
+        drawlines(lines);
+        
+       });
        
       // TODO register id in cookie
       socket.emit("new-user", {id:  Math.round(Math.random() * 10000)});
       
       
-     $(document).bind('mousemove', function(e){
-        socket.emit('mousemove', { x:  e.pageX/$(window).width()  , y:   e.pageY/$(window).height()  });
-      });
-      
-    
-      
+   
    
   
   
-     
+  
+  
+  $('#canvas').live('drag dragstart dragend', function(e) {
+  
+    var type = e.handleObj.type;
+    draw(e.clientX , e.clientY, type);
+    
+  });
+  
+   $(document).bind('mousemove', function(e){
+        socket.emit('mousemove', { x:  e.pageX/$(window).width()  , y:   e.pageY/$(window).height()  });
+      })
+  
+  
+  
+  
+      
+      function draw(x, y, type) {
+      
+        if (type === "dragstart") {
+          drawbuffer = [];
+          context.beginPath();
+          drawbuffer.push({x: x,y: y});
+          return context.moveTo(x, y);
+        } else if (type === "drag") {
+          drawbuffer.push({x: x,y: y});
+          context.lineTo(x, y);
+          return context.stroke();
+        } else {
+          // add the line
+           drawing.push(drawbuffer);
+           socket.emit('draw', drawbuffer);
+          return context.closePath();
+        }
+      };
+      
+
+    // Get the coordinates for a mouse or touch event
+    function getCoords(e) {
+    	if (e.offsetX) {
+    		return { x: e.offsetX, y: e.offsetY };
+    	}
+    	else if (e.layerX) {
+    		return { x: e.layerX, y: e.layerY };
+    	}
+    	else {
+    		return { x: e.pageX - canvas.offsetLeft, y: e.pageY - canvas.offsetTop };
+    	}
+    }
+    
+    
+
+    
+  
+  function drawlines(lines){
+  
+    console.log("drawlines", lines.length);
+    for(var i=0; i<lines.length;i++)
+        {
+          var line = lines[i];
+          console.log("draw line",i);
+          drawline(line);
+        }
+  }
+  
+  function drawline(line){
+    context.beginPath();
+         context.moveTo(line[0].x, line[0].y);
+         for (var i=1;i<line.length;i++){
+          var p = line[i];
+          context.lineTo(p.x, p.y);
+        } 
+        context.stroke();
+        context.closePath();
+        
+  }
       
   
   function setCursor(id, x, y){
@@ -256,6 +268,28 @@
     var pageY = y * $(window).height();
     $("#cursor-"+id).css({left:  pageX, top:   pageY });
   }
+  
+      
+    
+    function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            /**
+             * Your drawings need to be inside this function otherwise they will be reset when 
+             * you resize the browser window and the canvas goes will be cleared.
+             */
+             
+             console.log("resizeCanvas", drawing.length);
+            drawlines(drawing);
+           
+    }
+   
+
+
+       
+     
+     
   
 });  
   
