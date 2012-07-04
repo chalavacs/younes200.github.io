@@ -46,7 +46,7 @@
 	  <h1>Experiments</h1>
 	  <h2>
 		<ul>
-			<li>Real time Map geolocatization with Nodejs : <a href="http://afternoon-moon-6385.herokuapp.com/" rel="me" target="_blank">link</a>.</li>
+			<li>Realtime Map geolocatization : <a href="http://afternoon-moon-6385.herokuapp.com/" rel="me" target="_blank">link</a>.</li>
 		</ul>
 
 		
@@ -63,21 +63,34 @@
 </div>
 
 
-
-
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 <script type="text/javascript" src="/javascripts/underscore.js"></script>
 <script type="text/javascript" src="/javascripts/socket.io.js"></script>
 <script type="text/javascript" src="/javascripts/jquery.backstretch.min.js"></script>
+
 <script>
+  
+  
+  function jsonFlickrApi(data){
+    if (data.stat != "ok"){
+
+      // something broke!
+      return;
+    }
+    var photo = data.photoset.photo[Math.floor(Math.random()*data.photoset.photo.length)];
+    var url = "http://farm"+photo.farm+".static.flickr.com/"+photo.server+"/"+photo.id+"_"+photo.secret+"_b_d.jpg"
+    
+    $.backstretch(url, {speed: 150});
+  }
+  
+
   
   
   $(document).ready(function() {	
   
   
     // flicker
-    // http://api.flickr.com/services/rest/?method=flickr.people.getPublicPhotos&api_key=e606900de034115b34006a4dcf2c5766&user_id=58821970@N00&format=json
-    $.backstretch("http://farm7.staticflickr.com/6071/6030065568_c4a957f90f_b_d.jpg", {speed: 150});
+    
     initialize();
 
 
@@ -276,11 +289,11 @@
     $("#cursor-"+id).css({left:  pageX, top:   pageY });
   }
   
-
+  
     
 </script>
 
-
+<script type="text/javascript" src="http://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key=e606900de034115b34006a4dcf2c5766&user_id=58821970@N00&photoset_id=72157629696932450&format=json"></script>
 
 </body>
 </html>
