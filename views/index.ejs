@@ -54,12 +54,17 @@
 	</div>	
 	
 	<br />
+	<!--
+	<a href="#" class="clear-button">clear</a>
+	-->
 </div>
 
 
 
+
+
 <div id="cursor_container">
-<div id="cursor" class="cursor"><div class="label"></div></div>
+<div id="cursor" class="cursor"></div>
 </div>
 
 
@@ -95,19 +100,17 @@
     // resize the canvas to fill browser window dynamically
     window.addEventListener('resize', resizeCanvas, false);
 
-    if (context) {
-      context.fillStyle = "solid";
-      context.strokeStyle = "#ECD018";
-      context.lineWidth = 5;
-      context.lineCap = "round";
-      //context.fillStyle = "rgba(0, 0, 200, 0.5)";
-    
+  
       		
-    }
+    
   
  
   
-  
+    context.strokeStyle = "rgba(255,217,0,0.1)";
+    context.fillStyle = "rgba(255,217,0,0.1)";
+    context.lineWidth = 10;
+    context.lineCap = "round";          
+    context.lineJoin = "round"
       
       // sockets
       var socket = io.connect('http://');
@@ -115,7 +118,7 @@
       socket.on('user-connected', function (data) {
         console.log("user connected :",data.id);
         users[data.id] = data;
-        $('#cursor').clone().appendTo('#cursor_container').attr('id',"cursor-"+data.id);
+        $('#cursor').clone().appendTo('#cursor_container').attr('id',"cursor-"+data.id).append("<b>user"+data.id+"</b>");
       });
       
       socket.on('users-connected', function(data){
@@ -123,7 +126,7 @@
         for (var i=0;i<data.length;i++){
           var current = data[i];
           
-          $('#cursor').clone().appendTo('#cursor_container').attr('id',"cursor-"+current.id);
+          $('#cursor').clone().appendTo('#cursor_container').attr('id',"cursor-"+current.id).append("<b>user"+current.id+"</b>");
           
           if(current.cursor) setCursor(current.id, current.cursor.x, current.cursor.y);
           //create cursor here
@@ -149,7 +152,7 @@
        
        socket.on('receive-draw', function (line) {
         drawing.push(line);
-        
+         drawline(line);
        });
        
        
@@ -164,14 +167,22 @@
         
        });
        
+       socket.on('receive-draw-clear', function(){
+         drawing = [];
+          context.clearRect(0, 0, canvas.width, canvas.height);
+       });
+       
       // TODO register id in cookie
       socket.emit("new-user", {id:  Math.round(Math.random() * 10000)});
       
       
    
-   
-  
-  
+  $(".clear-button").click(function()
+  {
+     
+     socket.emit('draw-clear');
+    
+  });
   
   
   $('#canvas').live('drag dragstart dragend', function(e) {
@@ -199,6 +210,11 @@
         } else if (type === "drag") {
           drawbuffer.push({x: x,y: y});
           context.lineTo(x, y);
+          context.strokeStyle = "rgba(255,217,0,1)";
+          context.fillStyle = "rgba(255,217,0,1)";
+          context.lineWidth = 10;
+          context.lineCap = "round";          
+          context.lineJoin = "round"
           return context.stroke();
         } else {
           // add the line
@@ -241,8 +257,14 @@
          for (var i=1;i<line.length;i++){
           var p = line[i];
           context.lineTo(p.x, p.y);
+          context.strokeStyle = "rgba(255,217,0,0.1)";
+          context.fillStyle = "rgba(255,217,0,0.1)";
+          context.lineWidth = 10;
+          context.lineCap = "round";          
+          context.lineJoin = "round"       
+          context.stroke();
         } 
-        context.stroke();
+        
         context.closePath();
         
   }
