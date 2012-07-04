@@ -20,6 +20,7 @@ server.get('/', function(req, res){
 	res.render('index.ejs', {locals:{mes:mes}});
 });
 
+var redis = require('redis-url').connect(process.env.REDISTOGO_URL);
 
 
 var io = require('socket.io');
@@ -36,12 +37,13 @@ io.configure(function(){
 var users = {};
 
 io.sockets.on('connection', function (socket) {
-  var user;
+  var user = {}
 
   socket.emit('users-connected', _.values(users));
 
   socket.on('new-user', function (data) {
     user = data
+    user.cursor = {x:0,y:0}
     users[user.id] = data
     socket.broadcast.emit('user-connected', data);
   });
@@ -54,6 +56,11 @@ io.sockets.on('connection', function (socket) {
   socket.on('mousemove', function (data) {
     user.cursor = data
     socket.broadcast.emit('receive-mousemove', user);
+  });
+  
+  
+  socket.on('draw', function (data) {
+    socket.broadcast.emit('receive-draw', data);
   });
   
   socket.on('disconnect', function(){

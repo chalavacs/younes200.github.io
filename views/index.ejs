@@ -67,6 +67,10 @@
 <script type="text/javascript" src="/javascripts/underscore.js"></script>
 <script type="text/javascript" src="/javascripts/socket.io.js"></script>
 <script type="text/javascript" src="/javascripts/jquery.backstretch.min.js"></script>
+<script type="text/javascript" src="/javascripts/jquery.event.drag-2.2.js"></script>
+<script type="text/javascript" src="/javascripts/jquery.event.drag.live-2.2.js"></script>
+
+
 
 <script>
   
@@ -89,10 +93,6 @@
   $(document).ready(function() {	
   
   
-    // flicker
-    
-    initialize();
-
 
     var lastPoints = [];
     var easing = 0.4;
@@ -111,65 +111,38 @@
       context.lineWidth = 5;
       context.lineCap = "round";
       //context.fillStyle = "rgba(0, 0, 200, 0.5)";
-      
-      canvas.onmousedown = startDraw;
-      canvas.onmouseup = stopDraw;
-      canvas.ontouchstart = startDraw;
-      canvas.ontouchstop = stopDraw;
-      canvas.ontouchmove = drawMouse;
+    
       		
     }
   
   
-    function startDraw(e) {
-    	if (e.touches) {
-    		// Touch event
-    		for (var i = 1; i <= e.touches.length; i++) {
-    			lastPoints[i] = getCoords(e.touches[i - 1]); // Get info for finger #1
-    		}
-    	}
-    	else {
-    		// Mouse event
-    		console.log( getCoords(e));
-    		lastPoints[0] = getCoords(e);
-    		canvas.onmousemove = drawMouse;
-    	}
-
-    	return false;
-    }
-
-    // Called whenever cursor position changes after drawing has started
-    function stopDraw(e) {
-    	e.preventDefault();
-    	canvas.onmousemove = null;
-    }
-
-    function drawMouse(e) {
-    	if (e.touches) {
-    		// Touch Enabled
-    		for (var i = 1; i <= e.touches.length; i++) {
-    			var p = getCoords(e.touches[i - 1]); // Get info for finger i
-    			lastPoints[i] = drawLine(lastPoints[i].x, lastPoints[i].y, p.x, p.y);
-    		}
-    	}
-    	else {
-    		// Not touch enabled
-    		var p = getCoords(e);
-    		lastPoints[0] = drawLine(lastPoints[0].x, lastPoints[0].y, p.x, p.y);
-    	}
-    	context.stroke();
-    	context.closePath();
-    	context.beginPath();
-
-    	return false;
-    }
-
-    // Draw a line on the canvas from (s)tart to (e)nd
-    function drawLine(sX, sY, eX, eY) {
-    	context.moveTo(sX, sY);
-    	context.lineTo(eX, eY);
-    	return { x: eX, y: eY };
-    }
+  var drawbuffer
+  $('#canvas').live('drag dragstart dragend', function(e) {
+  
+    var type = e.handleObj.type;
+    draw(e.clientX , e.clientY, type);
+    
+  });
+  
+  
+      
+      function draw(x, y, type) {
+        if (type === "dragstart") {
+          drawbuffer = [];
+          context.beginPath();
+          drawbuffer.push({x: x,y: y});
+          return context.moveTo(x, y);
+        } else if (type === "drag") {
+          drawbuffer.push({x: x,y: y});
+          context.lineTo(x, y);
+          return context.stroke();
+        } else {
+          socket.emit('draw', drawbuffer);
+          
+          return context.closePath();
+        }
+      };
+      
 
     // Get the coordinates for a mouse or touch event
     function getCoords(e) {
@@ -208,13 +181,6 @@
      
     
 
-});
-
-
-  
-  function initialize()
-  {
-  
    var users =[];
       
       // sockets
@@ -255,6 +221,20 @@
         setCursor(data.id, data.cursor.x, data.cursor.y);
        });
        
+       socket.on('receive-draw', function (data) {
+       
+
+          context.beginPath();
+         context.moveTo(data[0].x, data[0].y);
+         for (i=1;i<data.length;i++){
+          var p = data[i];
+          context.lineTo(p.x, p.y);
+        } 
+        context.stroke();
+        context.closePath();
+       });
+       
+       
       // TODO register id in cookie
       socket.emit("new-user", {id:  Math.round(Math.random() * 10000)});
       
@@ -266,21 +246,9 @@
     
       
    
-  }
+  
   
      
-      
-      function draw(x, y, type) {
-        if (type === "dragstart") {
-          context.beginPath();
-          return context.moveTo(x, y);
-        } else if (type === "drag") {
-          context.lineTo(x, y);
-          return context.stroke();
-        } else {
-          return context.closePath();
-        }
-      };
       
   
   function setCursor(id, x, y){
@@ -289,6 +257,7 @@
     $("#cursor-"+id).css({left:  pageX, top:   pageY });
   }
   
+});  
   
     
 </script>
