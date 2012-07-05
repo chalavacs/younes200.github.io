@@ -102,6 +102,12 @@ io.sockets.on('connection', function (socket) {
     }
   });
   
+  socket.on('draw-clear', function(data){
+    redis.del('drawdata');
+    has_draw = false;
+    socket.broadcast.emit('receive-draw-clear');
+  });
+  
   socket.on('disconnect', function(){
     if(user){
       delete users[user.id];
