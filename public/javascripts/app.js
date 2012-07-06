@@ -7,20 +7,22 @@ $(document).ready(function () {
 	var drawbuffer;
   var flickr;
 	
-	var canvas = document.getElementById("canvas");
-	var context = canvas.getContext('2d');
-	
-	// resize the canvas to fill browser window dynamically
-	window.addEventListener('resize', resizeCanvas, false);
-	
-	context.strokeStyle = "rgba(255,217,0,0.1)";
-	context.fillStyle = "rgba(255,217,0,0.1)";
-	context.lineWidth = 10;
-	context.lineCap = "round";
-	context.lineJoin = "round"
-		
+  
+  
+	var canvas;
+  var context;
+  
+  if(Modernizr.canvas){
+  
+    canvas = $("canvas")[0];;
+      // get the context
+     context = canvas.getContext('2d');
+    // resize the canvas to fill browser window dynamically
+    window.addEventListener('resize', resizeCanvas, false);
+	}
+  
 		// sockets
-		var socket = io.connect('http://');
+	var socket = io.connect('http://');
 	
 	socket.on('user-connected', function (data) {
 		console.log("user connected :", data.id);
@@ -69,33 +71,47 @@ $(document).ready(function () {
 			// add lines to local draw buffer
 			drawing.push(lines[i]);
 		}
-		
-		drawlines(lines);
+		if(context){
+      drawlines(lines);
+    }
 		
 	});
 	
 	socket.on('receive-draw-clear', function () {
 		drawing = [];
-		context.clearRect(0, 0, canvas.width, canvas.height);
+    if(context){
+      context.clearRect(0, 0, canvas.width, canvas.height);
+    }
 	});
 	
 	// TODO register id in cookie
 	socket.emit("new-user", {
 		id : Math.round(Math.random() * 10000)
 	});
-	
+  
+ 
 	$(".clear-button").click(function () {
 		
 		socket.emit('draw-clear');
     drawing = [];
-    context.clearRect(0, 0, canvas.width, canvas.height);
+    if(context){
+      context.clearRect(0, 0, canvas.width, canvas.height);
+    }
+		
+	});
+  
+  $(".refresh-button").click(function () {
+		
+		updatebackground();
 		
 	});
 	
-	$('#canvas').live('drag dragstart dragend', function (e) {
+	$('body').on('drag dragstart dragend', function (e) {
 		
 		var type = e.handleObj.type;
-		draw(e.clientX, e.clientY, type);
+    if(context){
+      draw(e.clientX, e.clientY, type);
+    }
 		
 	});
 	
@@ -191,7 +207,7 @@ $(document).ready(function () {
 		});
 	}
 	
-  var bgint;
+  
 	function resizeCanvas() {
 		canvas.width = window.innerWidth;
 		canvas.height = window.innerHeight;
@@ -201,10 +217,10 @@ $(document).ready(function () {
 		
 	}
   
-	updatebackground();
-  
-  
-    $.getJSON("http://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key=e606900de034115b34006a4dcf2c5766&user_id=58821970@N00&photoset_id=72157629696932450&format=json&jsoncallback=?", function (data) {
+
+    
+    $.getJSON("http://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key=e606900de034115b34006a4dcf2c5766&user_id=58821970@N00&photoset_id=72157629696932450&format=json&jsoncallback=?", 
+    function (data) {
       
       if (data.stat != "ok") {
         
@@ -213,26 +229,37 @@ $(document).ready(function () {
         return;
       }
       flickr = data.photoset.photo;
-       var photo = flickr[Math.floor(Math.random() * flickr.length)];
-      var url = "http://farm" + photo.farm + ".static.flickr.com/" + photo.server + "/" + photo.id + "_" + photo.secret + "_b_d.jpg"
-        
-        $.backstretch(url, {
-          speed : 500
-        },
-          function () {
-            bgint = setInterval(updatebackground,3000);
-            resizeCanvas();
-        });
+     
       updatebackground();
       
     });
   
    function updatebackground(){
-      clearInterval(bgint);
-      
-      
-     
+
+
+       var photo = flickr[Math.floor(Math.random() * flickr.length)];
+       var url = "http://farm" + photo.farm + ".static.flickr.com/" + photo.server + "/" + photo.id + "_" + photo.secret + "_b_d.jpg"
         
+        $.backstretch(url, {
+          speed : 500
+        },
+          function () {
+            resizeCanvas();
+        });
   }
+  
+  
+  
+  var options = {
+      autoPlay:false,
+      nextButton: true,
+				prevButton: true,
+				animateStartingFrameIn: true,
+				transitionThreshold: 250,
+      }
+  var sequence = $("#sequence").sequence(options).data("sequence");
+  
+  
+	
 	
 });
