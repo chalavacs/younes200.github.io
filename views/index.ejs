@@ -9,8 +9,10 @@
 	<meta name="distribution" content="global"></meta>
 	<meta name="description" content="Younes BENAOMAR. Developper."></meta>
 	<meta name="keywords" content="personal,graphic design, photography, younes benaomar"></meta>
-	<meta name="viewport" content="width=device-width, maximum-scale=1.0" />
-  
+	
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    
 	<link rel="stylesheet" media="screen" type="text/css" href="stylesheets/styles.css" />
 	
   <link href="http://fonts.googleapis.com/css?family=Merriweather:400,700,300" rel="stylesheet" type="text/css">
@@ -38,6 +40,10 @@
 <body>
 <canvas id="canvas"></canvas>
 
+<header id="top">
+    <a href="" id="logo"></a>
+</header>
+  
 <div class="full-wrap">
 
   <div id="sequence">
@@ -90,13 +96,15 @@
 </div>
 
 
-<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="js/libs/jquery-1.7.1.min.js"><\/script>')</script>
+  
 <script type="text/javascript" src="/javascripts/underscore.js"></script>
 <script type="text/javascript" src="/javascripts/socket.io.js"></script>
 <script type="text/javascript" src="/javascripts/jquery.backstretch.min.js"></script>
 <script type="text/javascript" src="/javascripts/jquery.event.drag-2.2.js"></script>
 <script type="text/javascript" src="/javascripts/sequence.jquery-min.js"></script>
-<script type="text/javascript" src="/javascripts/app.js"></script>
+<script type="text/javascript" src="/javascripts/script.js"></script>
 
 
 
