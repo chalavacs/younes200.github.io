@@ -100,12 +100,7 @@ $(document).ready(function () {
 		
 	});
   
-  $(".refresh-button").click(function () {
-		
-		updatebackground();
-		
-	});
-	
+  
 	$('body').on('drag dragstart dragend', function (e) {
 		
 		var type = e.handleObj.type;
@@ -218,6 +213,19 @@ $(document).ready(function () {
 	}
   
 
+  
+  
+  
+  var options = {
+      autoPlay:false,
+      nextButton: true,
+				prevButton: true,
+				animateStartingFrameIn: true,
+				transitionThreshold: 250,
+      }
+  var sequence = $("#sequence").sequence(options).data("sequence");
+  
+  
     
     $.getJSON("http://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key=e606900de034115b34006a4dcf2c5766&user_id=58821970@N00&photoset_id=72157629696932450&format=json&jsoncallback=?", 
     function (data) {
@@ -234,8 +242,16 @@ $(document).ready(function () {
       
     });
   
+  
+  
+  $(".refresh-button").click(function () {
+	
+    sequence.init.preloader();
+		updatebackground();
+		
+	});
+	
    function updatebackground(){
-
 
        var photo = flickr[Math.floor(Math.random() * flickr.length)];
        var url = "http://farm" + photo.farm + ".static.flickr.com/" + photo.server + "/" + photo.id + "_" + photo.secret + "_b_d.jpg"
@@ -244,20 +260,14 @@ $(document).ready(function () {
           speed : 500
         },
           function () {
+            sequence.init.preloader().remove();
             resizeCanvas();
         });
   }
   
   
   
-  var options = {
-      autoPlay:false,
-      nextButton: true,
-				prevButton: true,
-				animateStartingFrameIn: true,
-				transitionThreshold: 250,
-      }
-  var sequence = $("#sequence").sequence(options).data("sequence");
+
   
   
 	

@@ -145,12 +145,11 @@ font-size: 4em;
 #menu {
   position: absolute;
   z-index: 90;
-  bottom: 41px;
+  bottom: 20px;
   right: 40px;
   height: 20px;
   overflow: hidden;
 }
-
 
 #menu a {
   float: left;
@@ -166,6 +165,7 @@ font-size: 4em;
   padding-left: 5px;
   padding-right: 5px;
   text-decoration: none;  
+  margin-left: 5px;
 }
 
 #menu a:hover {
@@ -258,7 +258,7 @@ h2, .box div img {
 
 
 .info1.animate-in, .info2.animate-in, .info3.animate-in{
-    left: 20%;
+    left: 10%;
     -webkit-transition-duration: 1s;
     -moz-transition-duration: 1s;
     -o-transition-duration: 1s;
