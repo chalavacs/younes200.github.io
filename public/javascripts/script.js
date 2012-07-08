@@ -90,7 +90,7 @@ $(document).ready(function () {
 	});
   
  
-	$(".clear-button").click(function () {
+	$("#menu .clear").click(function () {
 		
 		socket.emit('draw-clear');
     drawing = [];
@@ -244,7 +244,7 @@ $(document).ready(function () {
   
   
   
-  $(".refresh-button").click(function () {
+  $("#menu .refresh").click(function () {
 	
     sequence.init.preloader();
 		updatebackground();
