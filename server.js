@@ -20,6 +20,10 @@ server.get('/', function(req, res){
 	res.render('index.ejs', {locals:{mes:mes}});
 });
 
+server.get('/ping', function(req, res) {
+    res.send('pong');
+});
+
 var redis = require('redis-url').connect(process.env.REDISTOGO_URL|| "redis://localhost:6379");
 
 

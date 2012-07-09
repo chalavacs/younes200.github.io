@@ -28,21 +28,17 @@ body {
     margin: 0;    
 }
 
+li {
+      list-style-type: none;
+}
+
 header {
   padding: 40px;
   width: 100%;
   position: absolute;
   top: 0px;
   font-weight: 100;
-  z-index: 100;
   min-width: 1024px;
-}
-
-header a#logo {
-  width: 282px;
-  height: 56px;
-  display: inline-block;
-  background: url(/images/logo.png) no-repeat center center;
 }
 
 
@@ -67,88 +63,31 @@ top: 0px;
 left: 0px;
 width: 100%;
 height: 100%;
-z-index: 25;
+
 background-image: url(/images/dot-pattern.png);
 
 overflow: hidden;
 }
 
-.box {
-  display: block;
-  position: relative;
-  text-align: left;
-  margin: 30px;
-  font-family: "proxima-nova-1","proxima-nova-2", "Century Gothic","Lucida Grande",Arial,sans-serif;
-  width: 500px;
-}
 
-.left {
-  text-align: left;
-  right: auto;
-  left: 180px;
-  font-size: 13px;
-  top: 20%;
-}
-
-.large h2 {
-  font-size: 60px;
-}
-
-.box div{
-  background: none repeat scroll 0 0 #000000;
-      color: #EEEEEE;
-      font-size: 13px;
-      left: 180px;
-      line-height: 1.5em;
-      padding: 20px 30px;
-      right: auto;
-      text-align: left;
-      margin-top:2px;
-    
-}
-
-.box h1 {
-  color:#EEEEEE;
-  }
-
-
-.box  a {
-    border-bottom: 1px solid #999999;
-    color: #ffffff;
-    text-decoration:none;
-}
-.box  a:hover {
-    border-bottom: 1px solid #333333;
-    color: #000000;
-    background: white;
-    text-decoration: none;
-}
-
-
-#main ul {
-    margin-left: 1.5em;
-    padding-left: 0;
-}
-#main li {
-    margin-bottom: 0.5em;
-}
 #cursor {
     display: none;
+
 }
 .cursor {
     background-image: url("/images/cursor.png");
     height: 23px;
-    opacity: 0.5;
     position: absolute;
     width: 16px;
 }
 .cursor b {
-   font-family: "Century Gothic","Lucida Grande",Arial,sans-serif;
-    font-size: 15px;
-    font-weight: 100;
-    padding: 10px 0px 0px 15px;
+
+   background-color:  rgba(256, 256, 256, 0.9);
+    margin-left: 15px;
+    padding: 2px;
 }
-#canvas {
+
+canvas {
     cursor: default;
     display: block;
     left: 0;
@@ -157,29 +96,28 @@ overflow: hidden;
 }
 
 
-#canvas:active {
+canvas:active {
+  cursor: default;
 }
 
 #menu {
   position: absolute;
   top: 20px;
-  right: 20px;
-  height: 20px;
   overflow: hidden;
   z-index: 400;
+  width: 40px;
+  right: 0px;
 }
 
 #menu a {
   float: left;
   margin-left: 1px;
-  background: black;
   text-size: 2em;
   overflow: hidden;
   height: 20px;
   line-height: 20px;
   text-align: center;
   cursor: pointer;
-  color: white;
   padding-left: 5px;
   padding-right: 5px;
   text-decoration: none;  
@@ -187,13 +125,12 @@ overflow: hidden;
 }
 
 #menu a:hover {
-  background: white;
   color: black;
   text-decoration: none;  
 }
 
 #menu a.refresh {
-  background-image: url("/images/loop-white.png");
+  background-image: url("/images/loop.png");
   background-position:center center;
   background-repeat:no-repeat;
   Width: 16px;
@@ -201,14 +138,12 @@ overflow: hidden;
 
 
 #menu a.refresh:hover {
-  background-image: url("/images/loop.png");
-  background-position:center center;
-  background-repeat:no-repeat;
+
   Width: 16px;
 }
 
 #menu a.clear {
-  background-image: url("/images/trash-white.png");
+  background-image: url("/images/trash.png");
   background-position:center center;
   background-repeat:no-repeat;
   Width: 16px;
@@ -216,9 +151,7 @@ overflow: hidden;
 
 
 #menu a.clear:hover {
-  background-image: url("/images/trash.png");
-  background-position:center center;
-  background-repeat:no-repeat;
+
   Width: 16px;
 }
 
@@ -267,31 +200,9 @@ h2, .box div img {
 
 }
 
-#sequence li {
-      list-style-type: none;
-}
 
-.info1, .info2, .info3{
-   
-    
-    left: -20%;
-    position: absolute;
 
-    -webkit-transition-duration: 1s;
-    -moz-transition-duration: 1s;
-    -o-transition-duration: 1s;
-    -ms-transition-duration: 1s;
-    transition-duration: 1s;
-    
-
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-    filter: alpha(opacity=0);
-    opacity: 0;
-    
-    
-}
-
-.info1 span {
+.box span {
   
     display: inline-block;
     background-color: rgba(256, 256, 256, 0.9);
@@ -310,7 +221,7 @@ h2, .box div img {
     
 }  
 
-.info1  p {
+.box  p {
   margin: 0 0 10px 0;
   font-family: 'Merriweather',Georgia,serif;
   font-size: 0.8em;
@@ -334,7 +245,7 @@ h2, .box div img {
   
 }
 
-.info1 a {
+.box a {
 
 text-decoration:none;
 color:#555;
@@ -358,21 +269,63 @@ padding:3px 5px;
 }
 
 
-.info1 a:hover {
+.box a:hover {
 background:#e1e1c9;
 }
 
 
-.info2{
-    top: 40%;
+.home, .experiences{
+   
+    
+    left: -20%;
+    position: absolute;
+
+    -webkit-transition-duration: 1s;
+    -moz-transition-duration: 1s;
+    -o-transition-duration: 1s;
+    -ms-transition-duration: 1s;
+    transition-duration: 1s;
+    
+
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    filter: alpha(opacity=0);
+    opacity: 0;
+    
+    
 }
 
-.info3{
-    top: 30%;
+.about{
+   
+    
+    top: 150%;
+    left: 10%;
+    width: 40%;
+    position: absolute;
+
+    -webkit-transition-duration: 1s;
+    -moz-transition-duration: 1s;
+    -o-transition-duration: 1s;
+    -ms-transition-duration: 1s;
+    transition-duration: 1s;
+    
+
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    filter: alpha(opacity=0);
+    opacity: 0;
+    
+    
 }
 
-.info1{
-    top: 20%;
+
+
+.experiences{
+    top: 10%;
+}
+
+
+
+.home{
+    top: 70%;
     width: 50%;
     font-family: "proxima-nova-1","proxima-nova-2",sans-serif;
     font-weight: 100;
@@ -382,8 +335,9 @@ background:#e1e1c9;
 
 
 
-.info1.animate-in, .info2.animate-in, .info3.animate-in{
-    left: 10%;
+.home.animate-in{
+    left: 5%;
+    top: 70%;
     -webkit-transition-duration: 1s;
     -moz-transition-duration: 1s;
     -o-transition-duration: 1s;
@@ -396,7 +350,8 @@ background:#e1e1c9;
     
 }
 
-.info1.animate-out  .info2.animate-out, .info3.animate-out{
+
+.home.animate-out {
     left: -50%;
     -webkit-transition-duration: 1s;
     -moz-transition-duration: 1s;
@@ -408,7 +363,77 @@ background:#e1e1c9;
     filter: alpha(opacity=0);
     opacity: 0;
     
+}  
+
+
+.about.animate-in{
+    left: 10%;
+    top: 10%;
+    -webkit-transition-duration: 1s;
+    -moz-transition-duration: 1s;
+    -o-transition-duration: 1s;
+    -ms-transition-duration: 1s;
+    transition-duration: 1s;
+    
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+    filter: alpha(opacity=100);
+    opacity: 1;
+    
+}
+
+ 
+
+.about.animate-out{
+    top: 200%;
+    left: 10%;
+    -webkit-transition-duration: 1s;
+    -moz-transition-duration: 1s;
+    -o-transition-duration: 1s;
+    -ms-transition-duration: 1s;
+    transition-duration: 1s;
+    
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    filter: alpha(opacity=0);
+    opacity: 0;
+    
 }   
+
+
+.experiences.animate-in{
+    left: 10%;
+    top: 10%;
+    -webkit-transition-duration: 1s;
+    -moz-transition-duration: 1s;
+    -o-transition-duration: 1s;
+    -ms-transition-duration: 1s;
+    transition-duration: 1s;
+    
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+    filter: alpha(opacity=100);
+    opacity: 1;
+    
+}
+
+
+.experiences.animate-out {
+    
+    top: -50%;
+    left: 10%;
+    -webkit-transition-duration: 1s;
+    -moz-transition-duration: 1s;
+    -o-transition-duration: 1s;
+    -ms-transition-duration: 1s;
+    transition-duration: 1s;
+    
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    filter: alpha(opacity=0);
+    opacity: 0;
+    
+    
+}   
+
+
+
 #share {
 position: fixed;
 z-index: 300;
@@ -421,19 +446,19 @@ overflow: hidden;
 
 
 #share a.fb {
-background: url('/images/facebook_blanc.png');
-}
-
-#share a.tt{
-  background: url('/images/twitter_blanc.png');
-}
-
-#share a.fb:hover {
 background: url('/images/facebook_noir.png');
 }
 
-#share a.tt:hover {
+#share a.tt{
   background: url('/images/twitter_noir.png');
+}
+
+#share a.fb:hover {
+background: url('/images/facebook_blanc.png');
+}
+
+#share a.tt:hover {
+  background: url('/images/twitter_blanc.png');
 }
 
 #share a.fb, #share a.tt {
@@ -447,7 +472,7 @@ background: url('/images/facebook_noir.png');
   right: 0px;
   z-index: 100;
   width: 50px;
-  height: 70%;
+  height: 100%;
   overflow: hidden;
   margin-right: 0px;
   top: 0px;
@@ -482,7 +507,9 @@ background: url('/images/facebook_noir.png');
   background: url('/images/dots.png') transparent;
 }
 
-
+#nav #dots ul li.cur a, #nav #dots ul li.cur a:hover {
+  background-position: 0px -24px;
+}
 
 
 .typekit-badge {display:none !important;}
