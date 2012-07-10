@@ -21,7 +21,7 @@
 	var context;
   var lcanvas;
   var lcontext;
-	var color = "rgb(244, 119, 35)";
+	var color = "rgba(244, 119, 35,0.4)";
 	var strokeSize = 20;
   var redrawIntervalId;
   var resizeIntervalId;
@@ -29,11 +29,11 @@
 	var brush;
 
 	
-	var DEFAULT_BRUSH_SIZE = 30;
+	var DEFAULT_BRUSH_SIZE = 50;
 	var MAX_BRUSH_SIZE = 50;
 	var MIN_BRUSH_SIZE = 5;
-	var INK_AMOUNT = 2;
-	var SPLASH_RANGE = 75;
+	var INK_AMOUNT = 10;
+	var SPLASH_RANGE = 5;
 	var SPLASH_INK_SIZE = 10;
   
 $(document).ready(function () {
@@ -172,13 +172,7 @@ $(document).ready(function () {
 	}
 	
 	function mouseDown(e) {
-    
-		
-		mouse.set(e.clientX, e.clientY);
-		
-    brush.update(mouse);
     brush.resetTip();
-    
 		isMouseDown = true;
 
 	}
@@ -204,9 +198,9 @@ $(document).ready(function () {
 	
 	function loop() {
     
+    brush.update(mouse);
 		if (isMouseDown) {
       // draw the brush on local canvas first
-      
 			brush.draw(lcontext, mouse, color, strokeSize);
       drawbuffer.push({x:mouse.x, y:mouse.y});
 		}
@@ -386,7 +380,9 @@ $(document).ready(function () {
 	
 	$('a[data-sequence]').click(function (e) {
 		var sequenceid = $(e.target).data("sequence");
-		sequence.goTo(sequenceid)
+		sequence.goTo(sequenceid);
+		console.log("goto sequenceid"+sequenceid);
+		
 		
 	});
 	

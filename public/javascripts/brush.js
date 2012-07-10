@@ -79,21 +79,21 @@
          
          this.strokeSize = strokeSize;
          
-          this.update(p);
+          //this.update(p);
                
 					var hairs = this._hairs;
 					for (var i = 0, len = hairs.length; i < len; i++) {
 						hairs[i].draw(ctx, color);
 					}
-					/*
+					
 					if (this._latestStrokeLength > 30) {
-						this.splash(context, this.splashRange, this.splashInkSize);
+						this.splash(context, color, this.splashRange, this.splashInkSize);
 					}
-          */
+          
 					
 				},
 				
-				splash : function (ctx, range, maxSize) {
+				splash : function (ctx, color, range, maxSize) {
 					var num = random(12, 0);
 					var c,
 					r,
@@ -144,8 +144,8 @@
 				
 				draw : function (ctx, color) {
 					ctx.save();
-					context.lineCap = 'round';
 					line(ctx, this._latest, this, color, this._currentLineWidth);
+					ctx.restore();
 				}
 			});
 		
@@ -158,6 +158,7 @@
 	function line(ctx, p1, p2, color, lineWidth) {
 		ctx.strokeStyle = color;
 		ctx.lineWidth = lineWidth;
+		ctx.lineCap = 'round';
 		ctx.beginPath();
 		ctx.moveTo(p1.x, p1.y);
 		ctx.lineTo(p2.x, p2.y);
