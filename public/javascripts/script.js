@@ -26,6 +26,9 @@
   var redrawIntervalId;
   var resizeIntervalId;
 	
+	var brush;
+	var rbrush;	
+	
 	var DEFAULT_BRUSH_SIZE = 30;
 	var MAX_BRUSH_SIZE = 50;
 	var MIN_BRUSH_SIZE = 5;
@@ -39,13 +42,19 @@ $(document).ready(function () {
 	
 	if (Modernizr.canvas) {
 		
-		canvas = $("canvas")[0]; ;
-    lcanvas = $("lcanvas")[0];
+		canvas = document.getElementById('canvas');
+    lcanvas = document.getElementById('lcanvas');
     
 		// get the context
 		context = canvas.getContext('2d');
     lcontext = lcanvas.getContext('2d');
     
+    canvas.width = window.innerWidth;
+		canvas.height = window.innerHeight;
+    
+		lcanvas.width = window.innerWidth;
+		lcanvas.height = window.innerHeight;
+		
 		// resize the canvas to fill browser window dynamically
 		window.addEventListener('resize', resizeCanvas, false);
 		
@@ -54,6 +63,7 @@ $(document).ready(function () {
 		document.addEventListener('mouseup', mouseUp, false);
 		
 		brush = new Brush(DEFAULT_BRUSH_SIZE, INK_AMOUNT, SPLASH_RANGE, SPLASH_INK_SIZE);
+		rbrush= new Brush(DEFAULT_BRUSH_SIZE, INK_AMOUNT, SPLASH_RANGE, SPLASH_INK_SIZE);
 		
 		// start draw loop
 		setInterval(loop, 1000 / 60);
@@ -117,19 +127,15 @@ $(document).ready(function () {
 	
 	socket.on('receive-draw-bulk', function (data) {
 		
-		for (var i = 0; i < data.length; i++) {
-			// add lines to local draw buffer
-			rdrawing = rdrawing.concat(data[i].path);
-		}
-		redraw(context, data);
+		rdrawing = data;
+		redraw(context, rdrawing);
 		
 	});
 	
 	socket.on('receive-draw-clear', function () {
 		rdrawing = [];
-		if (context) {
-			context.clearRect(0, 0, canvas.width, canvas.height);
-		}
+		context.clearRect(0, 0, canvas.width, canvas.height);
+		lcontext.clearRect(0, 0, lcanvas.width, lcanvas.height);
 	});
 	
 	// TODO register id in cookie
@@ -141,10 +147,15 @@ $(document).ready(function () {
 		
 		socket.emit('draw-clear');
 		ldrawing = [];
+		rdrawing = [];
+		if (lcontext) {
+			lcontext.clearRect(0, 0, canvas.width, canvas.height);
+		}
 		if (context) {
 			context.clearRect(0, 0, canvas.width, canvas.height);
 		}
-		
+		clearInterval(redrawIntervalId);
+				
 	});
 	
 	function mouseMove(e) {
@@ -153,8 +164,12 @@ $(document).ready(function () {
 	
 	function mouseDown(e) {
     
-		brush.resetTip();
+		
+		mouse.set(e.clientX, e.clientY);
+		
+		console.log(mouse.x, mouse.y)
     brush.update(mouse);
+    brush.resetTip();
     
 		isMouseDown = true;
     drawbuffer.push({x:mouse.x, y:mouse.y});
@@ -175,6 +190,7 @@ $(document).ready(function () {
     
 		if (isMouseDown) {
       // draw the brush on local canvas first
+      
 			brush.draw(lcontext, mouse, color, strokeSize);
       ldrawing.push({x:mouse.x, y:mouse.y});
       drawbuffer.push({x:mouse.x, y:mouse.y});
@@ -210,35 +226,6 @@ $(document).ready(function () {
 		}
 	}
 	
-	function drawlines(lines) {
-		
-		for (var i = 0; i < lines.length; i++) {
-			var line = lines[i];
-			drawline(line);
-		}
-	}
-	
-	function drawline(data) {
-		
-		context.save();
-		var line = data.path
-			context.strokeStyle = data.color;
-		context.lineWidth = data.strokeSize;
-		context.lineCap = "round";
-		context.lineJoin = "round"
-			
-			context.beginPath();
-		context.moveTo(line[0].x, line[0].y);
-		for (var i = 1; i < line.length; i++) {
-			var p = line[i];
-			context.lineTo(p.x, p.y);
-			context.stroke();
-		}
-		
-		context.closePath();
-		context.restore();
-	}
-	
 	function setCursor(id, x, y) {
 		var pageX = x * $(window).width();
 		var pageY = y * $(window).height();
@@ -268,21 +255,32 @@ $(document).ready(function () {
 		
       
       clearInterval(redrawIntervalId);
-			brush.resetTip();
-      brush.update(data[0]);
-      
+			
        console.log("recover start strokeSize",strokeSize);
-       var i = 1;
-      var redrawIntervalId = setInterval(function()
-      {
-          if(i < data.length)
-          {
-            brush.draw(ctx, data[i], color, strokeSize); 
-            i++;
+       var i = 0;
+       var j =0;
+       
+      redrawIntervalId = setInterval(function(){
+        
+          if(i < data.length){ 
+            if(j < data[i].path.length){
+              j++
+            }else if(i+1 < data.length){
+              i++;
+              j=0;              
+              rbrush.update(data[i].path[j]);              
+              rbrush.resetTip();  
+            }else {
+              
+              clearInterval(redrawIntervalId);
+              return;              
+            }
+            rbrush.draw(ctx, data[i].path[j], data[i].color, data[i].strokeSize);             
           }else {
             clearInterval(redrawIntervalId);
-            console.log("recover end");
+            return;            
           }
+
       }, 1000 / 60);
       
       
@@ -299,8 +297,9 @@ $(document).ready(function () {
 		swipeNavigation : false
 	}
 	var sequence = $("#sequence").sequence(options).data("sequence");
-	
-	$.getJSON("http://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key=e606900de034115b34006a4dcf2c5766&user_id=58821970@N00&photoset_id=72157629696932450&format=json&jsoncallback=?",
+
+	//$.getJSON("http://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key=e606900de034115b34006a4dcf2c5766&user_id=58821970@N00&photoset_id=72157629696932450&format=json&jsoncallback=?",	
+	$.getJSON("http://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=e606900de034115b34006a4dcf2c5766&tags=street+wall&format=json&jsoncallback=?",
 		function (data) {
 		
 		if (data.stat != "ok") {
@@ -309,7 +308,7 @@ $(document).ready(function () {
 			console.log(data.stat);
 			return;
 		}
-		flickr = data.photoset.photo;
+		flickr = data.photos.photo;
 		
 		updatebackground();
 		
@@ -332,7 +331,6 @@ $(document).ready(function () {
 			},
 				function () {
 				sequence.init.preloader().remove();
-				resizeCanvas();
 			});
 	}
 	
