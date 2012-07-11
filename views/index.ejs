@@ -40,28 +40,18 @@
 
 <body>
 
-<canvas id="canvas"></canvas>
-<canvas id="lcanvas"></canvas>
-
-
-
-<div class="navmenu">
-  <ul>
-    <li><a href="javascript:void(0)" data-sequence="1" style="color: rgb(228, 82, 135); ">home</a></li>
-    <li><a href="javascript:void(0)"  data-sequence="2" style="color: rgb(255, 255, 255); ">experiences</a></li>
-    <li><a href="javascript:void(0)"  data-sequence="3" style="color: rgb(255, 255, 255); ">about</a></li>
-    <li><a href="javascript:void(0)" data-sequence="4">blog</a></li>
-</ul>
+<!--
+<div id="full-wrap">
 </div>
+-->
 
 
-<div class="full-wrap">
   <div id="sequence">
     <ul>
 
         <li>
-            <div class="home box animate-in">
-                <span>Sign my wall</span>
+            <div class="home box animate-out">
+                <span>Home </span>
                 
             </div>
         </li>
@@ -92,66 +82,102 @@
 
 
 
-<div id="share" style="display: block; margin-right: 0px; ">
-		<div>
-			<a class="fb" href="https://www.facebook.com/sharer.php?u=http://www.interactive-object.com/" target="_blank" style="opacity: 1; "></a>
-			<img class="line" src="/images/line_noir.png">
-			<a class="fb" href="https://www.facebook.com/sharer.php?u=http://www.interactive-object.com/" target="_blank" style="opacity: 1; "></a>
-			<img class="line" src="/images/line_noir.png">			
-			<a class="tt" href="https://twitter.com/intent/tweet?text=http://www.interactive-object.com" target="_blank"></a>
-		</div>
-</div>
-	
-<div id="nav">
-    
-    <div id="menu">    
-      <a href="javascript:void(0)" class="clear" alt="clear drawer"></a>
-      <a href="javascript:void(0)" class="refresh" alt="change background"></a>
-    </div>
-
-				<div id="dots">
-					<ul>
-            <li><a href="javascript:;" style="background-color: rgb(244, 119, 35); " class="cur"></a></li>
-            <li><a href="javascript:;" style="background-color: rgb(78, 74, 157); "></a></li>
-            <li><a href="javascript:;" style="background-color: rgb(253, 215, 185); "></a></li>
-            <li><a href="javascript:;" style="background-color: rgb(54, 177, 197); "></a></li>
-            <li><a href="javascript:;" style="background-color: rgb(253, 189, 23); " ></a></li>
-            <li><a href="javascript:;" style="background-color: rgb(232, 70, 19); "></a></li>
-            <li><a href="javascript:;" style="background-color: rgb(168, 104, 57); "></a></li>
-            <li><a href="javascript:;" style="background-color: rgb(165, 194, 110); "></a></li>
-            <li><a href="javascript:;" style="background-color: rgb(255, 225, 1); "></a></li>
-            <li><a href="javascript:;" style="background-color: rgb(2, 30, 47); "></a></li>
-            <li><a href="javascript:;" style="background-color: rgb(29, 61, 29); "></a></li>
-            <li><a href="javascript:;" style="background-color: rgb(249, 15, 73); "></a></li>
-            <li><a href="javascript:;" style="background-color: rgb(34, 160, 223); "></a></li>
-            <li><a href="javascript:;" style="background-color: rgb(199, 69, 101); "></a></li>
-            </ul>
-				</div>
-			</div>
-			
-			
-
-</div>
-
-
-
-
-
-<div id="cursor_container">
-<div id="cursor" class="cursor"></div>
+<div id="menu">
+  <div>
+    <ul>
+				<li><a href="javascript:void(0)" data-sequence="1">Home</a></li>
+        <li><a href="javascript:void(0)" data-sequence="2">Experience</a></li>
+        <li><a href="javascript:void(0)" data-sequence="3">About</a></li>
+        <li><a href="http://afternoon-moon-6385.herokuapp.com/" target="viewer">Shared Map</a></li>
+        <li><a href="/lab/streetart/" target="viewer">Street Art</a></li>
+			</ul>
+  </div>
 </div>
 
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="js/libs/jquery-1.7.1.min.js"><\/script>')</script>
-  
-<script type="text/javascript" src="/javascripts/underscore.js"></script>
-<script type="text/javascript" src="/javascripts/socket.io.js"></script>
-<script type="text/javascript" src="/javascripts/jquery.backstretch-min.js"></script>
 <script type="text/javascript" src="/javascripts/sequence.jquery-min.js"></script>
-<script type="text/javascript" src="/javascripts/helpers.js"></script>
-<script type="text/javascript" src="/javascripts/brush.js"></script>
-<script type="text/javascript" src="/javascripts/script.js"></script>
+<script type="text/javascript">
+
+init();
+var sequence;
+
+var sequenceOptions = {
+		autoPlay : false,
+		nextButton : true,
+		prevButton : true,
+		animateStartingFrameIn : true,
+		transitionThreshold : 250,
+		keyNavigation: false,
+		swipeNavigation : false
+	}
+	
+
+  var mainHiden;
+  
+  
+function init(){
+  
+  	
+      console.log("init");
+        sequence = $("#sequence").sequence(sequenceOptions).data("sequence");
+        //sequence.init.preloader();
+        
+        window.addEventListener( 'resize', onResize, false );
+        
+				viewer = document.createElement( 'iframe' );
+        //viewer = document.getElementById("viewer");        
+				viewer.name = 'viewer';
+				viewer.setAttribute( 'allowfullscreen', 'allowfullscreen' );
+        viewer.setAttribute( 'allowtransparency', 'yes' );
+        viewer.setAttribute( 'scrolling', 'no' );
+				viewer.src = "/lab/streetart/";
+				document.body.appendChild( viewer );
+        
+        viewer.onload= function() {
+           $("#sequence").fadeOut();
+            mainHiden = true;
+        };
+    
+         
+       
+        onResize();
+        
+        
+}
+
+
+$('a[data-sequence]').click(function (e) {
+		var sequenceid = $(e.target).data("sequence");
+
+    console.log(mainHiden, sequenceid, sequence);
+    
+    if(mainHiden)
+    {
+      mainHiden = false;
+      $("#sequence").fadeIn(
+      function() {
+        sequence.stopAutoPlay()
+        sequence.next();
+      });
+    }else {
+        sequence.stopAutoPlay()
+        sequence.next();
+    }
+		
+		
+});
+  
+function onResize( event ) {
+
+				viewer.style.width = window.innerWidth + 'px';
+				viewer.style.height = ( window.innerHeight) + 'px';
+
+			}
+        
+</script>
+
 
 
 </body>

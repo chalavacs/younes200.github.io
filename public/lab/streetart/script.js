@@ -66,9 +66,10 @@ $(document).ready(function () {
 		// resize the canvas to fill browser window dynamically
 		window.addEventListener('resize', resizeCanvas, false);
 		
-		document.addEventListener('mousemove', mouseMove, false);
-		document.addEventListener('mousedown', mouseDown, false);
-		document.addEventListener('mouseup', mouseUp, false);
+    
+  document.onmousedown = onDocumentMouseDown;
+    document.onmouseup = onDocumentMouseUp;
+    document.onmousemove = onDocumentMouseMove;
 		
 		brush = new Brush(DEFAULT_BRUSH_SIZE, INK_AMOUNT, SPLASH_RANGE, SPLASH_INK_SIZE);
 
@@ -167,17 +168,17 @@ $(document).ready(function () {
 				
 	});
 	
-	function mouseMove(e) {
+	function onDocumentMouseMove(e) {
     mouse.set(e.clientX, e.clientY);
 	}
 	
-	function mouseDown(e) {
+	function onDocumentMouseDown(e) {
     brush.resetTip();
 		isMouseDown = true;
 
 	}
 	
-	function mouseUp(e) {
+	function onDocumentMouseUp(e) {
 		isMouseDown = false;
     
     ldrawing.push(
@@ -331,18 +332,6 @@ $(document).ready(function () {
       
   }
   
-	
-	var options = {
-		autoPlay : false,
-		nextButton : true,
-		prevButton : true,
-		animateStartingFrameIn : true,
-		transitionThreshold : 250,
-		//keyNavigation: false,
-		swipeNavigation : false
-	}
-	var sequence = $("#sequence").sequence(options).data("sequence");
-
 	//$.getJSON("http://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key=e606900de034115b34006a4dcf2c5766&user_id=58821970@N00&photoset_id=72157629696932450&format=json&jsoncallback=?",	
 	$.getJSON("http://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=e606900de034115b34006a4dcf2c5766&tags=wall&format=json&jsoncallback=?",
 		function (data) {
@@ -357,12 +346,7 @@ $(document).ready(function () {
 		
 	});
 	
-	$("#nav .refresh").click(function () {
-		
-		sequence.init.preloader();
-		updatebackground();
-		
-	});
+
 	
 	function updatebackground() {
 		
@@ -373,18 +357,10 @@ $(document).ready(function () {
 				speed : 500
 			},
 				function () {
-				sequence.init.preloader().remove();
         redrawAllWithanimation();
 			});
 	}
 	
-	$('a[data-sequence]').click(function (e) {
-		var sequenceid = $(e.target).data("sequence");
-		sequence.goTo(sequenceid);
-		console.log("goto sequenceid"+sequenceid);
-		
-		
-	});
 	
 	$("#nav #dots ul li a").click(function (e) {
 		
