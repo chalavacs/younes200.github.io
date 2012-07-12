@@ -85,6 +85,11 @@ overflow: hidden;
   line-height: 12px;
 }
 
+#menu  ul {
+float: left;
+width: 110px;
+}
+
 #menu div {
   height: 56px;
   background: black;

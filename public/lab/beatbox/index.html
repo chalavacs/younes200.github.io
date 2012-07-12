@@ -1,0 +1,100 @@
+<html>
+	<head>
+		
+		<title>HTML5 Audio Visualizations</title>
+
+		<script type="text/javascript" src="js/libs/paper.js"></script>
+		<script type="text/javascript" src="js/libs/dat.gui.js"></script>
+		<script type="text/javascript" src="js/libs/buffer-loader.js"></script>
+		<script type="text/javascript" src="js/main.js"></script>
+
+		<style type="text/css">
+			html { overflow: hidden; }
+		</style>
+
+		<script type="text/paperscript" canvas="myCanvas">
+			
+			/* ------------------------------------------------
+
+			STEP 7: Setup Paper.js
+
+			------------------------------------------------ */
+			var colors = ['#BD1550', '#E97F02', '#F8CA00', '#8A9B0F'],
+				circles = [],	// solid fill circles
+				rings = [];		// animated rings
+
+			// Create solid-fill circles
+			for(var i = 0; i < 4; i++) {
+				var path = new Path.Circle(new Point(100 + (i * 125), 100), 50);
+				path.fillColor = colors[i];
+				circles.push(path);
+			}
+
+			/*
+				Handler function that is called whenever a view is resized
+			*/
+			function onResize(event) {
+				project.activeLayer.position = view.center;
+			}
+			onResize();
+
+
+
+			/* ------------------------------------------------
+
+			STEP 8: Create Rings
+
+			------------------------------------------------ */
+		
+			// Add this function to the window, or 'global' scope, so Javascript can reach it
+			window.createRing = function(index) {
+				var ring = new Path.Circle(new Point(100 + (index * 125), 100), 50);
+				ring.strokeColor = colors[index];
+				ring.strokeWidth = 10;
+				ring.position = circles[index].position;
+				ring.opacity = trackVolumes['volume' + index];
+				rings.push(ring);
+			}
+			
+
+			/*
+
+			STEP 9: The Animation Loop
+			
+			 	Handler function to be called on each frame of an animation.
+			 	This function receives an event object which contains information about the frame event:
+					event.count : number of times the frame event was fired
+					event.time  : total amount of time passed since the first frame event in seconds
+					event.delta : time passed in seconds since the last frame event
+			*/
+			function onFrame(event) {
+				
+				// Animate visible rings
+				var len = rings.length;
+				for(var i = 0; i < len; i++) {
+					var thisRing = rings[i];
+					// scale up					
+					thisRing.scale(1.06);
+					// fade ring out
+					var newOpacity = thisRing.opacity - 0.07;
+					// if faded to 0, remove from canvas
+					if(newOpacity <= 0) {
+						thisRing.remove();
+						rings.unshift();
+					} else {
+						thisRing.opacity = newOpacity;
+					}
+				}
+			}
+
+			
+
+		</script>
+
+	</head>
+	<body>
+		<!-- Create canvas -->
+		<canvas id="myCanvas" resize></canvas>
+
+	</body>
+</html>
