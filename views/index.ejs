@@ -40,54 +40,33 @@
 
 <body>
 
-<!--
-<div id="full-wrap">
-</div>
--->
 
-
-  <div id="sequence">
     <ul>
 
         <li>
-            <div class="home box animate-out">
-                <span>Home </span>
-                
+            <div id="home">
             </div>
         </li>
         <li>
-            <div class="experiences box">
-                <span >Experience </span>
-                <p>
-                  Multiuser pain
-                  <a href="javascript:void(0)" data-sequence="3">get in touch.→</a>
-                </p>
-            </div>
-        </li>
-        <li>
-            <div class="about box">
-              
+            <div id="about" class="about box">
                	<p  class="tk-museo-sans">And I design and develop interactive things. Currently i live in Toulouse, France.<br/>
                   I love writing and thinking in code and i deeply appreciate all top of the edge, kick ass, interactive stuff.<br/>
                   I like modern graphic design, typography and grids, electronic music, i love programming and experimenting with new technologies.
                   <br/>
-                  <a href="javascript:void(0)" data-sequence="1">Home.→</a>
-
+                  <!--
+                  <a href="javascript:void(0)" data-sequence="home">Get in touch.→</a>
+                  -->
                 </p>
 
             </div>
         </li>
     </ul>
-</div>
-
-
 
 <div id="menu">
-  <div>
+  <div class="nav">
     <ul>
-				<li><a href="javascript:void(0)" data-sequence="1">Home</a></li>
-        <li><a href="javascript:void(0)" data-sequence="2">Experience</a></li>
-        <li><a href="javascript:void(0)" data-sequence="3">About</a></li>
+				<li><a href="javascript:void(0)" data-sequence="home">Home</a></li>
+        <li><a href="javascript:void(0)" data-sequence="about">About</a></li>
         <li><a href="http://afternoon-moon-6385.herokuapp.com/" target="viewer">Shared Map</a></li>
     </ul>
     <ul>
@@ -96,6 +75,13 @@
         <li><a href="/lab/webcamraster/"target="viewer">webcam raster</a></li>
 			</ul>
   </div>
+    
+  <div class="share">
+  			<a class="fb" href="https://www.facebook.com/sharer.php?u=http://www.interactive-object.com/" target="_blank" style="opacity: 1; "></a>
+  			<img src="images/line_blanc.png"></img>
+  			<a class="tt" href="https://twitter.com/intent/tweet?text=http://www.interactive-object.com" target="_blank"></a>
+  </div>
+  
 </div>
 
 
@@ -125,7 +111,8 @@ function init(){
   
   	
       console.log("init");
-        sequence = $("#sequence").sequence(sequenceOptions).data("sequence");
+      
+        //sequence = $("#sequence").sequence(sequenceOptions).data("sequence");
         //sequence.init.preloader();
         
         window.addEventListener( 'resize', onResize, false );
@@ -140,7 +127,8 @@ function init(){
 				document.body.appendChild( viewer );
         
         viewer.onload= function() {
-           $("#sequence").fadeOut();
+          console.log("loaded")
+          
             mainHiden = true;
         };
     
@@ -152,26 +140,20 @@ function init(){
 }
 
 
+var current_sequence;
+
 $('a[data-sequence]').click(function (e) {
 		var sequenceid = $(e.target).data("sequence");
 
-    console.log(mainHiden, sequenceid, sequence);
-    
-    if(mainHiden)
+    if(current_sequence)
     {
-      mainHiden = false;
-      $("#sequence").fadeIn(
-      function() {
-        sequence.stopAutoPlay()
-        sequence.next();
-      });
-    }else {
-        sequence.stopAutoPlay()
-        sequence.next();
+      $("#"+current_sequence).removeClass("animate-in").addClass("animate-out");
     }
-		
-		
+    current_sequence = sequenceid
+    $("#"+sequenceid).removeClass("animate-out").addClass("animate-in");
+     
 });
+
   
 function onResize( event ) {
 

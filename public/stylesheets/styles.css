@@ -14,11 +14,12 @@ html, body {
     cursor: pointer;
 }
 iframe {
+  border: 0;
+}
 
-				border: 0;
+a {
 
-			}
-      
+}      
 body {
     background: url("/images/loading.gif") repeat scroll 0 0 transparent;
     cursor: default;
@@ -26,13 +27,25 @@ body {
     font-size: 10px;
     color: black;
 
-    position: fixed;
     top: 0;
     left: 0;
     bottom: 0;
     right: 0;
     padding: 0;
     margin: 0;    
+    
+    height: 100%;
+    width: 100%;
+    font-size: 20px;
+    color: white;
+    overflow: hidden;
+    
+    position: absolute;
+    top: 0px;
+    left: 0px;
+
+    cursor: pointer;
+        
    
 }
 
@@ -83,28 +96,62 @@ overflow: hidden;
   z-index: 80;
   width: 100%;
   line-height: 12px;
+  background: black;
+  opacity: 0.9;
+  filter: alpha(opacity=90);  
 }
 
 #menu  ul {
-float: left;
-width: 110px;
+  float: left;
+  width: 110px;
+  font-size: 0.6em;
 }
 
-#menu div {
+#menu .nav {
   height: 56px;
-  background: black;
-  opacity: 0.6;
-  filter: alpha(opacity=60);
   padding: 7px 0 0 7px;
+  position:absolute;
 }
 
-#menu div li a {
-height: 12px;
-padding: 0 5px;
-font-weight: bold;
-color: #999;
-display: block;
+#menu .nav li a {
+  height: 12px;
+  padding: 0 5px;
+  font-weight: bold;
+  color: #999;
+  display: block;
 }
+
+
+#menu .share {
+  overflow: hidden;
+  float:right;
+}
+
+
+#menu .share a.fb {
+  background: url('/images/facebook_blanc.png');
+}
+
+#menu .share a.tt{
+  background: url('/images/twitter_blanc.png');
+}
+
+#menu .share a.fb:hover {
+
+}
+
+#menu .share a.tt:hover {
+
+}
+
+#menu .share a.fb, #menu .share a.tt {
+  display: block;
+  width: 50px;
+  height: 40px;
+}
+
+
+
 
 #cursor {
     display: none;
@@ -169,28 +216,6 @@ h2, .box div img {
 }
 
 
-#sequence{
-    height: 100%;
-
-    width: 100%;
-    font-size: 20px;
-    color: white;
-    overflow: hidden;
-    
-    position: absolute;
-    top: 0px;
-    left: 0px;
-
-    cursor: pointer;
-    
-
-}
-
-
-#sequence li > *{
-    position: absolute;
-
-}
 
 
 
@@ -287,7 +312,7 @@ background:#e1e1c9;
 
 .about{
    
-    
+              font-size: 20px;
     top: 150%;
     left: 10%;
     width: 40%;
@@ -369,7 +394,7 @@ background:#e1e1c9;
 
 .about.animate-in{
     left: 10%;
-    top: 60%;
+    top: 50%;
     -webkit-transition-duration: 1s;
     -moz-transition-duration: 1s;
     -o-transition-duration: 1s;
@@ -432,7 +457,6 @@ background:#e1e1c9;
     
     
 }   
-
 
 
 .typekit-badge {display:none !important;}
