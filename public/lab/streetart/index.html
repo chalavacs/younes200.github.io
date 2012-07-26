@@ -36,16 +36,20 @@
 
 <body>
 
-  <details>
-    <summary>What's this?</summary>
-    <div>
-      <p>Example of the <a href="http://dev.w3.org/2011/webrtc/editor/getusermedia.html" target="_blank" title="Spec link" alt="Spec link"><code>navigator.getUserMedia()</code></a>
-      API for capturing audio and video, sans plugin. This demo also shows the video being rendered
-      to while <a href="/static/css/filters/index.html">CSS filters</a> are applied in realtime (click the video).</p>
-      <p><b>Support:</b> Chrome 18.0.1009.0 with the <code>--enable-media-stream</code> flag set. Chrome 20.0.1125.0 changed
-        the method signature to the updated spec: <code>getUserMedia({video: true})</code></p>
-    </div>
-  </details>
+  <aside lang="en" id="info">
+				<div class="icon">?</div>
+				<div class="text" style="display: block;">
+					<h1><span>Street Art</span> Toy</h1>
+					<p>This web app uses the WebRTC <a href="//dev.w3.org/2011/webrtc/editor/getusermedia.html">getUserMedia API</a> for HTML5 camera access. WebGL fragment shaders (GLSL) are used to apply real-time special effects to the camera video feed. Currently only the following browsers support getUserMedia and WebGL:</p>
+					<ul>
+						<li><a href="//www.google.com/chrome">Google Chrome</a> &mdash; enabled in <a href="//www.google.com/landing/chrome/beta/">Beta</a> and <a href="//tools.google.com/dlpage/chromesxs/">Canary</a> (Chrome 21 and above), otherwise go to <code>chrome:flags</code> and enable the “MediaStream” flag</li>
+						<li><a href="//opera.com/browser/">Opera 12</a> &mdash; go to <code>opera:config</code> and <a target="_blank" href="opera:config#UserPrefs|EnableWebGL">enable WebGL</a></li>
+						<li><a href="https://play.google.com/store/apps/details?id=com.opera.browser">Opera Mobile 12</a> &mdash; it works on Android!</li>
+					</ul>
+				</div>
+			</aside>
+      
+      
   
   
 <canvas id="canvas"></canvas>

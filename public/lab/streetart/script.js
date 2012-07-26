@@ -356,9 +356,13 @@ $(document).ready(function () {
 		  }
 		);
 		
+	$('#info').click(function(e) {
+				if (!e.target.href) {
+					$('#info .text').toggle();
+				}
+			});
 	
-	
-
+$('#info .text').toggle();
 	
 	function updatebackground() {
 		

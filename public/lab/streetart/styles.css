@@ -243,24 +243,70 @@ text-decoration: none;
 cursor: pointer;
 }
 
-details {
-  position: absolute;
-  top: 0;
-  left: 1em;
-  margin: 1em 0;
-  padding: 10px;
-  background: #fff;
-  border: 1px solid rgba(0,0,0,0.3);
-  border-radius: 5px;
-  max-width: 600px;
-  font-size: 10pt;
-  z-index: 100;
-  background: #F7F7F7;
+
+#info {
+    background-color: rgba(0, 0, 0, 0.75);
+    border-radius: 8px 8px 8px 8px;
+    cursor: pointer;
+    margin: 14px;
+    padding: 25px;
+    position: absolute;
+    z-index: 2;
 }
-details > div {
-  margin: 10px 0;
+#info .icon {
+    background-image: url("question.svg");
+    background-repeat: no-repeat;
+    background-size: 22px auto;
+    height: 22px;
+    position: absolute;
+    right: 14px;
+    top: 14px;
+    width: 22px;
 }
-details > summary {
-  cursor: pointer;
-  white-space: nowrap;
+#info .text {
+    display: none;
+    max-width: 600px;
+}
+.mobile aside {
+    display: block;
+    visibility: visible;
+}
+#info a {
+    color: #FFFFFF;
+    text-decoration: underline;
+}
+#info a:active {
+    color: #999999;
+}
+#info h1 {
+    color: #FFFFFF;
+    font-size: 24px;
+    padding: 2px 0;
+}
+.mac #info h1 {
+}
+#info h1 span {
+    font-family: sans-serif;
+    font-style: normal;
+    font-weight: bold;
+}
+.mac #info h1 span {
+}
+#info p {
+    color: #CCCCCC;
+    font: 16px/22px sans-serif;
+    margin-top: 20px;
+}
+#info code {
+    color: #FFFFFF;
+    font-size: 16px;
+}
+#info ul {
+    margin: 15px 0 25px;
+}
+#info li {
+    color: #CCCCCC;
+    font: 16px/22px sans-serif;
+    list-style: disc outside none;
+    margin-left: 22px;
 }
