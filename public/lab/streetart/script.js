@@ -332,7 +332,7 @@ $(document).ready(function () {
       
   }
   
-	//$.getJSON("http://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key=e606900de034115b34006a4dcf2c5766&user_id=58821970@N00&photoset_id=72157629696932450&format=json&jsoncallback=?",	
+	/*$.getJSON("http://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key=e606900de034115b34006a4dcf2c5766&user_id=58821970@N00&photoset_id=72157629696932450&format=json&jsoncallback=?",	
 	$.getJSON("http://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=e606900de034115b34006a4dcf2c5766&tags=wall&format=json&jsoncallback=?",
 		function (data) {
 		
@@ -344,7 +344,19 @@ $(document).ready(function () {
 		flickr = data.photos.photo;
 		updatebackground();
 		
-	});
+		});
+		*/
+		
+		
+		$.backstretch("bg.jpg", {
+			speed : 500
+		},
+			function () {
+      redrawAllWithanimation();
+		  }
+		);
+		
+	
 	
 
 	
