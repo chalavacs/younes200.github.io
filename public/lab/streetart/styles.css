@@ -236,8 +236,7 @@ font-family: Helvetica, Arial, sans-serif;
 font-weight: 900;
 font-size: 40px;
 list-style: none;
-color: 
-white;
+color: white;
 line-height: 35px;
 text-decoration: none;
 cursor: pointer;
@@ -254,7 +253,7 @@ cursor: pointer;
     z-index: 2;
 }
 #info .icon {
-    background-image: url("question.svg");
+    background-image: url("question.png");
     background-repeat: no-repeat;
     background-size: 22px auto;
     height: 22px;

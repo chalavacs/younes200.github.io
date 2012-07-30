@@ -18,7 +18,7 @@ iframe {
 }
 
 a {
-
+  text-decoration: none;
 }      
 body {
     background: url("/images/loading.gif") repeat scroll 0 0 transparent;
@@ -95,16 +95,19 @@ overflow: hidden;
   bottom: 20px;
   z-index: 80;
   width: 100%;
+  height: 80px;
   line-height: 12px;
   background: black;
   opacity: 0.9;
   filter: alpha(opacity=90);  
 }
 
-#menu  ul {
+#menu  .nav  ul {
   float: left;
   width: 110px;
   font-size: 0.6em;
+  position: relative;
+  height: 100%;
 }
 
 #menu .nav {
@@ -113,77 +116,80 @@ overflow: hidden;
   position:absolute;
 }
 
+
+  
 #menu .nav li a {
   height: 12px;
   padding: 0 5px;
   font-weight: bold;
   color: #999;
   display: block;
+  text-transform: uppercase;
 }
 
 
-#menu .share {
+#menu .nav li a:hover{color:#fff }
+  
+#share {
   overflow: hidden;
-  float:right;
+  float:right; 
+  position:absolute; 
+  top:30%; 
+  right:20px;
 }
 
-
-#menu .share a.fb {
-  background: url('/images/facebook_blanc.png');
+#share ul { 
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  text-align: center;
 }
 
-#menu .share a.tt{
-  background: url('/images/twitter_blanc.png');
+#share ul li { display: inline; }
+
+#share ul li a {
+  text-decoration: none;
+   display: block;
+  width: 32px;
+  height: 32px;
+  float:left; 
+  line-height:32px; /*hauteur de l'image de fond*/
+  text-decoration:none;
+ text-align:center;
 }
 
-#menu .share a.fb:hover {
-
+#share ul li a.tumblr {
+  background: url('/images/tumblr.png');
 }
 
-#menu .share a.tt:hover {
-
+#share ul li a.flickr {
+  background: url('/images/flickr.png');
 }
 
-#menu .share a.fb, #menu .share a.tt {
-  display: block;
-  width: 50px;
-  height: 40px;
+#share ul li a.fb {
+  background: url('/images/facebook.png');
 }
 
-
-
-
-#cursor {
-    display: none;
-
-}
-.cursor {
-    background-image: url("/images/cursor.png");
-    height: 23px;
-    position: absolute;
-    width: 16px;
-}
-.cursor b {
-
-   background-color:  rgba(256, 256, 256, 0.9);
-    margin-left: 15px;
-    padding: 2px;
+#share ul li a.tt{
+  background: url('/images/twitter.png');
 }
 
-canvas {
-    cursor: pointer;
-    display: block;
-    left: 0;
-    position: fixed;
-    top: 0;
-     -webkit-user-select: none;
+#share ul li a.fb:hover {
+  background: url('/images/facebook_over.png');
 }
 
-
-canvas:active {
-  cursor: pointer;
-   -webkit-user-select: none;
+#share ul li a.tt:hover {
+  background: url('/images/twitter_over.png');
 }
+
+#share ul li a.tumblr:hover {
+  background: url('/images/tumblr_over.png');
+}
+
+#share  ul li a.flickr:hover {
+  background: url('/images/flickr_over.png');
+}
+
 
 
 
@@ -216,43 +222,28 @@ h2, .box div img {
 }
 
 
-
-
-
-.box span {
-  
-    display: inline-block;
-    background-color: rgba(256, 256, 256, 0.9);
-    padding: 12px;
-    margin: 4px 10px;
-    color: black;
-    font-family: 'Merriweather',Georgia,serif;
-    font-size: 4.5em;
-  
-    -moz-border-radius:4px;
-    -webkit-border-radius:4px;
-    -o-border-radius:4px;
-    -ms-border-radius:4px;
-    -khtml-border-radius:4px;
-    border-radius:4px;
-    
-}  
-
 .box  p {
   margin: 0 0 10px 0;
   
   font-size: 0.8em;
   line-height: 24px;
   padding: 12px;
-  margin: 4px 10px;
-  background-color:  rgba(0,0 , 0, 0.9);
-  color: white;
+  
+  background-color:  white;
+  color: black;
   
   -moz-box-shadow:2px 2px 0 rgba(0,0,0,0.3);
   -webkit-box-shadow:2px 2px 0 rgba(0,0,0,0.3);
   -o-box-shadow:2px 2px 0 rgba(0,0,0,0.3);
   box-shadow:2px 2px 0 rgba(0,0,0,0.3);
   
+  
+     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=60)";
+    filter: alpha(opacity=60);
+    opacity: 0.6;
+    
+
+
   
 }
 
@@ -312,10 +303,9 @@ background:#e1e1c9;
 
 .about{
    
-              font-size: 20px;
     top: 150%;
     left: 10%;
-    width: 40%;
+    width: 70%;
     position: absolute;
 
     -webkit-transition-duration: 1s;
@@ -329,9 +319,56 @@ background:#e1e1c9;
     filter: alpha(opacity=0);
     opacity: 0;
     
-    
 }
 
+.about .contain {
+
+  font-size: 2.5em;
+  font-family: 'Josefin Slab', Arial, sans-serif;
+  display: block;
+  text-transform: uppercase;
+  text-shadow: 1px 1px 2px rgba(89, 22, 20, 0.3);
+  color: black;
+  padding: 5px 20px;
+  margin: 2px;
+  background: rgba(255, 255, 255, 0.5);
+  letter-spacing: 1px;
+
+  -webkit-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  -ms-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+
+}
+
+
+.about  .small{
+    font-size: 1.5em;
+    text-transform: none;
+}
+
+.about  .tiny{
+    font-size: 1em;
+    text-transform: none;
+}
+
+.blur{
+	
+	-webkit-transform: scale(0.9);
+	-moz-transform: scale(0.9);
+	-o-transform: scale(0.9);
+	-ms-transform: scale(0.9);
+	transform: scale(0.9);
+  
+
+}
+
+.about h1 {
+  font-family:"Century Gothic","Lucida Grande",Arial,sans-serif;
+  font-size:40px;
+  text-transform: uppercase;
+}
 
 
 .experiences{
@@ -455,8 +492,19 @@ background:#e1e1c9;
     filter: alpha(opacity=0);
     opacity: 0;
     
-    
 }   
+
+
+.full-wrap {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background-image: url(/images/pattern.png);
+  overflow: hidden;
+}
+
 
 
 .typekit-badge {display:none !important;}

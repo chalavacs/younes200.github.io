@@ -16,7 +16,7 @@
     
 	<link rel="stylesheet" media="screen" type="text/css" href="stylesheets/styles.css" />
 		
-  <link href="http://fonts.googleapis.com/css?family=Merriweather:400,700,300" rel="stylesheet" type="text/css">
+  <link href='http://fonts.googleapis.com/css?family=Josefin+Slab' rel='stylesheet' type='text/css' />
   <script type="text/javascript" src="http://use.typekit.com/jmp4lkh.js"></script>
   <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
   
@@ -41,26 +41,23 @@
 <body>
 
 
+     <div id="wrap"></div>
+    
     <ul>
-
         <li>
             <div id="home">
             </div>
         </li>
         <li>
             <div id="about" class="about box">
-               	<p  class="tk-museo-sans">And I design and develop interactive things. Currently i live in Toulouse, France.<br/>
-                  I love writing and thinking in code and i deeply appreciate all top of the edge, kick ass, interactive stuff.<br/>
-                  I like modern graphic design, typography and grids, electronic music, i love programming and experimenting with new technologies.
-                  <br/>
-                  <!--
-                  <a href="javascript:void(0)" data-sequence="home">Get in touch.→</a>
-                  -->
-                </p>
-
+               	<span class="contain">I design and develop interactive things.</span>
+                <span class="contain small">I love writing and thinking in code and i deeply appreciate all top of the edge, kick ass, interactive stuff.</span>
+                <span class="contain tiny">I like modern graphic design, typography and grids, electronic music, i love programming and experimenting with new technologies.</span>
             </div>
         </li>
     </ul>
+    
+   
 
 <div id="menu">
   <div class="nav">
@@ -76,10 +73,14 @@
 			</ul>
   </div>
     
-  <div class="share">
-  			<a class="fb" href="https://www.facebook.com/sharer.php?u=http://www.interactive-object.com/" target="_blank" style="opacity: 1; "></a>
-  			<img src="images/line_blanc.png"></img>
-  			<a class="tt" href="https://twitter.com/intent/tweet?text=http://www.interactive-object.com" target="_blank"></a>
+  <div id="share">
+    <ul>
+  			
+        <li><a class="flickr" href="https://twitter.com/intent/tweet?text=http://www.interactive-object.com" target="_blank"></a></li>
+        <li><a class="tumblr" href="https://twitter.com/intent/tweet?text=http://www.interactive-object.com" target="_blank"></a></li>
+        <li><a class="fb" href="https://www.facebook.com/sharer.php?u=http://www.interactive-object.com/" target="_blank" style="opacity: 1; "></a></li>
+  			<li><a class="tt" href="https://twitter.com/intent/tweet?text=http://www.interactive-object.com" target="_blank"></a></li>
+        </ul>
   </div>
   
 </div>
@@ -120,6 +121,7 @@ function init(){
 				viewer = document.createElement( 'iframe' );
         //viewer = document.getElementById("viewer");        
 				viewer.name = 'viewer';
+        viewer.id = 'viewer';
 				viewer.setAttribute( 'allowfullscreen', 'allowfullscreen' );
         viewer.setAttribute( 'allowtransparency', 'yes' );
         viewer.setAttribute( 'scrolling', 'no' );
@@ -128,7 +130,6 @@ function init(){
         
         viewer.onload= function() {
           console.log("loaded")
-          
             mainHiden = true;
         };
     
@@ -141,6 +142,7 @@ function init(){
 
 
 var current_sequence;
+var wrap;
 
 $('a[data-sequence]').click(function (e) {
 		var sequenceid = $(e.target).data("sequence");
@@ -148,9 +150,23 @@ $('a[data-sequence]').click(function (e) {
     if(current_sequence)
     {
       $("#"+current_sequence).removeClass("animate-in").addClass("animate-out");
+     
+    }else {
+      $("#wrap").addClass("full-wrap");
+      $("#wrap").click(function(){
+        $("#wrap").removeClass("full-wrap");
+        $("#"+current_sequence).removeClass("animate-in").addClass("animate-out");
+        current_sequence = null
+        
+      });
     }
+    
+    
     current_sequence = sequenceid
     $("#"+sequenceid).removeClass("animate-out").addClass("animate-in");
+    
+  
+     
      
 });
 
