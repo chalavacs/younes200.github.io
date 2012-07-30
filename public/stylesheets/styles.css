@@ -155,15 +155,20 @@ overflow: hidden;
   float:left; 
   line-height:32px; /*hauteur de l'image de fond*/
   text-decoration:none;
- text-align:center;
+  text-align:center;
+  margin-left: 3px;
+  margin-right: 3px
+
 }
 
 #share ul li a.tumblr {
   background: url('/images/tumblr.png');
+   border-left: 1px solid gray;
 }
 
 #share ul li a.flickr {
   background: url('/images/flickr.png');
+   border-left: 1px solid gray;
 }
 
 #share ul li a.fb {
@@ -172,6 +177,7 @@ overflow: hidden;
 
 #share ul li a.tt{
   background: url('/images/twitter.png');
+   border-left: 1px solid gray;
 }
 
 #share ul li a.fb:hover {
@@ -321,14 +327,12 @@ background:#e1e1c9;
     
 }
 
-.about .contain {
 
-  font-size: 2.5em;
-  font-family: 'Josefin Slab', Arial, sans-serif;
+.about span {
   display: block;
   text-transform: uppercase;
   text-shadow: 1px 1px 2px rgba(89, 22, 20, 0.3);
-  color: black;
+  
   padding: 5px 20px;
   margin: 2px;
   background: rgba(255, 255, 255, 0.5);
@@ -338,20 +342,24 @@ background:#e1e1c9;
   -moz-transition: all 0.4s ease-in-out;
   -o-transition: all 0.4s ease-in-out;
   -ms-transition: all 0.4s ease-in-out;
-  transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;  
+}
 
+.about .title {
+
+  font-size: 2.5em;
+  font-family: 'Josefin Slab', Arial, sans-serif;
+  color: #2E2621;
 }
 
 
-.about  .small{
-    font-size: 1.5em;
-    text-transform: none;
-}
-
-.about  .tiny{
+.about  .details{
     font-size: 1em;
     text-transform: none;
+    font-family: "museo-sans";
+    color: black;
 }
+
 
 .blur{
 	
