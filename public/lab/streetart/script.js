@@ -23,7 +23,7 @@
   var lcontext;
 	var color = "rgba(244, 119, 35,0.4)";
 	var strokeSize = 20;
-  var redrawIntervalId;
+  var drawIntervalId;
   var resizeIntervalId;
 	
 	var brush;
@@ -131,9 +131,7 @@ $(document).ready(function () {
 	
 	socket.on('receive-draw', function (data) {
 		rdrawing.push(data);
-    
     redraw(context, rdrawing);
-		
 	});
 	
 	socket.on('receive-draw-bulk', function (data) {
@@ -164,7 +162,7 @@ $(document).ready(function () {
 		if (context) {
 			context.clearRect(0, 0, canvas.width, canvas.height);
 		}
-		clearInterval(redrawIntervalId);
+		clearInterval(drawIntervalId);
 				
 	});
 	
@@ -175,11 +173,10 @@ $(document).ready(function () {
 	function onDocumentMouseDown(e) {
     brush.resetTip();
 		isMouseDown = true;
-
 	}
 	
 	function onDocumentMouseUp(e) {
-		isMouseDown = false;
+		
     
     ldrawing.push(
     {
@@ -195,6 +192,7 @@ $(document).ready(function () {
 			});
       
      drawbuffer = [];
+     isMouseDown = false;
 	}
 	
 	function loop() {
@@ -262,8 +260,8 @@ $(document).ready(function () {
 	}
   
   function redrawAllWithanimation(){
-    redrawWithAnimation(lcontext, ldrawing);
-    redrawWithAnimation(lcontext, rdrawing);
+    redrawWithInterval(lcontext, ldrawing);
+    redrawWithInterval(context, rdrawing);
   }
   
   function redrawAll(){
@@ -289,41 +287,42 @@ $(document).ready(function () {
         j=0;
       }
   }
-  function redrawWithAnimation(ctx, data){
+  function redrawWithInterval(ctx, data){
       		// redraw stuff
 		
       
-      clearInterval(redrawIntervalId);
+      clearInterval(drawIntervalId);
 			
-       console.log("recover start strokeSize",strokeSize);
+      
        var i = 0;
        var j =0;
        
-      var rbrush= new Brush(DEFAULT_BRUSH_SIZE, INK_AMOUNT, SPLASH_RANGE, SPLASH_INK_SIZE);
-      redrawIntervalId = setInterval(function(){
+      var brush= new Brush(DEFAULT_BRUSH_SIZE, INK_AMOUNT, SPLASH_RANGE, SPLASH_INK_SIZE);
+      drawIntervalId = setInterval(function(){
         
           if(i < data.length )
           { 
 
             // reset brush
             if(j == 0){
-              rbrush.update(data[i].path[j]); 
-              rbrush.resetTip();  
+               brush.resetTip();  
+              brush.update(data[i].path[j]); 
+             
             }
             
-            rbrush.draw(ctx, data[i].path[j], data[i].color, data[i].size);     
+            brush.draw(ctx, data[i].path[j], data[i].color, data[i].size);     
             
             if(j < data[i].path.length-1){
               j++
             }else if(++i < data.length){
               j=0;              
             }else {  
-              clearInterval(redrawIntervalId);
+              clearInterval(drawIntervalId);
               return;              
             }
             
           }else {
-            clearInterval(redrawIntervalId);
+            clearInterval(drawIntervalId);
             return;            
           }
 
@@ -358,11 +357,11 @@ $(document).ready(function () {
 		
 	$('#info').click(function(e) {
 				if (!e.target.href) {
-					$('#info .text').toggle();
+					$('#info').toggleClass("hide");
 				}
+        return false;
 			});
 	
-$('#info .text').toggle();
 	
 	function updatebackground() {
 		

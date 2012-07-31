@@ -15,9 +15,12 @@ server.set('view options', { layout: false });
 server.set('views', __dirname + '/views');
 
 server.get('/', function(req, res){
+	res.render('index.ejs');
+});
 
-	var mes = "<p>hello world!</p>";
-	res.render('index.ejs', {locals:{mes:mes}});
+
+server.get('/lab/*', function(req, res){
+	res.render('index.ejs');
 });
 
 server.get('/ping', function(req, res) {

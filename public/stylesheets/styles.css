@@ -97,15 +97,14 @@ overflow: hidden;
   width: 100%;
   height: 80px;
   line-height: 12px;
-  background: black;
-  opacity: 0.9;
-  filter: alpha(opacity=90);  
+  background: rgba(0,0,0,0.8);
+ 
 }
 
 #menu  .nav  ul {
   float: left;
   width: 110px;
-  font-size: 0.6em;
+  font-size: 0.5em;
   position: relative;
   height: 100%;
 }
@@ -145,7 +144,9 @@ overflow: hidden;
   text-align: center;
 }
 
-#share ul li { display: inline; }
+#share ul li { 
+  display: inline; 
+   }
 
 #share ul li a {
   text-decoration: none;
@@ -163,12 +164,11 @@ overflow: hidden;
 
 #share ul li a.tumblr {
   background: url('/images/tumblr.png');
-   border-left: 1px solid gray;
+  
 }
 
 #share ul li a.flickr {
   background: url('/images/flickr.png');
-   border-left: 1px solid gray;
 }
 
 #share ul li a.fb {
@@ -177,23 +177,12 @@ overflow: hidden;
 
 #share ul li a.tt{
   background: url('/images/twitter.png');
-   border-left: 1px solid gray;
 }
 
-#share ul li a.fb:hover {
-  background: url('/images/facebook_over.png');
-}
-
-#share ul li a.tt:hover {
-  background: url('/images/twitter_over.png');
-}
-
-#share ul li a.tumblr:hover {
-  background: url('/images/tumblr_over.png');
-}
-
-#share  ul li a.flickr:hover {
-  background: url('/images/flickr_over.png');
+#share ul li a:hover {
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=60)";
+  filter: alpha(opacity=60);
+  opacity: 0.6;
 }
 
 

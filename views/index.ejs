@@ -14,7 +14,7 @@
   <meta name="format-detection" content="telephone=no">
   <meta name="apple-mobile-web-app-capable" content="yes">
     
-	<link rel="stylesheet" media="screen" type="text/css" href="stylesheets/styles.css" />
+	<link rel="stylesheet" media="screen" type="text/css" href="/stylesheets/styles.css" />
 		
   <link href='http://fonts.googleapis.com/css?family=Josefin+Slab' rel='stylesheet' type='text/css' />
   <script type="text/javascript" src="http://use.typekit.com/jmp4lkh.js"></script>
@@ -69,25 +69,21 @@
 <div id="menu">
   <div class="nav">
     <ul>
-				<li><a href="javascript:void(0)" data-sequence="home">Home</a></li>
         <li><a href="javascript:void(0)" data-sequence="about">About</a></li>
     </ul>
-    <ul>
-        <li><a href="/lab/streetart/" target="viewer">Street Art</a></li>
-        <li><a href="/lab/beatbox/" target="viewer">sound</a></li>
-        <li><a href="/lab/webcamraster/"target="viewer">webcam raster</a></li>
-        <li><a href="http://afternoon-moon-6385.herokuapp.com/" target="viewer">Shared Map</a></li>
+    
+    <ul id="labnav">
+       
 			</ul>
   </div>
     
   <div id="share">
     <ul>
   			
-       
-        <li><a class="fb" href="https://www.facebook.com/sharer.php?u=http://www.interactive-object.com/" target="_blank" style="opacity: 1; "></a></li>
-  			<li><a class="tt" href="https://twitter.com/intent/tweet?text=http://www.interactive-object.com" target="_blank"></a></li>
-        <li><a class="flickr" href="https://twitter.com/intent/tweet?text=http://www.interactive-object.com" target="_blank"></a></li>
-        <li><a class="tumblr" href="https://twitter.com/intent/tweet?text=http://www.interactive-object.com" target="_blank"></a></li>        
+        <li><a class="fb" href="https://www.facebook.com/sharer.php?u=http://www.interactive-object.com/" target="_blank" title="Facebook"></a></li>
+  			<li><a class="tt" href="https://twitter.com/intent/tweet?text=http://www.interactive-object.com" target="_blank" title="Twitter"></a></li>
+        <li><a class="flickr" href="https://twitter.com/intent/tweet?text=http://www.interactive-object.com" target="_blank" title="Flickr"></a></li>
+        <li><a class="tumblr" href="https://twitter.com/intent/tweet?text=http://www.interactive-object.com" target="_blank" title="Tumblr"></a></li>        
         
         </ul>
   </div>
@@ -97,95 +93,232 @@
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="js/libs/jquery-1.7.1.min.js"><\/script>')</script>
-<script type="text/javascript" src="/javascripts/sequence.jquery-min.js"></script>
+
 <script type="text/javascript">
 
-init();
-var sequence;
 
-var sequenceOptions = {
-		autoPlay : false,
-		nextButton : true,
-		prevButton : true,
-		animateStartingFrameIn : true,
-		transitionThreshold : 250,
-		keyNavigation: false,
-		swipeNavigation : false
-	}
-	
 
-  var mainHiden;
-  
-  
+
+var selected, viewer, mainHiden, links = [], wrap = $("#wrap"), sequence;
+
+
+var data = [
+
+				{
+					"id": 1,
+					"name": "Street Art",
+					"timestamp": "2012/08/07",
+					"link": "/lab/streetart/"
+				},
+
+				{
+					"id": 2,
+					"name": "Shared Map",
+					"timestamp": "2012/05/03",
+					"link": "http://afternoon-moon-6385.herokuapp.com/"
+				},
+        
+        {
+					"id": 3,
+					"name": "beatbox",
+					"timestamp": "2012/05/03",
+					"link": "/lab/beatbox/"
+				},   
+        
+        {
+					"id": 4,
+					"name": "Webcam raster",
+					"timestamp": "2012/05/03",
+					"link": "/lab/beatbox/"
+				}
+        
+        
+   ];
+   
+   init();
+        
 function init(){
   
-  	
-      console.log("init");
-      
-        //sequence = $("#sequence").sequence(sequenceOptions).data("sequence");
-        //sequence.init.preloader();
+    mainHiden = true;
+    
+    buildNav();
+    
+      if ( window.location.pathname == '/' ) {
+
+					loadProject( data[ 0 ] );
+				} else {
+
+					var id = /^\/lab\/(\d+)\//.exec( window.location.pathname )[ 1 ]
+					for ( var i in data ) {
+						if ( data[ i ].id == id ) {
+							loadProject( data[ i ] );
+							break;
+						}
+					}
+				}
         
         window.addEventListener( 'resize', onResize, false );
-        
-				viewer = document.createElement( 'iframe' );
-        //viewer = document.getElementById("viewer");        
-				viewer.name = 'viewer';
-        viewer.id = 'viewer';
-				viewer.setAttribute( 'allowfullscreen', 'allowfullscreen' );
-        viewer.setAttribute( 'allowtransparency', 'yes' );
-        viewer.setAttribute( 'scrolling', 'no' );
-				viewer.src = "/lab/streetart/";
-				document.body.appendChild( viewer );
-        
-        viewer.onload= function() {
-          console.log("loaded")
-            mainHiden = true;
-        };
-    
-         
-       
-        onResize();
+
         
         
 }
 
+function loadProject( data ) {
 
-var current_sequence;
-var wrap;
+        
+        
+				if ( selected ) {
+         
+          console.log(selected.id,data.id);
+          if(selected.id != data.id)
+          {
+            document.body.removeChild( viewer );
+          }else{
+            //skip reload current project
+            return;
+          }
+				}
+
+				selected = links[ data.id ];
+        selected.id = data.id ;
+
+				document.title = 'Interactive Object | ' + data.name;
+
+				viewer = document.createElement( 'iframe' );
+				viewer.name = 'viewer';
+				viewer.src = data.link;
+				document.body.appendChild( viewer );
+        
+        viewer.onload= function() {
+            
+        };
+				updateLayout();
+        
+        hideWrap();
+
+			}
+
+			
+      
+      
+function buildNav() {
+  
+
+    for ( var i in data ) {
+    
+     var current = data[i];
+     
+      var li = $("<li/>");
+				
+				
+				var link = $("<a href='"+ current.link+"' target='viewer'>"+current.name+"</a>");
+        link.data(current);
+				li.append( link );
+        
+        link.click(function ( event ) {
+
+          var data = $(this).data();
+          
+          if(data.id != selected.id)
+          {
+          
+            selected= event.target;
+            selected.id = data.id;
+            history.pushState( data, data.name, '/lab/' + data.id + '/' + data.name.replace( /\ /gi, '_' ).replace( /[:.,\'()%]/gi, '' ) );
+
+            if(sequence)
+            {
+              leaveSequence(sequence);
+              sequence = null
+            }
+            
+            hideWrap();
+            
+            return true;
+            
+          }else{
+          
+            return false;
+            
+          }
+        
+				});
+        
+        $('#labnav').append(li);
+				links[ current.id ] = link;
+         
+  }
+}
+
+
+
 
 $('a[data-sequence]').click(function (e) {
-		var sequenceid = $(e.target).data("sequence");
+		var sequence_id = $(e.target).data("sequence");
 
-    if(current_sequence)
+    // current squence is not null
+    if(sequence)
     {
-      $("#"+current_sequence).removeClass("animate-in").addClass("animate-out");
-     
-    }else {
-      $("#wrap").addClass("full-wrap");
-      $("#wrap").click(function(){
-        $("#wrap").removeClass("full-wrap");
-        $("#"+current_sequence).removeClass("animate-in").addClass("animate-out");
-        current_sequence = null
-        
-      });
+      // lanch animate out transition
+      leaveSequence(sequence);
     }
-    
-    
-    current_sequence = sequenceid
-    $("#"+sequenceid).removeClass("animate-out").addClass("animate-in");
-    
-  
-     
-     
+    showWrap();
+    enterSequence(sequence_id);
+     sequence = sequence_id;
 });
 
+
+function leaveSequence(id){
+   $("#"+id).removeClass("animate-in").addClass("animate-out");
+   
+}
+
+
+function enterSequence(id){
+   $("#"+id).removeClass("animate-out").addClass("animate-in");
+}
+
+
+function showWrap(){
+ 
+  if(!wrap.hasClass("full-wrap"))
+  {
+    wrap.addClass("full-wrap");
+      
+      wrap.click(function(){
+        wrap.removeClass("full-wrap");
+        
+        if(sequence)
+        {
+          leaveSequence(sequence);
+          sequence = null
+        }
+        
+      });
+  }
+}
+
+function hideWrap(){
+  wrap.removeClass("full-wrap");
+  if(sequence)
+  {
+    leaveSequence(sequence);
+     sequence = null
+  }
+  sequence = null
+}
+
   
-function onResize( event ) {
+function updateLayout( event ) {
 
 				viewer.style.width = window.innerWidth + 'px';
 				viewer.style.height = ( window.innerHeight) + 'px';
 
 			}
+      
+function onResize( event ) {
+  updateLayout();
+}
         
 </script>
 
