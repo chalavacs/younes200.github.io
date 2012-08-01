@@ -3,7 +3,7 @@
   "version":"0.0.1",
   "dependencies": {
     "underscore": "",
-	"express": "2.4.x",
+	"express": "",
 	"ejs": "",
 	"redis-url": "0.1.0",
 	"connect": "2.4.2",
