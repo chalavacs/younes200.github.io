@@ -1,78 +1,68 @@
-	var lastPoints = [];
-	var easing = 0.4;
-  
-  // local drawing data
-	var ldrawing = [];
-  // remote drawing data
-  var rdrawing = [];
-  
-	var users = [];
-  
-	var drawbuffer = [];
-	var flickr;
-	
-	var connected = false;
-	const RETRY_INTERVAL = 10000;
-	var timeout;
-	
-	var isMouseDown = false;
-	var mouse = new Point();
-	var canvas;
-	var context;
-  var lcanvas;
-  var lcontext;
-	var color = "rgba(244, 119, 35,0.4)";
-	var strokeSize = 20;
-  var drawIntervalId;
-  var resizeIntervalId;
-	
-	var brush;
 
-	
-	var DEFAULT_BRUSH_SIZE = 50;
-	var MAX_BRUSH_SIZE = 50;
-	var MIN_BRUSH_SIZE = 5;
-	var INK_AMOUNT = 10;
-	var SPLASH_RANGE = 5;
-	var SPLASH_INK_SIZE = 10;
-  
+
+var users = [];
+
+var drawbuffer = [];
+
+var connected = false;
+const RETRY_INTERVAL = 10000;
+var timeout;
+
+var isMouseDown = false;
+var mouse = new Point();
+
+var canvas, localcanvas;
+var context, lcontext;
+
+var ldrawing = [];
+var rdrawing = [];
+
+var color = "rgb(0, 0, 0)";
+var strokeSize = 20;
+var drawIntervalId;
+var resizeIntervalId;
+
+var brush;
+
+var DEFAULT_BRUSH_SIZE = 30;
+var MAX_BRUSH_SIZE = 50;
+var MIN_BRUSH_SIZE = 5;
+var INK_AMOUNT = 20;
+var SPLASH_RANGE = 10;
+var SPLASH_INK_SIZE = 5;
+
+
+
 $(document).ready(function () {
-	
-
 	
 	if (Modernizr.canvas) {
 		
 		canvas = document.getElementById('canvas');
-    lcanvas = document.getElementById('lcanvas');
+   
     
+		localcanvas = document.getElementById('local-canvas');
+		
 		// get the context
 		context = canvas.getContext('2d');
-    lcontext = lcanvas.getContext('2d');
-    
-    
-    context.fillCircle = function(x, y, radius, fillColor) {
-            this.fillStyle = fillColor;
-            this.beginPath();
-            this.moveTo(x, y);
-            this.arc(x, y, radius, 0, Math.PI * 2, false);
-            this.fill();
-        };
-    canvas.width = window.innerWidth;
-		canvas.height = window.innerHeight;
-    
-		lcanvas.width = window.innerWidth;
-		lcanvas.height = window.innerHeight;
+		context.clear = function () {
+			this.clearRect(0, 0, canvas.width, canvas.height);
+		}
+		
+		lcontext = localcanvas.getContext('2d');
+		lcontext.clear = function () {
+			this.clearRect(0, 0, localcanvas.width, localcanvas.height);
+		}
+		
+		resizeCanvas();
 		
 		// resize the canvas to fill browser window dynamically
 		window.addEventListener('resize', resizeCanvas, false);
 		
-    
-  document.onmousedown = onDocumentMouseDown;
-    document.onmouseup = onDocumentMouseUp;
-    document.onmousemove = onDocumentMouseMove;
+		document.onmousedown = onDocumentMouseDown;
+		document.onmouseup = onDocumentMouseUp;
+		document.onmousemove = onDocumentMouseMove;
 		
 		brush = new Brush(DEFAULT_BRUSH_SIZE, INK_AMOUNT, SPLASH_RANGE, SPLASH_INK_SIZE);
-
 		
 		// start draw loop
 		setInterval(loop, 1000 / 60);
@@ -81,10 +71,15 @@ $(document).ready(function () {
 	// sockets
 	var socket = io.connect('http://');
 	
+  
+  socket.on('error', function (reason){
+    console.error('Unable to connect Socket.IO', reason);
+  });
+
 	socket.on('connect', function () {
 		connected = true;
 		clearTimeout(timeout);
-	});
+    });
 	
 	socket.on('disconnect', function () {
 		connected = false;
@@ -93,13 +88,13 @@ $(document).ready(function () {
 		retryConnectOnFailure(RETRY_INTERVAL);
 	});
 	
-	socket.on('user-connected', function (data) {
+	socket.on('join', function (data) {
 		console.log("user connected :", data.id);
 		users[data.id] = data;
 		$('#cursor').clone().appendTo('#cursor_container').attr('id', "cursor-" + data.id).append("<b>user" + data.id + "</b>");
 	});
 	
-	socket.on('users-connected', function (data) {
+	socket.on('users', function (data) {
 		
 		for (var i = 0; i < data.length; i++) {
 			var current = data[i];
@@ -114,8 +109,8 @@ $(document).ready(function () {
 		
 	});
 	
-	socket.on('user-disconnected', function (data) {
-		console.log("user disconnected :", data);
+	socket.on('leave', function (data) {
+
 		var user = users[data.id]
 			if (user) {
 				
@@ -131,106 +126,68 @@ $(document).ready(function () {
 	
 	socket.on('receive-draw', function (data) {
 		rdrawing.push(data);
-    redraw(context, rdrawing);
+		redraw(context, rdrawing);
 	});
 	
 	socket.on('receive-draw-bulk', function (data) {
-		
 		rdrawing = data;
-
 	});
 	
 	socket.on('receive-draw-clear', function () {
 		rdrawing = [];
-		context.clearRect(0, 0, canvas.width, canvas.height);
-		lcontext.clearRect(0, 0, lcanvas.width, lcanvas.height);
+		context.clear();
+		lcontext.clear();
 	});
 	
 	// TODO register id in cookie
-	socket.emit("new-user", {
-		id : Math.round(Math.random() * 10000)
-	});
-	
-	$("#nav .clear").click(function () {
-		
-		socket.emit('draw-clear');
-		ldrawing = [];
-		rdrawing = [];
-		if (lcontext) {
-			lcontext.clearRect(0, 0, canvas.width, canvas.height);
-		}
-		if (context) {
-			context.clearRect(0, 0, canvas.width, canvas.height);
-		}
-		clearInterval(drawIntervalId);
-				
-	});
+	//socket.emit("user");
+  
 	
 	function onDocumentMouseMove(e) {
-    mouse.set(e.clientX, e.clientY);
-	}
-	
-	function onDocumentMouseDown(e) {
-    brush.resetTip();
-		isMouseDown = true;
-	}
-	
-	function onDocumentMouseUp(e) {
 		
-    
-    ldrawing.push(
-    {
-        path: drawbuffer,
-        color : color,
-				size : strokeSize
-    });
-          
-    socket.emit('draw', {
-				path : drawbuffer,
-				color : color,
-				size : strokeSize
-			});
-      
-     drawbuffer = [];
-     isMouseDown = false;
-	}
-	
-	function loop() {
-    
-    brush.update(mouse);
-		if (isMouseDown) {
-      // draw the brush on local canvas first
-			brush.draw(lcontext, mouse, color, strokeSize);
-      drawbuffer.push({x:mouse.x, y:mouse.y});
-		}
-	}
-	
-	$(document).bind('mousemove', function (e) {
+		// update the mouse position
+		mouse.set(e.clientX, e.clientY);
+		
+		// send the cursor coordinate
 		socket.emit('mousemove', {
 			x : e.pageX / $(window).width(),
 			y : e.pageY / $(window).height()
 		});
-	})
+		
+	}
 	
+	function onDocumentMouseDown(e) {
+		brush.reset();
+		isMouseDown = true;
+	}
 	
+	function onDocumentMouseUp(e) {
+		ldrawing.push({
+			path : drawbuffer,
+			color : color,
+			size : strokeSize
+		});
+		
+		socket.emit('draw', {
+			path : drawbuffer,
+			color : color,
+			size : strokeSize
+		});
+		
+		drawbuffer = [];
+		isMouseDown = false;
+	}
 	
-	// Get the coordinates for a mouse or touch event
-	function getCoords(e) {
-		if (e.offsetX) {
-			return {
-				x : e.offsetX,
-				y : e.offsetY
-			};
-		} else if (e.layerX) {
-			return {
-				x : e.layerX,
-				y : e.layerY
-			};
-		} else {
-			return {
-				x : e.pageX - canvas.offsetLeft,
-				y : e.pageY - canvas.offsetTop
-			};
+	// main loop for drawing
+	function loop() {
+		brush.position(mouse);
+		if (isMouseDown) {
+			// draw the brush on local canvas first
+			brush.draw(lcontext, mouse, color, strokeSize);
+			drawbuffer.push({
+				x : mouse.x,
+				y : mouse.y
+			});
 		}
 	}
 	
@@ -244,148 +201,91 @@ $(document).ready(function () {
 	}
 	
 	function resizeCanvas() {
-    
-    clearTimeout(resizeIntervalId);
-    resizeIntervalId = setTimeout(doneResizing, 500);
-  }
-  
-  function doneResizing(){
+		
+		clearTimeout(resizeIntervalId);
+		resizeIntervalId = setTimeout(doneResizing, 500);
+	}
+	
+	function doneResizing() {
 		canvas.width = window.innerWidth;
 		canvas.height = window.innerHeight;
-    
-		lcanvas.width = window.innerWidth;
-		lcanvas.height = window.innerHeight;
-    
-
+		
+		localcanvas.width = window.innerWidth;
+		localcanvas.height = window.innerHeight;
+		
+		redraw_all();
 	}
-  
-  function redrawAllWithanimation(){
-    redrawWithInterval(lcontext, ldrawing);
-    redrawWithInterval(context, rdrawing);
-  }
-  
-  function redrawAll(){
-    redraw(lcontext, ldrawing);
-    redraw(context, rdrawing);
-  }
-  
-  function redraw(ctx, data){
-      		// redraw stuff
+	
+	function redrawAllWithInterval() {
+		redraw_with_interval(lcontext, ldrawing);
+		redraw_with_interval(context, rdrawing);
+	}
+	
+	function redraw_all() {
+		redraw(lcontext, ldrawing);
+		redraw(context, rdrawing);
+	}
+	
+	function redraw(ctx, data) {
+		// redraw stuff
 		
-       console.log("recover start strokeSize",strokeSize);
-       var i = 0;
-       var j =0;
-       
-      var rbrush= new Brush(DEFAULT_BRUSH_SIZE, INK_AMOUNT, SPLASH_RANGE, SPLASH_INK_SIZE);
-      
-      for(i=0; i<data.length; i++){
-        rbrush.update(data[i].path[j]); 
-        rbrush.resetTip();  
-        for(j=0; j<data[i].path.length; j++){
-            rbrush.draw(ctx, data[i].path[j], data[i].color, data[i].size);     
-        }
-        j=0;
-      }
-  }
-  function redrawWithInterval(ctx, data){
-      		// redraw stuff
+		console.log("recover start strokeSize", strokeSize);
+		var i = 0;
+		var j = 0;
 		
-      
-      clearInterval(drawIntervalId);
-			
-      
-       var i = 0;
-       var j =0;
-       
-      var brush= new Brush(DEFAULT_BRUSH_SIZE, INK_AMOUNT, SPLASH_RANGE, SPLASH_INK_SIZE);
-      drawIntervalId = setInterval(function(){
-        
-          if(i < data.length )
-          { 
-
-            // reset brush
-            if(j == 0){
-               brush.resetTip();  
-              brush.update(data[i].path[j]); 
-             
-            }
-            
-            brush.draw(ctx, data[i].path[j], data[i].color, data[i].size);     
-            
-            if(j < data[i].path.length-1){
-              j++
-            }else if(++i < data.length){
-              j=0;              
-            }else {  
-              clearInterval(drawIntervalId);
-              return;              
-            }
-            
-          }else {
-            clearInterval(drawIntervalId);
-            return;            
-          }
-
-      }, 1000 / 60);
-      
-      
-  }
-  
-	/*$.getJSON("http://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key=e606900de034115b34006a4dcf2c5766&user_id=58821970@N00&photoset_id=72157629696932450&format=json&jsoncallback=?",	
-	$.getJSON("http://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=e606900de034115b34006a4dcf2c5766&tags=wall&format=json&jsoncallback=?",
-		function (data) {
+		var brush = new Brush(DEFAULT_BRUSH_SIZE, INK_AMOUNT, SPLASH_RANGE, SPLASH_INK_SIZE);
 		
-		if (data.stat != "ok") {
-			
-			// something broke!
-			return;
+		for (i = 0; i < data.length; i++) {
+			brush.position(data[i].path[j]);
+			brush.reset();
+			for (j = 0; j < data[i].path.length; j++) {
+				brush.position(data[i].path[j]);
+				brush.draw(ctx, data[i].path[j], data[i].color, data[i].size);
+			}
+			j = 0;
 		}
-		flickr = data.photos.photo;
-		updatebackground();
-		
-		});
-		*/
-		
-		
-		$.backstretch("bg.jpg", {
-			speed : 500
-		},
-			function () {
-      redrawAllWithanimation();
-		  }
-		);
-		
-	$('#info').click(function(e) {
-				if (!e.target.href) {
-					$('#info').toggleClass("hide");
-				}
-        return false;
-			});
-	
-	
-	function updatebackground() {
-		
-		var photo = flickr[Math.floor(Math.random() * flickr.length)];
-		var url = "http://farm" + photo.farm + ".static.flickr.com/" + photo.server + "/" + photo.id + "_" + photo.secret + "_b_d.jpg"
-			
-			$.backstretch(url, {
-				speed : 500
-			},
-				function () {
-        redrawAllWithanimation();
-			});
 	}
 	
-	
-	$("#nav #dots ul li a").click(function (e) {
+	function redraw_with_interval(ctx, data) {
+		// redraw stuff
+		clearInterval(drawIntervalId);
 		
-		color = $(e.target).css('background-color');
+		var i = 0;
+		var j = 0;
 		
-		$('#nav #dots ul li a').each(function (index) {
-			$(this).removeClass("cur");
-		});
-		$(e.target).addClass("cur");
-	});
+		var brush = new Brush(DEFAULT_BRUSH_SIZE, INK_AMOUNT, SPLASH_RANGE, SPLASH_INK_SIZE);
+		drawIntervalId = setInterval(function () {
+				
+				if (i < data.length) {
+					
+					// reset brush
+					if (j == 0) {
+						
+						console.log("position with (line, position)=(" + i + "," + j + ")");
+						brush.position(data[i].path[j]);
+						brush.reset();
+						
+					}
+					brush.position(data[i].path[j]);
+					brush.draw(ctx, data[i].path[j], data[i].color, data[i].size);
+					
+					if (j < data[i].path.length - 1) {
+						j++
+					} else if (++i < data.length) {
+						j = 0;
+					} else {
+						clearInterval(drawIntervalId);
+						return;
+					}
+					
+				} else {
+					clearInterval(drawIntervalId);
+					return;
+				}
+				
+			}, 1000 / 60);
+		
+	}
 	
 	var retryConnectOnFailure = function (retryInMilliseconds) {
 		setTimeout(function () {
@@ -398,7 +298,52 @@ $(document).ready(function () {
 			}
 		}, retryInMilliseconds);
 	}
+	
+	// UI
+	
+	// Tools
+	$("#nav #dots ul li a").click(function (e) {
+		
+		color = $(e.target).css('background-color');
+		
+		$('#nav #dots ul li a').each(function (index) {
+			$(this).removeClass("cur");
+		});
+		$(e.target).addClass("cur");
+	});
+	
+	// Background
+	$.backstretch("bg.jpg", {
+		speed : 500
+	},
+		function () {
+		redrawAllWithInterval();
+	});
+	
+	// Info
+	$('#info').click(function (e) {
+		if (!e.target.href) {
+			$('#info').toggleClass("hide");
+		}
+		return false;
+	});
+	
+	// clear button
+	$("#nav .clear").click(function () {
+		
+		socket.emit('draw-clear');
+		
+		ldrawing = [];
+		rdrawing = [];
+		
+		if (lcontext) {
+			lcontext.clear();
+		}
+		if (context) {
+			context.clear();
+		}
+		clearInterval(drawIntervalId);
+		
+	});
+	
 });
-
-
-

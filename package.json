@@ -1,12 +1,14 @@
 {
-  "name":"zelocation",
+  "name":"inkapp",
   "version":"0.0.1",
-  "dependencies":{
-    "socket.io":"",
-    "underscore":"",
-	"express": "2.5.x",
+  "dependencies": {
+    "underscore": "",
+	"express": "2.4.x",
 	"ejs": "",
-	"redis-url": "0.1.0"
+	"redis-url": "0.1.0",
+	"connect": "2.4.2",
+	"socket.io": "",
+	"cookie": "0.0.4"
   },
   "engines": {
     "node": "0.6.x"

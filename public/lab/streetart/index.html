@@ -17,6 +17,8 @@
 	<link rel="stylesheet" media="screen" type="text/css" href="styles.css" />
 		
   <script type="text/javascript" src="/javascripts/modernizr.custom.61709.js"></script>
+  <script type="text/javascript" src="http://localhost:3003/socket.io/socket.io.js"></script>
+  
   
 <script type="text/javascript">
 
@@ -38,7 +40,7 @@
 
   
 <canvas id="canvas"></canvas>
-<canvas id="lcanvas"></canvas>
+<canvas id="local-canvas"></canvas>
 
 
 
@@ -46,8 +48,8 @@
   <aside id="info" class="hide">
 				<div class="icon"></div>
 				<div class="text">
-					<h1><span>Street Art</span> Toy</h1>
-					<p>This web app uses the WebRTC <a href="//dev.w3.org/2011/webrtc/editor/getusermedia.html">getUserMedia API</a> for HTML5 camera access. WebGL fragment shaders (GLSL) are used to apply real-time special effects to the camera video feed. Currently only the following browsers support getUserMedia and WebGL:</p>
+					<h1><span>Ink</span> Art</h1>
+					<p>This web app uses HTML5 <a href="//www.w3.org/TR/html5/the-canvas-element.html#the-canvas-element">Canvas</a>. WebGL fragment shaders (GLSL) are used to apply real-time special effects to the camera video feed. Currently only the following browsers support getUserMedia and WebGL:</p>
 					<ul>
 						<li><a href="//www.google.com/chrome">Google Chrome</a> &mdash; enabled in <a href="//www.google.com/landing/chrome/beta/">Beta</a> and <a href="//tools.google.com/dlpage/chromesxs/">Canary</a> (Chrome 21 and above), otherwise go to <code>chrome:flags</code> and enable the “MediaStream” flag</li>
 						<li><a href="//opera.com/browser/">Opera 12</a> &mdash; go to <code>opera:config</code> and <a target="_blank" href="opera:config#UserPrefs|EnableWebGL">enable WebGL</a></li>
@@ -66,33 +68,12 @@
       <a href="javascript:void(0)" class="clear" alt="clear drawer"></a>
     </div>
 
-				<div id="dots">
-					<ul>
-            <li><a href="javascript:;" style="background-color: rgb(244, 119, 35); " class="cur"></a></li>
-            <li><a href="javascript:;" style="background-color: rgb(78, 74, 157); "></a></li>
-            <li><a href="javascript:;" style="background-color: rgb(253, 215, 185); "></a></li>
-            <li><a href="javascript:;" style="background-color: rgb(54, 177, 197); "></a></li>
-            <li><a href="javascript:;" style="background-color: rgb(253, 189, 23); " ></a></li>
-            <li><a href="javascript:;" style="background-color: rgb(249, 15, 73); "></a></li>
-            <li><a href="javascript:;" style="background-color: rgb(168, 104, 57); "></a></li>
-            <li><a href="javascript:;" style="background-color: rgb(165, 194, 110); "></a></li>
-            <li><a href="javascript:;" style="background-color: rgb(255, 225, 1); "></a></li>
-            <li><a href="javascript:;" style="background-color: rgb(2, 30, 47); "></a></li>
-            <li><a href="javascript:;" style="background-color: rgb(29, 61, 29); "></a></li>
-            <li><a href="javascript:;" style="background-color: rgb(34, 160, 223); "></a></li>
-            </ul>
-				</div>
-			</div>
-			
-			
-
 </div>
 
 
 
 
-
-<div id="cursor_container">
+<div id="cursors">
 <div id="cursor" class="cursor"></div>
 </div>
 
@@ -101,7 +82,6 @@
 <script>window.jQuery || document.write('<script src="js/libs/jquery-1.7.1.min.js"><\/script>')</script>
   
 <script type="text/javascript" src="/javascripts/underscore.js"></script>
-<script type="text/javascript" src="/javascripts/socket.io.js"></script>
 <script type="text/javascript" src="/javascripts/jquery.backstretch-min.js"></script>
 <script type="text/javascript" src="/javascripts/helpers.js"></script>
 <script type="text/javascript" src="/javascripts/brush.js"></script>

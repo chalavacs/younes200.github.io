@@ -11,7 +11,7 @@
 			this.splashRange = splashRange;
 			this.splashInkSize = splashInkSize;
 			this.strokeSize = 0;
-			this.resetTip();
+			this.reset();
 			
 			this._latest = null;
 			this._latestStrokeLength = 0;
@@ -30,7 +30,8 @@
 					Point.prototype.set.call(this, x, y);
 				},
 			
-				resetTip : function () {
+				reset : function () {
+         
 					var hairs = this._hairs = [];
 					var inkAmount = this.inkAmount;
 					var hairNum = this.size * 2;
@@ -63,13 +64,13 @@
          
 				},
 				
-				update : function (p) {
+				position : function (p) {
 					this.set(p);
 					
 					var stroke = this.subtract(this._latest);
 					var hairs = this._hairs;
 					for (var i = 0, len = hairs.length; i < len; i++) {
-						hairs[i].update(stroke);
+						hairs[i].position(stroke);
 					}
 					
 					this._latestStrokeLength = stroke.length();
@@ -77,10 +78,9 @@
 				
 				draw : function (ctx, p , color, strokeSize) {
          
+        
          this.strokeSize = strokeSize;
          
-          //this.update(p);
-               
 					var hairs = this._hairs;
 					for (var i = 0, len = hairs.length; i < len; i++) {
 						hairs[i].draw(ctx, color);
@@ -134,7 +134,7 @@
 					Point.prototype.offset.call(this, p);
 				},
 				
-				update : function (stroke) {
+				position : function (stroke) {
 					this._latest.set(this);
 					this.offset(stroke);
 					
