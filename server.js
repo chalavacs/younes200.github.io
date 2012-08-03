@@ -1,7 +1,7 @@
 var express = require('express')
   , cookie = require('cookie')
   , connect = require('connect')
-  , app = module.exports = express.createServer()
+  , app = express()
   , http    = require('http');
 
 
@@ -82,7 +82,8 @@ app.get('/ping', function(req, res) {
 
 
 // socket.io
-var io = require('socket.io').listen(app, { log: true });
+var server = http.createServer(app);
+var io = require('socket.io').listen(server, { log: true });
 
 
 var _ = require('underscore')._;
@@ -219,7 +220,7 @@ io.sockets.on('connection', function (socket) {
 
 
 //this line is necessary for heroku
-app.listen( process.env.PORT || 3003 );
+server.listen( process.env.PORT || 3003 );
 
 
 
