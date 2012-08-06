@@ -21,7 +21,9 @@ var context, lcontext;
 
 var rdrawing = [];
 
-var color = "rgb(0, 0, 0)";
+const INK_COLOR = "rgb(0, 0, 0)";
+const REMOTE_INK_COLOR = "rgba(234, 46, 73, 0.2)";
+
 var strokeSize = 20;
 var drawIntervalId;
 var resizeIntervalId;
@@ -120,7 +122,7 @@ function connect() {
     console.log("receive-draw", data);
     
 		rdrawing.push(data);
-		redraw(context, rdrawing);
+		redraw(context, rdrawing, REMOTE_INK_COLOR);
 	});
 	
 	socket.on('user-clear', function () {
@@ -152,13 +154,11 @@ function onDocumentMouseDown(e) {
 function onDocumentMouseUp(e) {
 	user.draw.push({
 		path : drawbuffer,
-		color : color,
 		size : strokeSize
 	});
 	
 	socket.emit('draw', {
 		path : drawbuffer,
-		color : color,
 		size : strokeSize,
     user_id : user.user_id
 	});
@@ -172,7 +172,7 @@ function loop() {
 	brush.position(mouse);
 	if (isMouseDown) {
 		// draw the brush on local canvas first
-		brush.draw(lcontext, mouse, color, strokeSize);
+		brush.draw(lcontext, mouse, INK_COLOR, strokeSize);
 		drawbuffer.push({
 			x : mouse.x,
 			y : mouse.y
@@ -206,19 +206,19 @@ function doneResizing() {
 }
 
 function redrawAllWithInterval() {
-	redraw_with_interval(lcontext, user.draw);
-	redraw_with_interval(context, rdrawing);
+	redraw_with_interval(lcontext, user.draw, INK_COLOR);
+	redraw_with_interval(context, rdrawing, REMOTE_INK_COLOR);
 }
 
 function redraw_all() {
-	redraw(lcontext, user.draw);
-	redraw(context, rdrawing);
+	redraw(lcontext, user.draw, INK_COLOR);
+	redraw(context, rdrawing, REMOTE_INK_COLOR);
 }
 
-function redraw(ctx, data) {
+function redraw(ctx, data, color) {
 	// redraw stuff
 	
-	console.log("recover start strokeSize", strokeSize);
+	console.log("recover start strokeSize="+strokeSize+ "color="+color);
 	var i = 0;
 	var j = 0;
 	
@@ -229,13 +229,13 @@ function redraw(ctx, data) {
 		brush.reset();
 		for (j = 0; j < data[i].path.length; j++) {
 			brush.position(data[i].path[j]);
-			brush.draw(ctx, data[i].path[j], data[i].color, data[i].size);
+			brush.draw(ctx, data[i].path[j], color, data[i].size);
 		}
 		j = 0;
 	}
 }
 
-function redraw_with_interval(ctx, data) {
+function redraw_with_interval(ctx, data, color) {
 	// redraw stuff
 	clearInterval(drawIntervalId);
 	
@@ -256,7 +256,7 @@ function redraw_with_interval(ctx, data) {
 					
 				}
 				brush.position(data[i].path[j]);
-				brush.draw(ctx, data[i].path[j], data[i].color, data[i].size);
+				brush.draw(ctx, data[i].path[j], color, data[i].size);
 				
 				if (j < data[i].path.length - 1) {
 					j++
@@ -305,17 +305,21 @@ function initUI() {
 			this.clearRect(0, 0, canvas.width, canvas.height);
 		}
 		
+    context.globalAlpha = 0.5;
+    
 		lcontext = localcanvas.getContext('2d');
 		lcontext.clear = function () {
 			this.clearRect(0, 0, localcanvas.width, localcanvas.height);
 		}
 		
+    
 		// resize the canvas to fill browser window dynamically
 		window.addEventListener('resize', resizeCanvas, false);
 		
     
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
+    
     
     localcanvas.width = window.innerWidth;
     localcanvas.height = window.innerHeight;

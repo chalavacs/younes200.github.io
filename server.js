@@ -156,6 +156,7 @@ io.sockets.on('connection', function (socket) {
       
       // parse existing data
 			user = JSON.parse(data);
+      user.id = socket.handshake.user_id;
       // get user draw info
       
 			redis.get("user_" + user.id + "_draw", function (err, data) {
