@@ -22,7 +22,7 @@ var context, lcontext;
 var rdrawing = [];
 
 const INK_COLOR = "rgb(0, 0, 0)";
-const REMOTE_INK_COLOR = "rgba(234, 46, 73, 0.2)";
+const REMOTE_INK_COLOR = "rgb(197, 28, 48)";
 
 var strokeSize = 20;
 var drawIntervalId;
@@ -305,8 +305,6 @@ function initUI() {
 			this.clearRect(0, 0, canvas.width, canvas.height);
 		}
 		
-    context.globalAlpha = 0.5;
-    
 		lcontext = localcanvas.getContext('2d');
 		lcontext.clear = function () {
 			this.clearRect(0, 0, localcanvas.width, localcanvas.height);

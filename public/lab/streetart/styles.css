@@ -75,6 +75,12 @@ canvas:active {
    -webkit-user-select: none;
 }
 
+#canvas {
+  
+opacity:0.5;
+
+}
+
 
 
 #menu {
