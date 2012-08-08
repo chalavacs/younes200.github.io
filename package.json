@@ -1,5 +1,5 @@
 {
-  "name":"Interactive Object",
+  "name":"InteractiveObject",
   "version":"0.0.1",
   "dependencies": {
     "underscore": "",
