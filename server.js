@@ -8,6 +8,7 @@ http = require('http');
 var server = http.createServer(app);
 
 app.configure(function () {
+  var oneYear = 31557600000;
   this.use(express.static(__dirname + '/public', { maxAge: oneYear }));
 	// Allow parsing form data
 	this.use(express.bodyParser());
