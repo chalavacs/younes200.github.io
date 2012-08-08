@@ -1,15 +1,10 @@
 {
-  "name":"inkapp",
+  "name":"Interactive Object",
   "version":"0.0.1",
   "dependencies": {
     "underscore": "",
 	"express": "",
-	"ejs": "",
-	"redis-url": "0.1.0",
-	"connect": "2.4.2",
-	"socket.io": "",
-	"cookie": "0.0.4",
-	"connect-redis" : ""
+	"ejs": ""
   },
   "engines": {
     "node": "0.6.x"
