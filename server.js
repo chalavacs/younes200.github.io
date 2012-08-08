@@ -8,6 +8,7 @@ http = require('http');
 var server = http.createServer(app);
 
 app.configure(function () {
+  this.use(express.static(__dirname + '/public', { maxAge: oneYear }));
 	// Allow parsing form data
 	this.use(express.bodyParser());
 	
