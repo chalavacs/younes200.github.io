@@ -2,6 +2,14 @@ var express = require('express'),
 app = express(), 
 http = require('http');
 
+var Notifo = require('notifo');
+
+var notification = new Notifo({
+    'username': 'laughingman'
+    , 'secret': 'xf7fa6c673947f6383e893eecedecae90e38b6f91'
+});
+
+
 
 
 // web server
@@ -43,6 +51,24 @@ app.get('/lab/*', function (req, res) {
 
 app.get('/ping', function (req, res) {
 	res.send('pong');
+});
+
+app.post("/contact", function (req, res){
+    
+  notification.send({
+    'title': 'Home page'
+    , 'uri': ''
+    , 'msg': req.body.message
+}, function(err, response) {
+    if (err) {
+        throw err
+    } else {
+        console.log(response);
+    }
+});
+
+  res.send('pong');
+
 });
 
 

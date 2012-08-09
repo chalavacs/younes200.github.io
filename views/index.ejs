@@ -56,20 +56,47 @@
                 
                 <span class="details">
                   I love writing and thinking in code and i deeply appreciate all top of the edge, kick ass, interactive stuff.<br/>
-                  I like modern graphic design, typography and grids, electronic music, i love programming and experimenting with new technologies
+                  I like modern graphic design, typography and photography and electronic music, I love programming and experimenting with new technologies
                   </span>
+        
               </div>
               
             </div>
         </li>
+        
+        
+         <li>
+            <div id="contact" class="contact box">
+              <div class="content">
+                
+               	<span class="title">Say Hello.</span>
+                
+                <span class="details">
+                <form id="contact-box">
+                  <textarea type="text" name="message"></textarea>
+                  <input type="submit" name="submit" value="Say Hi" />
+                  </form>
+                </span>
+              </div>
+              
+            </div>
+        </li>
+        
     </ul>
     
    
 
 <div id="menu">
+    
+    <div id="logo">
+    <b>INTERACTIVE</b> OBJECT
+</div>
+
   <div class="nav">
     <ul>
         <li><a href="javascript:void(0)" data-sequence="about">About</a></li>
+         <li><a href="javascript:void(0)" data-sequence="contact">Get in Touch</a></li>
+        <li><a href="javascript:void(0)" data-sequence="about" class="selected">Lab</a></li>
     </ul>
     
     <ul id="labnav">
@@ -106,7 +133,7 @@ var data = [
 
 				{
 					"id": 1,
-					"name": "Street Art",
+					"name": "Ink Art",
 					"timestamp": "2012/08/07",
 					"link": "http://inkart.herokuapp.com/"
 				},
@@ -154,7 +181,9 @@ function loadProject( data ) {
         
 				if ( selected ) {
          
-          console.log(selected.id,data.id);
+          
+          selected.removeClass("selected");
+          
           if(selected.id != data.id)
           {
             document.body.removeChild( viewer );
@@ -167,6 +196,8 @@ function loadProject( data ) {
 				selected = links[ data.id ];
         selected.id = data.id ;
 
+        selected.addClass("selected");
+        
 				document.title = 'Interactive Object | ' + data.name;
 
 				viewer = document.createElement( 'iframe' );
@@ -206,9 +237,12 @@ function buildNav() {
           
           if(data.id != selected.id)
           {
-          
-            selected= event.target;
+            selected.removeClass("selected");
+            selected= links[ data.id ];
             selected.id = data.id;
+            
+            selected.addClass("selected");
+            
             history.pushState( data, data.name, '/lab/' + data.id + '/' + data.name.replace( /\ /gi, '_' ).replace( /[:.,\'()%]/gi, '' ) );
 
             if(sequence)
@@ -236,20 +270,33 @@ function buildNav() {
 }
 
 
+$('#contact-box').submit(function () {
+  var textarea = $(this).find('textarea[name=message]');
+  var message = textarea.val();
+  $.post("/contact", { message: message },
+   function(data) {
+      textarea.val("");
+      console.log("message sent");
+   });
+   
+   return false;
+});
 
 
 $('a[data-sequence]').click(function (e) {
-		var sequence_id = $(e.target).data("sequence");
+		var sequence_name = $(e.target).data("sequence");
 
     // current squence is not null
     if(sequence)
     {
+      
       // lanch animate out transition
       leaveSequence(sequence);
     }
     showWrap();
-    enterSequence(sequence_id);
-     sequence = sequence_id;
+   
+    enterSequence(sequence_name);
+    sequence = sequence_name;
 });
 
 
@@ -297,7 +344,7 @@ function hideWrap(){
 function updateLayout( event ) {
 
 				viewer.style.width = window.innerWidth + 'px';
-				viewer.style.height = ( window.innerHeight) + 'px';
+				viewer.style.height = ( window.innerHeight - 20) + 'px';
 
 			}
       
