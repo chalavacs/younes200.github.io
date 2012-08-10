@@ -1,5 +1,7 @@
 var express = require('express'), 
 app = express(), 
+path = require('path'),
+gzippo = require('gzippo'),
 http = require('http');
 
 var Notifo = require('notifo');
@@ -16,30 +18,24 @@ var notification = new Notifo({
 var server = http.createServer(app);
 
 app.configure(function () {
-  var oneYear = 31557600000;
-  this.use(express.static(__dirname + '/public', { maxAge: oneYear }));
-	// Allow parsing form data
-	this.use(express.bodyParser());
-	
+  app.set('views', __dirname + '/views');
+  app.set('view engine', 'ejs');
+  app.use(express.favicon());
+  app.use(express.logger('dev'));
+  app.use(express.bodyParser());
+  app.use(express.methodOverride());
+  app.use(require('less-middleware')({ src: __dirname + '/public' }));
+  
+  //Replace the default connect or express static provider with gzippo's
+  app.use(express.static(path.join(__dirname, 'public')));  
+  //app.use(gzippo.staticGzip(path.join(__dirname + '/public')));
 });
 
-app.configure('development', function () {
-	this.use(express.errorHandler({
-			dumpExceptions : true,
-			showStack : true
-		}));
+
+app.configure('development', function(){
+  app.use(express.errorHandler());
 });
 
-app.configure('production', function () {
-	this.use(express.errorHandler());
-});
-
-var ejs = require('ejs');
-app.set('view engine', 'ejs');
-app.set('view options', {
-	layout : false
-});
-app.set('views', __dirname + '/views');
 
 app.get('/', function (req, res) {
 	res.render('index.ejs');

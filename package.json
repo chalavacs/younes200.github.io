@@ -3,9 +3,11 @@
   "version":"0.0.1",
   "dependencies": {
     "underscore": "",
-	"express": "",
+	"express": "3.0.0rc2",
 	"ejs": "",
-	"notifo" :""
+	"notifo" :"",
+    "less-middleware": "*",
+	"gzippo": "*"
   },
   "engines": {
     "node": "0.6.x"
