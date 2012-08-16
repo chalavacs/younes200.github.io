@@ -1,7 +1,6 @@
 var express = require('express'), 
 app = express(), 
 path = require('path'),
-gzippo = require('gzippo'),
 http = require('http');
 
 var Notifo = require('notifo');
