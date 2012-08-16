@@ -104,7 +104,7 @@ function generate_menu() {
 				selected.addClass("selected");
 				history.pushState(project, project.name, '/lab/' + project.id + '/' + project.name.replace(/\ /gi, '_').replace(/[:.,\'()%]/gi, ''));
 				if (sequence) {
-					leaveSequence(sequence);
+					leave(sequence);
 					sequence = null
 				}
 				hide_wrap();
@@ -121,7 +121,7 @@ function generate_menu() {
 	}
 }
 
-$('#contact-box').submit(function () {
+$('#contact-form').submit(function () {
     var form = $(this); 
 	var textarea = form.find('textarea[name=message]');
 	var message = textarea.val();

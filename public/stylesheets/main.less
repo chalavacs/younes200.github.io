@@ -90,17 +90,20 @@ header {
 
 #logo {
   bottom: 80px;
-  width: 150px;
+  width: 140px;
   left: 20px;
   padding-left: 40px;
   padding-right: 20px;
   margin-top: 10px;
   float: left;
 
-  span {
+  a {
     font: 14px "MelbourneBold", arial;
     text-transform: uppercase;
-    color: @light;
+    color: white;
+    &:hover {
+      color: @base;
+    }
   }
 }
 
@@ -145,7 +148,7 @@ header {
         &.selected {
           color: @base;
         }
-      
+
       }
       
     }
@@ -161,48 +164,60 @@ header {
   position: absolute;
   top: 30%;
   right: 20px;
-}
-#share ul {
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
-  text-align: center;
-}
-#share ul li {
-  display: inline;
-}
-#share ul li a {
-  text-decoration: none;
-  display: block;
-  width: 32px;
-  height: 32px;
-  float: left;
-  line-height: 32px;
-  text-decoration: none;
-  text-align: center;
-  margin-left: 3px;
-  margin-right: 3px;
-}
-#share ul li a.tumblr {
-  background: url('/images/tumblr.png');
-}
-#share ul li a.flickr {
-  background: url('/images/flickr.png');
-}
-#share ul li a.fb {
-  background: url('/images/facebook.png');
-}
-#share ul li a.tt {
-  background: url('/images/twitter.png');
-}
-#share ul li a:hover {
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=60)";
-  filter: alpha(opacity=60);
-  opacity: 0.6;
+  
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    text-align: center;
+    
+    li {
+      display: inline;
+      
+      a {
+        text-decoration: none;
+        display: block;
+        width: 32px;
+        height: 32px;
+        float: left;
+        line-height: 32px;
+        text-decoration: none;
+        text-align: center;
+        margin-left: 3px;
+        margin-right: 3px;
+        
+        &.tumblr {
+          background: url('/images/tumblr.png');
+        }
+        
+        &.flickr {
+          background: url('/images/flickr.png');
+        }
+        
+        &.fb {
+          background: url('/images/facebook.png');
+        }
+
+        &.tt {
+          background: url('/images/twitter.png');
+        }
+
+        &:hover {
+          -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=60)";
+          filter: alpha(opacity=60);
+          opacity: 0.6;
+        }
+
+      }
+
+    }
+
+  }
+
 }
 
 
-.box {
+.shape {
   
   > div {
     display: block;
@@ -277,38 +292,43 @@ header {
   position: absolute;
   .transition-duration(1s);
   .opacity(0);
-}
-.about.animate-in {
-  left: 10%;
-  top: 30%;
-  .transition-duration(1s);
-  .opacity(1);
-}
-.about.animate-out {
-  top: 200%;
-  left: 10%;
-  .transition-duration(1s);
-  .opacity(0);
-}
+  
+  &.animate-in {
+    left: 10%;
+    top: 30%;
+    .transition-duration(1s);
+    .opacity(1);
+  }
+  
+  &.animate-out {
+    top: 200%;
+    left: 10%;
+    .transition-duration(1s);
+    .opacity(0);
+  }
 
+}
 
 /**
  *  Experience
  */
 .experiences {
   top: 10%;
-}
-.experiences.animate-in {
-  left: 10%;
-  top: 10%;
- .transition-duration(1s);
-  .opacity(1);
-}
-.experiences.animate-out {
-  top: -50%;
-  left: 10%;
- .transition-duration(1s);
-  .opacity(0);
+
+  &.animate-in {
+    left: 10%;
+    top: 10%;
+   .transition-duration(1s);
+    .opacity(1);
+  }
+  
+  &.animate-out {
+    top: -50%;
+    left: 10%;
+   .transition-duration(1s);
+    .opacity(0);
+  }
+
 }
 /**
  *  contact
@@ -337,29 +357,33 @@ header {
     .transition-duration(1s);
     .opacity(0);
   }
-  #contact-box  {
+  #contact-form  {
     width:100%;
+    
+    textarea {
+      background: none repeat scroll 0 0 transparent;
+      border: 1px solid gray;
+      width: 100%;
+      resize: none;
+      height: 60px;
+      margin-top: 10px;
+    }
+    
+    form {
+      width: 100%;
+    }
+
+    input {
+      background: none repeat scroll 0 0 #000000;
+      color: white;
+      height: 100%;
+      margin-top: 10px;
+      padding: 5px;
+      text-transform: uppercase;
+      font: 0.6em "MelbourneBold", arial;
+      cursor: pointer;
+    }
+
   }
 }
 
-.contact #contact-box textarea {
-  background: none repeat scroll 0 0 transparent;
-  border: 1px solid gray;
-  width: 100%;
-  resize: none;
-  height: 60px;
-  margin-top: 10px;
-}
-.contact #contact-box form {
-  width: 100%;
-}
-.contact #contact-box input {
-  background: none repeat scroll 0 0 #000000;
-  color: white;
-  height: 100%;
-  margin-top: 10px;
-  padding: 5px;
-  text-transform: uppercase;
-  font: 0.6em "MelbourneBold", arial;
-  cursor: pointer;
-}

@@ -1,0 +1,70 @@
+extends layout
+
+block content
+
+  #wrap
+  ul
+    li
+      #home
+    li
+      #about.about.shape
+        div
+          h1 I design and develop interactive things.
+          span
+            | I love writing and thinking in code and i deeply appreciate all top of the edge, kick ass, interactive stuff.
+            br
+            | I like modern graphic design, photography and electronic music.
+            br
+            | I love programming and experimenting with new technologies, you will find in Lab section all experimental web app focusing on real time interaction. 
+            br
+            br
+            a(href="javascript:void(0)", data-sequence="contact") Get in Touch &rarr;
+          
+    li
+      #contact.contact.shape
+        div
+          h1 Get in touch!
+          span
+            form#contact-form
+              | Don't be shy, drop me a line!
+              textarea(type="text", name="message", placeholder="")
+              input(type="submit", name="submit", value="Send")
+
+  #menu
+    #logo
+      a(href="/") Interactive Object
+    
+    div(style="float: left; height: 100%; width: 5px; background-color: #549584;")
+    div(style="float: left; height: 100%; width: 5px; background-color: #1BE86E;")
+    div(style="float: left; height: 100%; width: 5px; background-color: #A3FB66;")
+
+    div.nav
+      ul
+        li 
+          a(href="javascript:void(0)", data-sequence="about") About
+        li
+          a(href="javascript:void(0)", data-sequence="contact") Get in Touch
+        li
+          a.selected(href="javascript:void(0)", data-sequence="about") Lab
+      
+      ul#labnav
+      
+    
+      
+    #share
+      ul
+        li
+          a.fb(href="https://www.facebook.com/sharer.php?u=http://www.interactive-object.com/", target="_blank", title="Facebook")
+        li
+          a.tt(href="https://twitter.com/intent/tweet?text=http://www.interactive-object.com", target="_blank", title="Twitter")
+        li
+          a.flickr(href="http://www.flickr.com/photos/younes/", target="_blank", title="Flickr")
+        li
+          a.tumblr(href="http://tumblr.interactive-object.com", target="_blank", title="Tumblr")
+     
+   
+  script(src='//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js')   
+  script
+    window.jQuery || document.write('<script src="/javascripts/jquery-1.7.1.min.js"><\/script>')
+
+  script(src='/javascripts/script.js')   

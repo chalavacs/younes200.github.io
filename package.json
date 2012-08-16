@@ -6,8 +6,8 @@
 	"express": "3.0.0rc2",
 	"ejs": "",
 	"notifo" :"",
-    "less-middleware": "*",
-	"gzippo": "*"
+  "less-middleware": "*",
+	 "jade": "*",
   },
   "engines": {
     "node": "0.6.x"

@@ -19,7 +19,7 @@ var server = http.createServer(app);
 
 app.configure(function () {
   app.set('views', __dirname + '/views');
-  app.set('view engine', 'ejs');
+  app.set('view engine', 'jade');
   app.use(express.favicon());
   app.use(express.logger('dev'));
   app.use(express.bodyParser());
@@ -38,11 +38,11 @@ app.configure('development', function(){
 
 
 app.get('/', function (req, res) {
-	res.render('index.ejs');
+   res.render('index');
 });
 
 app.get('/lab/*', function (req, res) {
-	res.render('index.ejs');
+	res.render('index');
 });
 
 app.get('/ping', function (req, res) {
