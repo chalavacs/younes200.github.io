@@ -8,7 +8,7 @@
 		"less": "*",
 		"jade": "*",
 		"connect-assets": "*",
-		"coffee-script": "*",
+		"coffee-script": "*"
   },
   "engines": {
     "node": "0.6.x"
