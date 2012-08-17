@@ -5,8 +5,10 @@
     "underscore": "",
 		"express": "3.0.0rc2",
 		"notifo" :"",
-		"less-middleware": "*",
-		"jade": "*"
+		"less": "*",
+		"jade": "*",
+		"connect-assets": "*",
+		"coffee-script": "*",
   },
   "engines": {
     "node": "0.6.x"

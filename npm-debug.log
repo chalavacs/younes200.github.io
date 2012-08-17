@@ -1,0 +1,1758 @@
+info it worked if it ends with ok
+verbose cli [ 'nodejs', '/usr/bin/npm', 'install', 'connect-assets' ]
+info using npm@1.1.19
+info using node@v0.6.18
+verbose config file /root/.npmrc
+verbose config file /usr/etc/npmrc
+verbose config file /usr/lib/nodejs/npm/npmrc
+verbose caching /media/sf_workspace/interactiveobject/package.json
+verbose loadDefaults InteractiveObject@0.0.1
+verbose caching /media/sf_workspace/interactiveobject/node_modules/gzippo/package.json
+verbose caching /media/sf_workspace/interactiveobject/node_modules/connect-lesscss/package.json
+verbose caching /media/sf_workspace/interactiveobject/node_modules/nodemon/package.json
+verbose caching /media/sf_workspace/interactiveobject/node_modules/jade/package.json
+verbose caching /media/sf_workspace/interactiveobject/node_modules/notifo/package.json
+verbose caching /media/sf_workspace/interactiveobject/node_modules/less-middleware/package.json
+verbose caching /media/sf_workspace/interactiveobject/node_modules/express/package.json
+verbose caching /media/sf_workspace/interactiveobject/node_modules/redis-url/package.json
+verbose caching /media/sf_workspace/interactiveobject/node_modules/connect/package.json
+verbose caching /media/sf_workspace/interactiveobject/node_modules/ejs/package.json
+verbose caching /media/sf_workspace/interactiveobject/node_modules/socket.io/package.json
+verbose caching /media/sf_workspace/interactiveobject/node_modules/underscore/package.json
+verbose caching /media/sf_workspace/interactiveobject/node_modules/connect-redis/package.json
+verbose caching /media/sf_workspace/interactiveobject/node_modules/cookie/package.json
+verbose from cache /media/sf_workspace/interactiveobject/package.json
+verbose readDependencies: using package.json deps
+verbose cache add [ 'connect-assets@*', null ]
+silly cache add: name, spec, args [ undefined, 'connect-assets@*', [ 'connect-assets@*', null ] ]
+verbose parsed url { pathname: 'connect-assets@*',
+verbose parsed url   path: 'connect-assets@*',
+verbose parsed url   href: 'connect-assets@*' }
+silly cache add: name, spec, args [ 'connect-assets', '*', [ 'connect-assets', '*' ] ]
+verbose parsed url { pathname: '*', path: '*', href: '*' }
+verbose addNamed [ 'connect-assets', '*' ]
+verbose addNamed [ null, '' ]
+silly name, range, hasData [ 'connect-assets', '', false ]
+verbose raw, before any munging connect-assets
+verbose url resolving [ 'https://registry.npmjs.org/', './connect-assets' ]
+verbose url resolved https://registry.npmjs.org/connect-assets
+http GET https://registry.npmjs.org/connect-assets
+http 200 https://registry.npmjs.org/connect-assets
+silly get cb [ 200,
+silly get cb   { vary: 'Accept',
+silly get cb     server: 'CouchDB/1.2.0 (Erlang OTP/R15B)',
+silly get cb     etag: '"BB5Y43HZ1D0CR8LCKJHAIB5SG"',
+silly get cb     date: 'Fri, 17 Aug 2012 13:13:15 GMT',
+silly get cb     'content-type': 'application/json',
+silly get cb     'content-length': '38517' } ]
+silly name, range, hasData 2 [ 'connect-assets', '', true ]
+silly versions [ 'connect-assets',
+silly versions   [ '1.0.0-beta1',
+silly versions     '1.0.0-beta2',
+silly versions     '1.0.0-beta3',
+silly versions     '1.0.0-beta4',
+silly versions     '1.0.0-beta5',
+silly versions     '1.0.0-beta6',
+silly versions     '1.0.0',
+silly versions     '2.0.0-alpha1',
+silly versions     '2.0.0-alpha2',
+silly versions     '2.0.0-alpha3',
+silly versions     '2.0.0-beta1',
+silly versions     '2.0.0-beta2',
+silly versions     '2.0.0-beta3',
+silly versions     '2.0.0-beta4',
+silly versions     '2.0.0-beta5',
+silly versions     '2.0.0-rc1',
+silly versions     '2.0.0',
+silly versions     '2.0.1',
+silly versions     '2.0.2',
+silly versions     '2.1.0',
+silly versions     '2.1.1',
+silly versions     '2.1.2',
+silly versions     '2.1.3',
+silly versions     '2.1.4',
+silly versions     '2.1.5',
+silly versions     '2.1.6',
+silly versions     '2.1.7',
+silly versions     '2.1.8',
+silly versions     '2.1.9',
+silly versions     '2.2.0',
+silly versions     '2.2.1' ] ]
+verbose bin dist [ '0.6-ares1.7.5-DEV-evundefined-openssl0.9.8e-fips-rhel5-v83.6.6.25-linux-x64-2.6.18-308.11.1.el5',
+verbose bin dist   { shasum: '69fd3458a56865b2c91f387e6d8a065c09181f16',
+verbose bin dist     tarball: 'http://registry.npmjs.org/connect-assets/-/connect-assets-2.2.1.tgz' } ]
+verbose addRemoteTarball [ 'https://registry.npmjs.org/connect-assets/-/connect-assets-2.2.1.tgz',
+verbose addRemoteTarball   '69fd3458a56865b2c91f387e6d8a065c09181f16' ]
+verbose fetch to /tmp/npm-1345209498692/1345209498692-0.435869436012581/tmp.tgz
+http GET https://registry.npmjs.org/connect-assets/-/connect-assets-2.2.1.tgz
+silly updated sha bytes 27026
+info shasum 69fd3458a56865b2c91f387e6d8a065c09181f16
+info shasum /tmp/npm-1345209498692/1345209498692-0.435869436012581/tmp.tgz
+verbose unpack /tmp/npm-1345209498692/1345209498692-0.435869436012581/tmp.tgz
+silly gunzTarPerm modes [ '755', '644' ]
+silly extracting entry package.json
+silly extracting entry .npmignore
+silly extracting entry Cakefile
+silly extracting entry docs/assets.html
+silly extracting entry docs/createHelpers.html
+silly extracting entry docs/DependencyGraph.html
+silly extracting entry docs/docco.css
+silly extracting entry docs/Middleware.html
+silly extracting entry docs/parseDirectives.html
+silly extracting entry lib/assets.js
+silly extracting entry README.mdown
+silly extracting entry src/assets.coffee
+silly extracting entry test/AbsoluteIntegration.coffee
+silly extracting entry test/assets/css/button.styl
+silly extracting entry test/assets/css/gradient.styl
+silly extracting entry test/assets/css/mixins.styl
+silly extracting entry test/assets/css/normalize.css
+silly extracting entry test/assets/css/style-less.less
+silly extracting entry test/assets/css/style.styl
+silly extracting entry test/assets/img/foobar.png
+silly extracting entry test/assets/js/js-dependency.js
+silly extracting entry test/assets/js/mindy.js
+silly extracting entry test/assets/js/narcissist.js
+silly extracting entry test/assets/js/moon_units/alpha.coffee
+silly extracting entry test/assets/js/moon_units/austin/powers.js
+silly extracting entry test/assets/js/moon_units/austin/texas.coffee
+silly extracting entry test/assets/js/moon_units/evil.coffee
+silly extracting entry test/assets/js/moon_units/zappa.coffee
+silly extracting entry test/assets/js/chained-dependent.coffee
+silly extracting entry test/assets/js/coffee-dependency.coffee
+silly extracting entry test/assets/js/dependent.coffee
+silly extracting entry test/assets/js/a.coffee
+silly extracting entry test/assets/js/b.coffee
+silly extracting entry test/assets/js/addicts/enabler.js
+silly extracting entry test/assets/js/addicts/codependent.coffee
+silly extracting entry test/assets/js/more/annoying.1.2.3.js
+silly extracting entry test/assets/js/mork.coffee
+silly extracting entry test/assets/js/c.coffee
+silly extracting entry test/assets/js/needs-evil.coffee
+silly extracting entry test/assets/js/script.coffee
+silly extracting entry test/assets/js/starbucks/mocha.coffee
+silly extracting entry test/assets/js/subdir/subdir-dependent.js
+silly extracting entry test/assets/js/subdir/nested/hobbits.coffee
+silly extracting entry test/assets/js/tree-dependent.coffee
+silly extracting entry test/BenchmarkDynamic.coffee
+silly extracting entry test/BenchmarkStatic.coffee
+silly extracting entry test/builtAssets/css/style-666055206709fc94e56e1a59caa615dd.css
+silly extracting entry test/builtAssets/img/foobar-d41d8cd98f00b204e9800998ecf8427e.png
+silly extracting entry test/builtAssets/js/dependent-057747a1cbabcbd2279e4f358bc4723f.js
+silly extracting entry test/CdnIntegration.coffee
+silly extracting entry test/DevelopmentIntegration.coffee
+silly extracting entry test/ProductionIntegration.coffee
+silly extracting entry test/RemoteIntegration.coffee
+verbose caching /tmp/npm-1345209498692/1345209498692-0.435869436012581/package/package.json
+verbose loadDefaults connect-assets@2.2.1
+verbose from cache /tmp/npm-1345209498692/1345209498692-0.435869436012581/package/package.json
+verbose tar.pack [ '/root/.npm/connect-assets/2.2.1/package.tgz',
+verbose tar.pack   '/tmp/npm-1345209498692/1345209498692-0.435869436012581/package' ]
+verbose tarball /root/.npm/connect-assets/2.2.1/package.tgz
+verbose folder /tmp/npm-1345209498692/1345209498692-0.435869436012581/package
+verbose unpack /root/.npm/connect-assets/2.2.1/package.tgz
+silly gunzTarPerm modes [ '755', '644' ]
+silly extracting entry package.json
+silly extracting entry .npmignore
+silly extracting entry Cakefile
+silly extracting entry test/BenchmarkStatic.coffee
+silly extracting entry test/CdnIntegration.coffee
+silly extracting entry test/BenchmarkDynamic.coffee
+silly extracting entry test/ProductionIntegration.coffee
+silly extracting entry test/AbsoluteIntegration.coffee
+silly extracting entry test/DevelopmentIntegration.coffee
+silly extracting entry test/RemoteIntegration.coffee
+silly extracting entry test/assets/css/button.styl
+silly extracting entry test/assets/css/style.styl
+silly extracting entry test/assets/css/mixins.styl
+silly extracting entry test/assets/css/style-less.less
+silly extracting entry test/assets/css/gradient.styl
+silly extracting entry test/assets/css/normalize.css
+silly extracting entry test/assets/js/narcissist.js
+silly extracting entry test/assets/js/mindy.js
+silly extracting entry test/assets/js/js-dependency.js
+silly extracting entry test/assets/js/dependent.coffee
+silly extracting entry test/assets/js/needs-evil.coffee
+silly extracting entry test/assets/js/chained-dependent.coffee
+silly extracting entry test/assets/js/starbucks/mocha.coffee
+silly extracting entry test/assets/js/coffee-dependency.coffee
+silly extracting entry test/assets/js/a.coffee
+silly extracting entry test/assets/js/c.coffee
+silly extracting entry test/assets/js/addicts/enabler.js
+silly extracting entry test/assets/js/addicts/codependent.coffee
+silly extracting entry test/assets/js/tree-dependent.coffee
+silly extracting entry test/assets/js/subdir/subdir-dependent.js
+silly extracting entry test/assets/js/subdir/nested/hobbits.coffee
+silly extracting entry test/assets/js/script.coffee
+silly extracting entry test/assets/js/b.coffee
+silly extracting entry test/assets/js/moon_units/austin/powers.js
+silly extracting entry test/assets/js/moon_units/austin/texas.coffee
+silly extracting entry test/assets/js/moon_units/zappa.coffee
+silly extracting entry test/assets/js/moon_units/evil.coffee
+silly extracting entry test/assets/js/moon_units/alpha.coffee
+silly extracting entry test/assets/js/mork.coffee
+silly extracting entry test/assets/js/more/annoying.1.2.3.js
+silly extracting entry test/assets/img/foobar.png
+silly extracting entry test/builtAssets/css/style-666055206709fc94e56e1a59caa615dd.css
+silly extracting entry test/builtAssets/js/dependent-057747a1cbabcbd2279e4f358bc4723f.js
+silly extracting entry test/builtAssets/img/foobar-d41d8cd98f00b204e9800998ecf8427e.png
+silly extracting entry src/assets.coffee
+silly extracting entry README.mdown
+silly extracting entry lib/assets.js
+silly extracting entry docs/docco.css
+silly extracting entry docs/DependencyGraph.html
+silly extracting entry docs/parseDirectives.html
+silly extracting entry docs/assets.html
+silly extracting entry docs/createHelpers.html
+silly extracting entry docs/Middleware.html
+verbose caching /root/.npm/connect-assets/2.2.1/package/package.json
+verbose loadDefaults connect-assets@2.2.1
+silly updated sha bytes 26728
+info shasum 5b7602036e5f171bd4c2d27e64d24bf06fef61a4
+info shasum /root/.npm/connect-assets/2.2.1/package.tgz
+verbose from cache /root/.npm/connect-assets/2.2.1/package/package.json
+verbose chmod /root/.npm/connect-assets/2.2.1/package.tgz 644
+verbose chown [ '/root/.npm/connect-assets/2.2.1/package.tgz', 0, 0 ]
+silly resolved [ { author: { name: 'Trevor Burnham', url: 'http://trevorburnham.com' },
+silly resolved     name: 'connect-assets',
+silly resolved     description: 'A Rails-like asset pipeline for Connect',
+silly resolved     version: '2.2.1',
+silly resolved     homepage: 'http://github.com/TrevorBurnham/connect-assets',
+silly resolved     repository: 
+silly resolved      { type: 'git',
+silly resolved        url: 'git://github.com/TrevorBurnham/connect-assets.git' },
+silly resolved     main: 'lib/assets.js',
+silly resolved     dependencies: 
+silly resolved      { 'connect-file-cache': '0.2.4',
+silly resolved        mime: '1.2.2',
+silly resolved        snockets: '1.3.6',
+silly resolved        underscore: '1.1.7' },
+silly resolved     devDependencies: 
+silly resolved      { async: '0.1.14',
+silly resolved        'coffee-script': '~1.3.1',
+silly resolved        connect: '1.8.5',
+silly resolved        nib: '0.2.0',
+silly resolved        'bootstrap-stylus': '0.2.0',
+silly resolved        nodeunit: '0.5.4',
+silly resolved        stylus: '0.22.2',
+silly resolved        request: '2.1.1',
+silly resolved        watchit: '>=0.0.1',
+silly resolved        less: '1.3.0' },
+silly resolved     _id: 'connect-assets@2.2.1',
+silly resolved     optionalDependencies: {},
+silly resolved     engines: { node: '*' },
+silly resolved     _engineSupported: true,
+silly resolved     _npmVersion: '1.1.19',
+silly resolved     _nodeVersion: 'v0.6.18',
+silly resolved     _defaultsLoaded: true,
+silly resolved     dist: { shasum: '5b7602036e5f171bd4c2d27e64d24bf06fef61a4' },
+silly resolved     _from: 'connect-assets@*',
+silly resolved     scripts: {} } ]
+info into /media/sf_workspace/interactiveobject connect-assets@2.2.1
+info installOne connect-assets@2.2.1
+verbose from cache /root/.npm/connect-assets/2.2.1/package/package.json
+info unbuild /media/sf_workspace/interactiveobject/node_modules/connect-assets
+verbose unpack /root/.npm/connect-assets/2.2.1/package.tgz
+silly gunzTarPerm modes [ '755', '644' ]
+silly extracting entry package.json
+silly extracting entry .npmignore
+silly extracting entry Cakefile
+silly extracting entry test/BenchmarkStatic.coffee
+silly extracting entry test/CdnIntegration.coffee
+silly extracting entry test/BenchmarkDynamic.coffee
+silly extracting entry test/ProductionIntegration.coffee
+silly extracting entry test/AbsoluteIntegration.coffee
+silly extracting entry test/DevelopmentIntegration.coffee
+silly extracting entry test/RemoteIntegration.coffee
+silly extracting entry test/assets/css/button.styl
+silly extracting entry test/assets/css/style.styl
+silly extracting entry test/assets/css/mixins.styl
+silly extracting entry test/assets/css/style-less.less
+silly extracting entry test/assets/css/gradient.styl
+silly extracting entry test/assets/css/normalize.css
+silly extracting entry test/assets/js/narcissist.js
+silly extracting entry test/assets/js/mindy.js
+silly extracting entry test/assets/js/js-dependency.js
+silly extracting entry test/assets/js/dependent.coffee
+silly extracting entry test/assets/js/needs-evil.coffee
+silly extracting entry test/assets/js/chained-dependent.coffee
+silly extracting entry test/assets/js/starbucks/mocha.coffee
+silly extracting entry test/assets/js/coffee-dependency.coffee
+silly extracting entry test/assets/js/a.coffee
+silly extracting entry test/assets/js/c.coffee
+silly extracting entry test/assets/js/addicts/enabler.js
+silly extracting entry test/assets/js/addicts/codependent.coffee
+silly extracting entry test/assets/js/tree-dependent.coffee
+silly extracting entry test/assets/js/subdir/subdir-dependent.js
+silly extracting entry test/assets/js/subdir/nested/hobbits.coffee
+silly extracting entry test/assets/js/script.coffee
+silly extracting entry test/assets/js/b.coffee
+silly extracting entry test/assets/js/moon_units/austin/powers.js
+silly extracting entry test/assets/js/moon_units/austin/texas.coffee
+silly extracting entry test/assets/js/moon_units/zappa.coffee
+silly extracting entry test/assets/js/moon_units/evil.coffee
+silly extracting entry test/assets/js/moon_units/alpha.coffee
+silly extracting entry test/assets/js/mork.coffee
+silly extracting entry test/assets/js/more/annoying.1.2.3.js
+silly extracting entry test/assets/img/foobar.png
+silly extracting entry test/builtAssets/css/style-666055206709fc94e56e1a59caa615dd.css
+silly extracting entry test/builtAssets/js/dependent-057747a1cbabcbd2279e4f358bc4723f.js
+silly extracting entry test/builtAssets/img/foobar-d41d8cd98f00b204e9800998ecf8427e.png
+silly extracting entry src/assets.coffee
+silly extracting entry README.mdown
+silly extracting entry lib/assets.js
+silly extracting entry docs/docco.css
+silly extracting entry docs/DependencyGraph.html
+silly extracting entry docs/parseDirectives.html
+silly extracting entry docs/assets.html
+silly extracting entry docs/createHelpers.html
+silly extracting entry docs/Middleware.html
+verbose caching /media/sf_workspace/interactiveobject/node_modules/connect-assets/package.json
+verbose loadDefaults connect-assets@2.2.1
+info preinstall connect-assets@2.2.1
+verbose from cache /media/sf_workspace/interactiveobject/node_modules/connect-assets/package.json
+verbose readDependencies: using package.json deps
+verbose from cache /media/sf_workspace/interactiveobject/node_modules/connect-assets/package.json
+verbose readDependencies: using package.json deps
+verbose cache add [ 'mime@1.2.2', null ]
+silly cache add: name, spec, args [ undefined, 'mime@1.2.2', [ 'mime@1.2.2', null ] ]
+verbose parsed url { pathname: 'mime@1.2.2',
+verbose parsed url   path: 'mime@1.2.2',
+verbose parsed url   href: 'mime@1.2.2' }
+silly cache add: name, spec, args [ 'mime', '1.2.2', [ 'mime', '1.2.2' ] ]
+verbose parsed url { pathname: '1.2.2', path: '1.2.2', href: '1.2.2' }
+verbose addNamed [ 'mime', '1.2.2' ]
+verbose addNamed [ '1.2.2', '1.2.2' ]
+verbose cache add [ 'snockets@1.3.6', null ]
+silly cache add: name, spec, args [ undefined, 'snockets@1.3.6', [ 'snockets@1.3.6', null ] ]
+verbose parsed url { pathname: 'snockets@1.3.6',
+verbose parsed url   path: 'snockets@1.3.6',
+verbose parsed url   href: 'snockets@1.3.6' }
+silly cache add: name, spec, args [ 'snockets', '1.3.6', [ 'snockets', '1.3.6' ] ]
+verbose parsed url { pathname: '1.3.6', path: '1.3.6', href: '1.3.6' }
+verbose addNamed [ 'snockets', '1.3.6' ]
+verbose addNamed [ '1.3.6', '1.3.6' ]
+verbose cache add [ 'underscore@1.1.7', null ]
+silly cache add: name, spec, args [ undefined, 'underscore@1.1.7', [ 'underscore@1.1.7', null ] ]
+verbose parsed url { pathname: 'underscore@1.1.7',
+verbose parsed url   path: 'underscore@1.1.7',
+verbose parsed url   href: 'underscore@1.1.7' }
+silly cache add: name, spec, args [ 'underscore', '1.1.7', [ 'underscore', '1.1.7' ] ]
+verbose parsed url { pathname: '1.1.7', path: '1.1.7', href: '1.1.7' }
+verbose addNamed [ 'underscore', '1.1.7' ]
+verbose addNamed [ '1.1.7', '1.1.7' ]
+verbose raw, before any munging mime/1.2.2
+verbose url resolving [ 'https://registry.npmjs.org/', './mime/1.2.2' ]
+verbose url resolved https://registry.npmjs.org/mime/1.2.2
+http GET https://registry.npmjs.org/mime/1.2.2
+verbose raw, before any munging snockets/1.3.6
+verbose url resolving [ 'https://registry.npmjs.org/', './snockets/1.3.6' ]
+verbose url resolved https://registry.npmjs.org/snockets/1.3.6
+http GET https://registry.npmjs.org/snockets/1.3.6
+verbose raw, before any munging underscore/1.1.7
+verbose url resolving [ 'https://registry.npmjs.org/', './underscore/1.1.7' ]
+verbose url resolved https://registry.npmjs.org/underscore/1.1.7
+http GET https://registry.npmjs.org/underscore/1.1.7
+verbose cache add [ 'connect-file-cache@0.2.4', null ]
+silly cache add: name, spec, args [ undefined,
+silly cache add: name, spec, args   'connect-file-cache@0.2.4',
+silly cache add: name, spec, args   [ 'connect-file-cache@0.2.4', null ] ]
+verbose parsed url { pathname: 'connect-file-cache@0.2.4',
+verbose parsed url   path: 'connect-file-cache@0.2.4',
+verbose parsed url   href: 'connect-file-cache@0.2.4' }
+silly cache add: name, spec, args [ 'connect-file-cache',
+silly cache add: name, spec, args   '0.2.4',
+silly cache add: name, spec, args   [ 'connect-file-cache', '0.2.4' ] ]
+verbose parsed url { pathname: '0.2.4', path: '0.2.4', href: '0.2.4' }
+verbose addNamed [ 'connect-file-cache', '0.2.4' ]
+verbose addNamed [ '0.2.4', '0.2.4' ]
+verbose raw, before any munging connect-file-cache/0.2.4
+verbose url resolving [ 'https://registry.npmjs.org/', './connect-file-cache/0.2.4' ]
+verbose url resolved https://registry.npmjs.org/connect-file-cache/0.2.4
+http GET https://registry.npmjs.org/connect-file-cache/0.2.4
+http 200 https://registry.npmjs.org/mime/1.2.2
+silly get cb [ 200,
+silly get cb   { vary: 'Accept',
+silly get cb     server: 'CouchDB/1.2.0 (Erlang OTP/R15B)',
+silly get cb     etag: '"AXUCN89ZFA61N7AOD0FTPZ0OQ"',
+silly get cb     date: 'Fri, 17 Aug 2012 13:13:26 GMT',
+silly get cb     'content-type': 'application/json',
+silly get cb     'content-length': '611' } ]
+http 200 https://registry.npmjs.org/connect-file-cache/0.2.4
+silly get cb [ 200,
+silly get cb   { vary: 'Accept',
+silly get cb     server: 'CouchDB/1.2.0 (Erlang OTP/R15B)',
+silly get cb     etag: '"5QWQWRUCOLOX5T6TNJJ4779BW"',
+silly get cb     date: 'Fri, 17 Aug 2012 13:13:26 GMT',
+silly get cb     'content-type': 'application/json',
+silly get cb     'content-length': '998' } ]
+verbose bin dist [ '0.6-ares1.7.5-DEV-evundefined-openssl0.9.8e-fips-rhel5-v83.6.6.25-linux-x64-2.6.18-308.11.1.el5',
+verbose bin dist   { shasum: 'b9d6355bf53e8d7d56693130e451daff340148cf',
+verbose bin dist     tarball: 'http://registry.npmjs.org/mime/-/mime-1.2.2.tgz' } ]
+verbose addRemoteTarball [ 'https://registry.npmjs.org/mime/-/mime-1.2.2.tgz',
+verbose addRemoteTarball   'b9d6355bf53e8d7d56693130e451daff340148cf' ]
+verbose fetch to /tmp/npm-1345209498692/1345209509098-0.08116317074745893/tmp.tgz
+http GET https://registry.npmjs.org/mime/-/mime-1.2.2.tgz
+verbose bin dist [ '0.6-ares1.7.5-DEV-evundefined-openssl0.9.8e-fips-rhel5-v83.6.6.25-linux-x64-2.6.18-308.11.1.el5',
+verbose bin dist   { shasum: '6d6afddde29314f2e5cb2c0725d487caadc75913',
+verbose bin dist     tarball: 'http://registry.npmjs.org/connect-file-cache/-/connect-file-cache-0.2.4.tgz' } ]
+verbose addRemoteTarball [ 'https://registry.npmjs.org/connect-file-cache/-/connect-file-cache-0.2.4.tgz',
+verbose addRemoteTarball   '6d6afddde29314f2e5cb2c0725d487caadc75913' ]
+verbose fetch to /tmp/npm-1345209498692/1345209509099-0.27662202226929367/tmp.tgz
+http GET https://registry.npmjs.org/connect-file-cache/-/connect-file-cache-0.2.4.tgz
+http 200 https://registry.npmjs.org/snockets/1.3.6
+silly get cb [ 200,
+silly get cb   { vary: 'Accept',
+silly get cb     server: 'CouchDB/1.2.0 (Erlang OTP/R15B)',
+silly get cb     etag: '"604KZCQ0SEYKULTE0JQIBBLCT"',
+silly get cb     date: 'Fri, 17 Aug 2012 13:13:26 GMT',
+silly get cb     'content-type': 'application/json',
+silly get cb     'content-length': '1057' } ]
+http 200 https://registry.npmjs.org/underscore/1.1.7
+silly get cb [ 200,
+silly get cb   { vary: 'Accept',
+silly get cb     server: 'CouchDB/1.2.0 (Erlang OTP/R15B)',
+silly get cb     etag: '"40K1C63U0NA0NPNB9TXUJ7GNK"',
+silly get cb     date: 'Fri, 17 Aug 2012 13:13:26 GMT',
+silly get cb     'content-type': 'application/json',
+silly get cb     'content-length': '951' } ]
+verbose bin dist [ '0.6-ares1.7.5-DEV-evundefined-openssl0.9.8e-fips-rhel5-v83.6.6.25-linux-x64-2.6.18-308.11.1.el5',
+verbose bin dist   { shasum: '40bab84bad19d230096e8d6ef628bff055d83db0',
+verbose bin dist     tarball: 'http://registry.npmjs.org/underscore/-/underscore-1.1.7.tgz' } ]
+verbose addRemoteTarball [ 'https://registry.npmjs.org/underscore/-/underscore-1.1.7.tgz',
+verbose addRemoteTarball   '40bab84bad19d230096e8d6ef628bff055d83db0' ]
+verbose fetch to /tmp/npm-1345209498692/1345209509467-0.7337965194601566/tmp.tgz
+verbose bin dist [ '0.6-ares1.7.5-DEV-evundefined-openssl0.9.8e-fips-rhel5-v83.6.6.25-linux-x64-2.6.18-308.11.1.el5',
+verbose bin dist   { shasum: 'd29193ed4dfa593782370760223d3f97377be0b5',
+verbose bin dist     tarball: 'http://registry.npmjs.org/snockets/-/snockets-1.3.6.tgz' } ]
+verbose addRemoteTarball [ 'https://registry.npmjs.org/snockets/-/snockets-1.3.6.tgz',
+verbose addRemoteTarball   'd29193ed4dfa593782370760223d3f97377be0b5' ]
+http GET https://registry.npmjs.org/underscore/-/underscore-1.1.7.tgz
+verbose fetch to /tmp/npm-1345209498692/1345209509468-0.6585696605034173/tmp.tgz
+http GET https://registry.npmjs.org/snockets/-/snockets-1.3.6.tgz
+silly updated sha bytes 16530
+info shasum b9d6355bf53e8d7d56693130e451daff340148cf
+info shasum /tmp/npm-1345209498692/1345209509098-0.08116317074745893/tmp.tgz
+verbose unpack /tmp/npm-1345209498692/1345209509098-0.08116317074745893/tmp.tgz
+silly gunzTarPerm modes [ '755', '644' ]
+silly extracting entry mime.types
+silly extracting entry README.md
+silly extracting entry LICENSE
+silly extracting entry node.types
+silly extracting entry test.js
+silly extracting entry index.js
+silly extracting entry package.json
+silly extracting entry mime.js
+verbose caching /tmp/npm-1345209498692/1345209509098-0.08116317074745893/package/package.json
+verbose loadDefaults mime@1.2.2
+verbose from cache /tmp/npm-1345209498692/1345209509098-0.08116317074745893/package/package.json
+verbose tar.pack [ '/root/.npm/mime/1.2.2/package.tgz',
+verbose tar.pack   '/tmp/npm-1345209498692/1345209509098-0.08116317074745893/package' ]
+verbose tarball /root/.npm/mime/1.2.2/package.tgz
+verbose folder /tmp/npm-1345209498692/1345209509098-0.08116317074745893/package
+verbose unpack /root/.npm/mime/1.2.2/package.tgz
+silly gunzTarPerm modes [ '755', '644' ]
+silly extracting entry package.json
+silly extracting entry README.md
+silly extracting entry LICENSE
+silly extracting entry index.js
+silly extracting entry mime.js
+silly extracting entry test.js
+silly extracting entry mime.types
+silly extracting entry node.types
+verbose caching /root/.npm/mime/1.2.2/package/package.json
+verbose loadDefaults mime@1.2.2
+silly updated sha bytes 16440
+info shasum 1de236e21f6ccd7446a090403281e63fae0eff55
+info shasum /root/.npm/mime/1.2.2/package.tgz
+verbose from cache /root/.npm/mime/1.2.2/package/package.json
+verbose chmod /root/.npm/mime/1.2.2/package.tgz 644
+verbose chown [ '/root/.npm/mime/1.2.2/package.tgz', 0, 0 ]
+silly updated sha bytes 20480
+info shasum 6d6afddde29314f2e5cb2c0725d487caadc75913
+info shasum /tmp/npm-1345209498692/1345209509099-0.27662202226929367/tmp.tgz
+verbose unpack /tmp/npm-1345209498692/1345209509099-0.27662202226929367/tmp.tgz
+silly gunzTarPerm modes [ '755', '644' ]
+silly extracting entry .gitignore
+silly extracting entry Cakefile
+silly extracting entry package.json
+silly extracting entry README.mdown
+silly extracting entry lib/cache.js
+silly extracting entry docs/cache.html
+silly extracting entry docs/docco.css
+silly extracting entry src/cache.coffee
+silly extracting entry test/integration.coffee
+silly extracting entry test/unit.coffee
+silly extracting entry test_fixtures/lorem.txt
+silly extracting entry test_fixtures/popeye-zen.txt
+silly extracting entry test_fixtures/raven-quoth.html
+verbose caching /tmp/npm-1345209498692/1345209509099-0.27662202226929367/package/package.json
+verbose loadDefaults connect-file-cache@0.2.4
+verbose from cache /tmp/npm-1345209498692/1345209509099-0.27662202226929367/package/package.json
+verbose tar.pack [ '/root/.npm/connect-file-cache/0.2.4/package.tgz',
+verbose tar.pack   '/tmp/npm-1345209498692/1345209509099-0.27662202226929367/package' ]
+verbose tarball /root/.npm/connect-file-cache/0.2.4/package.tgz
+verbose folder /tmp/npm-1345209498692/1345209509099-0.27662202226929367/package
+verbose unpack /root/.npm/connect-file-cache/0.2.4/package.tgz
+silly gunzTarPerm modes [ '755', '644' ]
+silly extracting entry package.json
+silly extracting entry .npmignore
+silly extracting entry Cakefile
+silly extracting entry test_fixtures/raven-quoth.html
+silly extracting entry test_fixtures/lorem.txt
+silly extracting entry test_fixtures/popeye-zen.txt
+silly extracting entry test/unit.coffee
+silly extracting entry test/integration.coffee
+silly extracting entry src/cache.coffee
+silly extracting entry README.mdown
+silly extracting entry lib/cache.js
+silly extracting entry docs/docco.css
+silly extracting entry docs/cache.html
+verbose caching /root/.npm/connect-file-cache/0.2.4/package/package.json
+verbose loadDefaults connect-file-cache@0.2.4
+silly updated sha bytes 10989
+info shasum de762352ceea0d8c68fc41b28dcfdc24b116c506
+info shasum /root/.npm/connect-file-cache/0.2.4/package.tgz
+verbose from cache /root/.npm/connect-file-cache/0.2.4/package/package.json
+verbose chmod /root/.npm/connect-file-cache/0.2.4/package.tgz 644
+verbose chown [ '/root/.npm/connect-file-cache/0.2.4/package.tgz', 0, 0 ]
+silly updated sha bytes 29052
+info shasum 40bab84bad19d230096e8d6ef628bff055d83db0
+info shasum /tmp/npm-1345209498692/1345209509467-0.7337965194601566/tmp.tgz
+verbose unpack /tmp/npm-1345209498692/1345209509467-0.7337965194601566/tmp.tgz
+silly gunzTarPerm modes [ '755', '644' ]
+silly extracting entry .npmignore
+silly extracting entry index.html
+silly extracting entry index.js
+silly extracting entry LICENSE
+silly extracting entry package.json
+silly extracting entry README
+silly extracting entry underscore-min.js
+silly extracting entry underscore.js
+silly updated sha bytes 40960
+silly updated sha bytes 40960
+silly updated sha bytes 3585
+info shasum d29193ed4dfa593782370760223d3f97377be0b5
+info shasum /tmp/npm-1345209498692/1345209509468-0.6585696605034173/tmp.tgz
+verbose unpack /tmp/npm-1345209498692/1345209509468-0.6585696605034173/tmp.tgz
+silly gunzTarPerm modes [ '755', '644' ]
+silly extracting entry package.json
+silly extracting entry .npmignore
+silly extracting entry Cakefile
+silly extracting entry docs/docco.css
+silly extracting entry docs/snockets.html
+silly extracting entry lib/snockets.js
+silly extracting entry README.mdown
+silly extracting entry src/snockets.coffee
+silly extracting entry test/assets/b.js
+silly extracting entry test/assets/fellowship.js
+silly extracting entry test/assets/jquery-1.6.4.js
+silly extracting entry test/assets/testing.js
+silly extracting entry test/assets/y.js
+silly extracting entry test/assets/yin.js
+verbose caching /tmp/npm-1345209498692/1345209509467-0.7337965194601566/package/package.json
+verbose loadDefaults underscore@1.1.7
+verbose from cache /tmp/npm-1345209498692/1345209509467-0.7337965194601566/package/package.json
+silly extracting entry test/assets/song/loveAndMarriage.js
+silly extracting entry test/assets/song/horseAndCarriage.coffee
+verbose tar.pack [ '/root/.npm/underscore/1.1.7/package.tgz',
+verbose tar.pack   '/tmp/npm-1345209498692/1345209509467-0.7337965194601566/package' ]
+verbose tarball /root/.npm/underscore/1.1.7/package.tgz
+verbose folder /tmp/npm-1345209498692/1345209509467-0.7337965194601566/package
+silly extracting entry test/assets/middleEarth/legolas.coffee
+silly extracting entry test/assets/middleEarth/shire/bilbo.js
+silly extracting entry test/assets/middleEarth/shire/frodo.coffee
+silly extracting entry test/assets/poly.coffee
+silly extracting entry test/assets/a.coffee
+silly extracting entry test/assets/sybling/sybling.js
+silly extracting entry test/assets/1.2.3.coffee
+silly extracting entry test/assets/trilogy.coffee
+silly extracting entry test/assets/x.coffee
+silly extracting entry test/assets/first/syblingFolder.js
+silly extracting entry test/assets/yang.coffee
+silly extracting entry test/assets/branch/periphery.js
+silly extracting entry test/assets/branch/center.coffee
+silly extracting entry test/assets/branch/edge.coffee
+silly extracting entry test/assets/branch/subbranch/leaf.js
+silly extracting entry test/assets/branch/unwanted
+silly extracting entry test/assets/z.coffee
+silly extracting entry test/integration.coffee
+verbose unpack /root/.npm/underscore/1.1.7/package.tgz
+silly gunzTarPerm modes [ '755', '644' ]
+silly extracting entry package.json
+silly extracting entry .npmignore
+silly extracting entry README
+silly extracting entry LICENSE
+silly extracting entry index.js
+silly extracting entry underscore-min.js
+silly extracting entry underscore.js
+silly extracting entry index.html
+verbose caching /root/.npm/underscore/1.1.7/package/package.json
+verbose loadDefaults underscore@1.1.7
+silly updated sha bytes 29025
+info shasum fb2ec3d7aa91c251586ffa45deef5313775c5c83
+info shasum /root/.npm/underscore/1.1.7/package.tgz
+verbose from cache /root/.npm/underscore/1.1.7/package/package.json
+verbose chmod /root/.npm/underscore/1.1.7/package.tgz 644
+verbose chown [ '/root/.npm/underscore/1.1.7/package.tgz', 0, 0 ]
+verbose caching /tmp/npm-1345209498692/1345209509468-0.6585696605034173/package/package.json
+verbose loadDefaults snockets@1.3.6
+verbose from cache /tmp/npm-1345209498692/1345209509468-0.6585696605034173/package/package.json
+verbose tar.pack [ '/root/.npm/snockets/1.3.6/package.tgz',
+verbose tar.pack   '/tmp/npm-1345209498692/1345209509468-0.6585696605034173/package' ]
+verbose tarball /root/.npm/snockets/1.3.6/package.tgz
+verbose folder /tmp/npm-1345209498692/1345209509468-0.6585696605034173/package
+verbose unpack /root/.npm/snockets/1.3.6/package.tgz
+silly gunzTarPerm modes [ '755', '644' ]
+silly extracting entry package.json
+silly extracting entry .npmignore
+silly extracting entry Cakefile
+silly extracting entry test/assets/testing.js
+silly extracting entry test/assets/b.js
+silly extracting entry test/assets/yin.js
+silly extracting entry test/assets/fellowship.js
+silly extracting entry test/assets/y.js
+silly extracting entry test/assets/jquery-1.6.4.js
+silly extracting entry test/assets/z.coffee
+silly extracting entry test/assets/a.coffee
+silly extracting entry test/assets/1.2.3.coffee
+silly extracting entry test/assets/middleEarth/legolas.coffee
+silly extracting entry test/assets/middleEarth/shire/bilbo.js
+silly extracting entry test/assets/middleEarth/shire/frodo.coffee
+silly extracting entry test/assets/yang.coffee
+silly extracting entry test/assets/branch/periphery.js
+silly extracting entry test/assets/branch/center.coffee
+silly extracting entry test/assets/branch/edge.coffee
+silly extracting entry test/assets/branch/subbranch/leaf.js
+silly extracting entry test/assets/branch/unwanted
+silly extracting entry test/assets/sybling/sybling.js
+silly extracting entry test/assets/first/syblingFolder.js
+silly extracting entry test/assets/song/loveAndMarriage.js
+silly extracting entry test/assets/song/horseAndCarriage.coffee
+silly extracting entry test/assets/trilogy.coffee
+silly extracting entry test/assets/poly.coffee
+silly extracting entry test/assets/x.coffee
+silly extracting entry test/integration.coffee
+silly extracting entry src/snockets.coffee
+silly extracting entry README.mdown
+silly extracting entry lib/snockets.js
+silly extracting entry docs/docco.css
+silly extracting entry docs/snockets.html
+verbose caching /root/.npm/snockets/1.3.6/package/package.json
+verbose loadDefaults snockets@1.3.6
+silly updated sha bytes 40960
+silly updated sha bytes 40960
+silly updated sha bytes 3800
+info shasum ed8517be80a5430b533c95645ba8f57dba7acd0b
+info shasum /root/.npm/snockets/1.3.6/package.tgz
+verbose from cache /root/.npm/snockets/1.3.6/package/package.json
+verbose chmod /root/.npm/snockets/1.3.6/package.tgz 644
+verbose chown [ '/root/.npm/snockets/1.3.6/package.tgz', 0, 0 ]
+silly resolved [ { name: 'mime',
+silly resolved     description: 'A comprehensive library for mime-type mapping',
+silly resolved     url: 'http://github.com/bentomas/node-mime',
+silly resolved     keywords: [ 'util', 'mime' ],
+silly resolved     author: 
+silly resolved      { name: 'Benjamin Thomas',
+silly resolved        email: 'benjamin@benjaminthomas.org' },
+silly resolved     contributors: [],
+silly resolved     dependencies: {},
+silly resolved     lib: '.',
+silly resolved     main: 'mime.js',
+silly resolved     version: '1.2.2',
+silly resolved     _id: 'mime@1.2.2',
+silly resolved     devDependencies: {},
+silly resolved     optionalDependencies: {},
+silly resolved     engines: { node: '*' },
+silly resolved     _engineSupported: true,
+silly resolved     _npmVersion: '1.1.19',
+silly resolved     _nodeVersion: 'v0.6.18',
+silly resolved     _defaultsLoaded: true,
+silly resolved     dist: { shasum: '1de236e21f6ccd7446a090403281e63fae0eff55' },
+silly resolved     _from: 'mime@1.2.2',
+silly resolved     scripts: {} },
+silly resolved   { author: { name: 'Trevor Burnham', url: 'http://trevorburnham.com' },
+silly resolved     name: 'connect-file-cache',
+silly resolved     description: 'A Connect middleware for mapping routes to memory',
+silly resolved     version: '0.2.4',
+silly resolved     engines: { node: '>=0.6.1' },
+silly resolved     homepage: 'http://github.com/TrevorBurnham/connect-file-cache',
+silly resolved     repository: 
+silly resolved      { type: 'git',
+silly resolved        url: 'git://github.com/TrevorBurnham/connect-file-cache.git' },
+silly resolved     main: 'lib/cache.js',
+silly resolved     dependencies: { mime: '1.2.2', underscore: '1.1.7' },
+silly resolved     devDependencies: 
+silly resolved      { 'coffee-script': '1.1.2',
+silly resolved        connect: '1.6.4',
+silly resolved        nodeunit: '0.5.4',
+silly resolved        request: '2.1.1',
+silly resolved        'watch-tree': '0.1.1' },
+silly resolved     _id: 'connect-file-cache@0.2.4',
+silly resolved     optionalDependencies: {},
+silly resolved     _engineSupported: true,
+silly resolved     _npmVersion: '1.1.19',
+silly resolved     _nodeVersion: 'v0.6.18',
+silly resolved     _defaultsLoaded: true,
+silly resolved     dist: { shasum: 'de762352ceea0d8c68fc41b28dcfdc24b116c506' },
+silly resolved     _from: 'connect-file-cache@0.2.4',
+silly resolved     scripts: {} },
+silly resolved   { name: 'underscore',
+silly resolved     description: 'JavaScript\'s functional programming helper library.',
+silly resolved     homepage: 'http://documentcloud.github.com/underscore/',
+silly resolved     keywords: [ 'util', 'functional', 'server', 'client', 'browser' ],
+silly resolved     author: { name: 'Jeremy Ashkenas', email: 'jeremy@documentcloud.org' },
+silly resolved     contributors: [],
+silly resolved     dependencies: {},
+silly resolved     repository: 
+silly resolved      { type: 'git',
+silly resolved        url: 'git://github.com/documentcloud/underscore.git' },
+silly resolved     main: 'underscore.js',
+silly resolved     version: '1.1.7',
+silly resolved     _id: 'underscore@1.1.7',
+silly resolved     devDependencies: {},
+silly resolved     optionalDependencies: {},
+silly resolved     engines: { node: '*' },
+silly resolved     _engineSupported: true,
+silly resolved     _npmVersion: '1.1.19',
+silly resolved     _nodeVersion: 'v0.6.18',
+silly resolved     _defaultsLoaded: true,
+silly resolved     dist: { shasum: 'fb2ec3d7aa91c251586ffa45deef5313775c5c83' },
+silly resolved     _from: 'underscore@1.1.7',
+silly resolved     scripts: {} },
+silly resolved   { author: { name: 'Trevor Burnham', url: 'http://trevorburnham.com' },
+silly resolved     name: 'snockets',
+silly resolved     description: 'Sprockets-esque script concatenation for Node',
+silly resolved     version: '1.3.6',
+silly resolved     homepage: 'http://github.com/TrevorBurnham/snockets',
+silly resolved     repository: 
+silly resolved      { type: 'git',
+silly resolved        url: 'git://github.com/TrevorBurnham/snockets.git' },
+silly resolved     main: 'lib/snockets.js',
+silly resolved     dependencies: 
+silly resolved      { 'coffee-script': '>=1.1.2',
+silly resolved        'dep-graph': '1.1.0',
+silly resolved        mime: '1.2.2',
+silly resolved        'uglify-js': '1.0.7',
+silly resolved        underscore: '1.1.7' },
+silly resolved     devDependencies: 
+silly resolved      { 'coffee-script': '1.1.2',
+silly resolved        nodeunit: '0.5.4',
+silly resolved        watchit: '>=0.0.1' },
+silly resolved     _id: 'snockets@1.3.6',
+silly resolved     optionalDependencies: {},
+silly resolved     engines: { node: '*' },
+silly resolved     _engineSupported: true,
+silly resolved     _npmVersion: '1.1.19',
+silly resolved     _nodeVersion: 'v0.6.18',
+silly resolved     _defaultsLoaded: true,
+silly resolved     dist: { shasum: 'ed8517be80a5430b533c95645ba8f57dba7acd0b' },
+silly resolved     _from: 'snockets@1.3.6',
+silly resolved     scripts: {} } ]
+info into /media/sf_workspace/interactiveobject/node_modules/connect-assets mime@1.2.2
+info into /media/sf_workspace/interactiveobject/node_modules/connect-assets connect-file-cache@0.2.4
+info into /media/sf_workspace/interactiveobject/node_modules/connect-assets underscore@1.1.7
+info into /media/sf_workspace/interactiveobject/node_modules/connect-assets snockets@1.3.6
+info installOne mime@1.2.2
+info installOne connect-file-cache@0.2.4
+info installOne underscore@1.1.7
+info installOne snockets@1.3.6
+verbose from cache /root/.npm/connect-file-cache/0.2.4/package/package.json
+info unbuild /media/sf_workspace/interactiveobject/node_modules/connect-assets/node_modules/connect-file-cache
+verbose from cache /root/.npm/underscore/1.1.7/package/package.json
+info unbuild /media/sf_workspace/interactiveobject/node_modules/connect-assets/node_modules/underscore
+verbose from cache /root/.npm/snockets/1.3.6/package/package.json
+info unbuild /media/sf_workspace/interactiveobject/node_modules/connect-assets/node_modules/snockets
+verbose from cache /root/.npm/mime/1.2.2/package/package.json
+info unbuild /media/sf_workspace/interactiveobject/node_modules/connect-assets/node_modules/mime
+verbose unpack /root/.npm/connect-file-cache/0.2.4/package.tgz
+verbose unpack /root/.npm/snockets/1.3.6/package.tgz
+verbose unpack /root/.npm/mime/1.2.2/package.tgz
+verbose unpack /root/.npm/underscore/1.1.7/package.tgz
+silly gunzTarPerm modes [ '755', '644' ]
+silly gunzTarPerm modes [ '755', '644' ]
+silly gunzTarPerm modes [ '755', '644' ]
+silly gunzTarPerm modes [ '755', '644' ]
+silly extracting entry package.json
+silly extracting entry package.json
+silly extracting entry package.json
+silly extracting entry package.json
+silly extracting entry .npmignore
+silly extracting entry Cakefile
+silly extracting entry README.md
+silly extracting entry LICENSE
+silly extracting entry .npmignore
+silly extracting entry Cakefile
+silly extracting entry .npmignore
+silly extracting entry README
+silly extracting entry test_fixtures/raven-quoth.html
+silly extracting entry test_fixtures/lorem.txt
+silly extracting entry index.js
+silly extracting entry mime.js
+silly extracting entry test/assets/testing.js
+silly extracting entry test/assets/b.js
+silly extracting entry test.js
+silly extracting entry mime.types
+silly extracting entry LICENSE
+silly extracting entry index.js
+silly extracting entry node.types
+silly extracting entry test_fixtures/popeye-zen.txt
+silly extracting entry test/unit.coffee
+silly extracting entry test/integration.coffee
+silly extracting entry src/cache.coffee
+silly extracting entry test/assets/yin.js
+silly extracting entry test/assets/fellowship.js
+silly extracting entry test/assets/y.js
+silly extracting entry test/assets/jquery-1.6.4.js
+silly extracting entry underscore-min.js
+silly extracting entry underscore.js
+silly extracting entry index.html
+silly extracting entry test/assets/z.coffee
+silly extracting entry README.mdown
+silly extracting entry lib/cache.js
+silly extracting entry test/assets/a.coffee
+silly extracting entry test/assets/1.2.3.coffee
+silly extracting entry docs/docco.css
+silly extracting entry docs/cache.html
+silly extracting entry test/assets/middleEarth/legolas.coffee
+silly extracting entry test/assets/middleEarth/shire/bilbo.js
+silly extracting entry test/assets/middleEarth/shire/frodo.coffee
+silly extracting entry test/assets/yang.coffee
+silly extracting entry test/assets/branch/periphery.js
+silly extracting entry test/assets/branch/center.coffee
+silly extracting entry test/assets/branch/edge.coffee
+silly extracting entry test/assets/branch/subbranch/leaf.js
+silly extracting entry test/assets/branch/unwanted
+silly extracting entry test/assets/sybling/sybling.js
+silly extracting entry test/assets/first/syblingFolder.js
+silly extracting entry test/assets/song/loveAndMarriage.js
+silly extracting entry test/assets/song/horseAndCarriage.coffee
+silly extracting entry test/assets/trilogy.coffee
+silly extracting entry test/assets/poly.coffee
+silly extracting entry test/assets/x.coffee
+silly extracting entry test/integration.coffee
+silly extracting entry src/snockets.coffee
+silly extracting entry README.mdown
+silly extracting entry lib/snockets.js
+silly extracting entry docs/docco.css
+silly extracting entry docs/snockets.html
+verbose caching /media/sf_workspace/interactiveobject/node_modules/connect-assets/node_modules/mime/package.json
+verbose loadDefaults mime@1.2.2
+info preinstall mime@1.2.2
+verbose from cache /media/sf_workspace/interactiveobject/node_modules/connect-assets/node_modules/mime/package.json
+verbose readDependencies: using package.json deps
+verbose from cache /media/sf_workspace/interactiveobject/node_modules/connect-assets/node_modules/mime/package.json
+verbose readDependencies: using package.json deps
+silly resolved []
+verbose about to build /media/sf_workspace/interactiveobject/node_modules/connect-assets/node_modules/mime
+info build /media/sf_workspace/interactiveobject/node_modules/connect-assets/node_modules/mime
+verbose from cache /media/sf_workspace/interactiveobject/node_modules/connect-assets/node_modules/mime/package.json
+verbose linkStuff [ false,
+verbose linkStuff   false,
+verbose linkStuff   false,
+verbose linkStuff   '/media/sf_workspace/interactiveobject/node_modules/connect-assets/node_modules' ]
+info linkStuff mime@1.2.2
+verbose linkBins mime@1.2.2
+verbose linkMans mime@1.2.2
+verbose rebuildBundles mime@1.2.2
+info install mime@1.2.2
+info postinstall mime@1.2.2
+verbose caching /media/sf_workspace/interactiveobject/node_modules/connect-assets/node_modules/underscore/package.json
+verbose loadDefaults underscore@1.1.7
+info preinstall underscore@1.1.7
+verbose from cache /media/sf_workspace/interactiveobject/node_modules/connect-assets/node_modules/underscore/package.json
+verbose readDependencies: using package.json deps
+verbose from cache /media/sf_workspace/interactiveobject/node_modules/connect-assets/node_modules/underscore/package.json
+verbose readDependencies: using package.json deps
+silly resolved []
+verbose about to build /media/sf_workspace/interactiveobject/node_modules/connect-assets/node_modules/underscore
+info build /media/sf_workspace/interactiveobject/node_modules/connect-assets/node_modules/underscore
+verbose from cache /media/sf_workspace/interactiveobject/node_modules/connect-assets/node_modules/underscore/package.json
+verbose linkStuff [ false,
+verbose linkStuff   false,
+verbose linkStuff   false,
+verbose linkStuff   '/media/sf_workspace/interactiveobject/node_modules/connect-assets/node_modules' ]
+info linkStuff underscore@1.1.7
+verbose linkBins underscore@1.1.7
+verbose linkMans underscore@1.1.7
+verbose rebuildBundles underscore@1.1.7
+info install underscore@1.1.7
+info postinstall underscore@1.1.7
+verbose caching /media/sf_workspace/interactiveobject/node_modules/connect-assets/node_modules/connect-file-cache/package.json
+verbose loadDefaults connect-file-cache@0.2.4
+info preinstall connect-file-cache@0.2.4
+verbose from cache /media/sf_workspace/interactiveobject/node_modules/connect-assets/node_modules/connect-file-cache/package.json
+verbose readDependencies: using package.json deps
+verbose from cache /media/sf_workspace/interactiveobject/node_modules/connect-assets/node_modules/connect-file-cache/package.json
+verbose readDependencies: using package.json deps
+silly resolved []
+verbose about to build /media/sf_workspace/interactiveobject/node_modules/connect-assets/node_modules/connect-file-cache
+info build /media/sf_workspace/interactiveobject/node_modules/connect-assets/node_modules/connect-file-cache
+verbose from cache /media/sf_workspace/interactiveobject/node_modules/connect-assets/node_modules/connect-file-cache/package.json
+verbose linkStuff [ false,
+verbose linkStuff   false,
+verbose linkStuff   false,
+verbose linkStuff   '/media/sf_workspace/interactiveobject/node_modules/connect-assets/node_modules' ]
+info linkStuff connect-file-cache@0.2.4
+verbose linkBins connect-file-cache@0.2.4
+verbose linkMans connect-file-cache@0.2.4
+verbose rebuildBundles connect-file-cache@0.2.4
+info install connect-file-cache@0.2.4
+info postinstall connect-file-cache@0.2.4
+verbose caching /media/sf_workspace/interactiveobject/node_modules/connect-assets/node_modules/snockets/package.json
+verbose loadDefaults snockets@1.3.6
+info preinstall snockets@1.3.6
+verbose from cache /media/sf_workspace/interactiveobject/node_modules/connect-assets/node_modules/snockets/package.json
+verbose readDependencies: using package.json deps
+verbose from cache /media/sf_workspace/interactiveobject/node_modules/connect-assets/node_modules/snockets/package.json
+verbose readDependencies: using package.json deps
+verbose cache add [ 'coffee-script@>=1.1.2', null ]
+silly cache add: name, spec, args [ undefined,
+silly cache add: name, spec, args   'coffee-script@>=1.1.2',
+silly cache add: name, spec, args   [ 'coffee-script@>=1.1.2', null ] ]
+verbose parsed url { pathname: 'coffee-script@',
+verbose parsed url   path: 'coffee-script@',
+verbose parsed url   href: 'coffee-script@' }
+silly cache add: name, spec, args [ 'coffee-script', '>=1.1.2', [ 'coffee-script', '>=1.1.2' ] ]
+verbose parsed url { pathname: '=1.1.2', path: '=1.1.2', href: '=1.1.2' }
+verbose addNamed [ 'coffee-script', '>=1.1.2' ]
+verbose addNamed [ null, '>=1.1.2' ]
+silly name, range, hasData [ 'coffee-script', '>=1.1.2', false ]
+verbose cache add [ 'dep-graph@1.1.0', null ]
+silly cache add: name, spec, args [ undefined, 'dep-graph@1.1.0', [ 'dep-graph@1.1.0', null ] ]
+verbose parsed url { pathname: 'dep-graph@1.1.0',
+verbose parsed url   path: 'dep-graph@1.1.0',
+verbose parsed url   href: 'dep-graph@1.1.0' }
+silly cache add: name, spec, args [ 'dep-graph', '1.1.0', [ 'dep-graph', '1.1.0' ] ]
+verbose parsed url { pathname: '1.1.0', path: '1.1.0', href: '1.1.0' }
+verbose addNamed [ 'dep-graph', '1.1.0' ]
+verbose addNamed [ '1.1.0', '1.1.0' ]
+verbose raw, before any munging coffee-script
+verbose url resolving [ 'https://registry.npmjs.org/', './coffee-script' ]
+verbose url resolved https://registry.npmjs.org/coffee-script
+http GET https://registry.npmjs.org/coffee-script
+verbose raw, before any munging dep-graph/1.1.0
+verbose url resolving [ 'https://registry.npmjs.org/', './dep-graph/1.1.0' ]
+verbose url resolved https://registry.npmjs.org/dep-graph/1.1.0
+http GET https://registry.npmjs.org/dep-graph/1.1.0
+verbose cache add [ 'uglify-js@1.0.7', null ]
+silly cache add: name, spec, args [ undefined, 'uglify-js@1.0.7', [ 'uglify-js@1.0.7', null ] ]
+verbose parsed url { pathname: 'uglify-js@1.0.7',
+verbose parsed url   path: 'uglify-js@1.0.7',
+verbose parsed url   href: 'uglify-js@1.0.7' }
+silly cache add: name, spec, args [ 'uglify-js', '1.0.7', [ 'uglify-js', '1.0.7' ] ]
+verbose parsed url { pathname: '1.0.7', path: '1.0.7', href: '1.0.7' }
+verbose addNamed [ 'uglify-js', '1.0.7' ]
+verbose addNamed [ '1.0.7', '1.0.7' ]
+verbose raw, before any munging uglify-js/1.0.7
+verbose url resolving [ 'https://registry.npmjs.org/', './uglify-js/1.0.7' ]
+verbose url resolved https://registry.npmjs.org/uglify-js/1.0.7
+http GET https://registry.npmjs.org/uglify-js/1.0.7
+http 200 https://registry.npmjs.org/uglify-js/1.0.7
+silly get cb [ 200,
+silly get cb   { vary: 'Accept',
+silly get cb     server: 'CouchDB/1.2.0 (Erlang OTP/R15B)',
+silly get cb     etag: '"8QHMOZN3LMX3WWZDKX75CZKLC"',
+silly get cb     date: 'Fri, 17 Aug 2012 13:13:48 GMT',
+silly get cb     'content-type': 'application/json',
+silly get cb     'content-length': '755' } ]
+http 200 https://registry.npmjs.org/dep-graph/1.1.0
+silly get cb [ 200,
+silly get cb   { vary: 'Accept',
+silly get cb     server: 'CouchDB/1.2.0 (Erlang OTP/R15B)',
+silly get cb     etag: '"450SFQSTUB2E3KULQLMA2RUMT"',
+silly get cb     date: 'Fri, 17 Aug 2012 13:13:48 GMT',
+silly get cb     'content-type': 'application/json',
+silly get cb     'content-length': '972' } ]
+verbose bin dist [ '0.6-ares1.7.5-DEV-evundefined-openssl0.9.8e-fips-rhel5-v83.6.6.25-linux-x64-2.6.18-308.11.1.el5',
+verbose bin dist   { shasum: '2b7a10e628f88029a553d2b4bbb17409343755c0',
+verbose bin dist     tarball: 'http://registry.npmjs.org/uglify-js/-/uglify-js-1.0.7.tgz' } ]
+verbose addRemoteTarball [ 'https://registry.npmjs.org/uglify-js/-/uglify-js-1.0.7.tgz',
+verbose addRemoteTarball   '2b7a10e628f88029a553d2b4bbb17409343755c0' ]
+verbose fetch to /tmp/npm-1345209498692/1345209531385-0.4714481891132891/tmp.tgz
+http GET https://registry.npmjs.org/uglify-js/-/uglify-js-1.0.7.tgz
+verbose bin dist [ '0.6-ares1.7.5-DEV-evundefined-openssl0.9.8e-fips-rhel5-v83.6.6.25-linux-x64-2.6.18-308.11.1.el5',
+verbose bin dist   { shasum: 'fade86a92799a813e9b42511cdf3dfa6cc8dbefe',
+verbose bin dist     tarball: 'http://registry.npmjs.org/dep-graph/-/dep-graph-1.1.0.tgz' } ]
+verbose addRemoteTarball [ 'https://registry.npmjs.org/dep-graph/-/dep-graph-1.1.0.tgz',
+verbose addRemoteTarball   'fade86a92799a813e9b42511cdf3dfa6cc8dbefe' ]
+verbose fetch to /tmp/npm-1345209498692/1345209531387-0.5515166050754488/tmp.tgz
+http GET https://registry.npmjs.org/dep-graph/-/dep-graph-1.1.0.tgz
+http 200 https://registry.npmjs.org/coffee-script
+silly get cb [ 200,
+silly get cb   { vary: 'Accept',
+silly get cb     server: 'CouchDB/1.2.0 (Erlang OTP/R15B)',
+silly get cb     etag: '"1Q935KXG7JOV4YT5IM7JNF78K"',
+silly get cb     date: 'Fri, 17 Aug 2012 13:13:48 GMT',
+silly get cb     'content-type': 'application/json',
+silly get cb     'content-length': '18100' } ]
+silly name, range, hasData 2 [ 'coffee-script', '>=1.1.2', true ]
+silly versions [ 'coffee-script',
+silly versions   [ '0.7.0',
+silly versions     '0.7.1',
+silly versions     '0.7.2',
+silly versions     '0.9.0',
+silly versions     '0.9.1',
+silly versions     '0.9.2',
+silly versions     '0.9.3',
+silly versions     '0.9.4',
+silly versions     '0.9.5',
+silly versions     '0.9.6',
+silly versions     '1.0.0',
+silly versions     '1.0.1',
+silly versions     '1.1.0',
+silly versions     '1.1.1',
+silly versions     '1.1.2',
+silly versions     '1.1.3',
+silly versions     '1.2.0',
+silly versions     '1.3.0',
+silly versions     '1.3.1',
+silly versions     '1.3.2',
+silly versions     '1.3.3' ] ]
+verbose bin dist [ '0.6-ares1.7.5-DEV-evundefined-openssl0.9.8e-fips-rhel5-v83.6.6.25-linux-x64-2.6.18-308.11.1.el5',
+verbose bin dist   { shasum: '150d6b4cb522894369efed6a2101c20bc7f4a4f4',
+verbose bin dist     tarball: 'http://registry.npmjs.org/coffee-script/-/coffee-script-1.3.3.tgz' } ]
+verbose addRemoteTarball [ 'https://registry.npmjs.org/coffee-script/-/coffee-script-1.3.3.tgz',
+verbose addRemoteTarball   '150d6b4cb522894369efed6a2101c20bc7f4a4f4' ]
+verbose fetch to /tmp/npm-1345209498692/1345209531873-0.5346390299964696/tmp.tgz
+http GET https://registry.npmjs.org/coffee-script/-/coffee-script-1.3.3.tgz
+silly updated sha bytes 7711
+info shasum fade86a92799a813e9b42511cdf3dfa6cc8dbefe
+info shasum /tmp/npm-1345209498692/1345209531387-0.5515166050754488/tmp.tgz
+verbose unpack /tmp/npm-1345209498692/1345209531387-0.5515166050754488/tmp.tgz
+silly gunzTarPerm modes [ '755', '644' ]
+silly extracting entry package.json
+silly extracting entry .npmignore
+silly extracting entry Cakefile
+silly extracting entry docs/dep-graph.html
+silly extracting entry docs/docco.css
+silly extracting entry lib/dep-graph.js
+silly extracting entry README.mdown
+silly extracting entry src/dep-graph.coffee
+silly extracting entry test/test.coffee
+verbose caching /tmp/npm-1345209498692/1345209531387-0.5515166050754488/package/package.json
+verbose loadDefaults dep-graph@1.1.0
+verbose from cache /tmp/npm-1345209498692/1345209531387-0.5515166050754488/package/package.json
+verbose tar.pack [ '/root/.npm/dep-graph/1.1.0/package.tgz',
+verbose tar.pack   '/tmp/npm-1345209498692/1345209531387-0.5515166050754488/package' ]
+verbose tarball /root/.npm/dep-graph/1.1.0/package.tgz
+verbose folder /tmp/npm-1345209498692/1345209531387-0.5515166050754488/package
+verbose unpack /root/.npm/dep-graph/1.1.0/package.tgz
+silly gunzTarPerm modes [ '755', '644' ]
+silly extracting entry package.json
+silly extracting entry .npmignore
+silly extracting entry Cakefile
+silly extracting entry test/test.coffee
+silly extracting entry src/dep-graph.coffee
+silly extracting entry README.mdown
+silly extracting entry lib/dep-graph.js
+silly extracting entry docs/docco.css
+silly extracting entry docs/dep-graph.html
+verbose caching /root/.npm/dep-graph/1.1.0/package/package.json
+verbose loadDefaults dep-graph@1.1.0
+silly updated sha bytes 7666
+info shasum 00ec1d1b723f6646048bd00d1150630f84a4b64f
+info shasum /root/.npm/dep-graph/1.1.0/package.tgz
+verbose from cache /root/.npm/dep-graph/1.1.0/package/package.json
+verbose chmod /root/.npm/dep-graph/1.1.0/package.tgz 644
+verbose chown [ '/root/.npm/dep-graph/1.1.0/package.tgz', 0, 0 ]
+silly updated sha bytes 40960
+silly updated sha bytes 15337
+info shasum 2b7a10e628f88029a553d2b4bbb17409343755c0
+info shasum /tmp/npm-1345209498692/1345209531385-0.4714481891132891/tmp.tgz
+verbose unpack /tmp/npm-1345209498692/1345209531385-0.4714481891132891/tmp.tgz
+silly gunzTarPerm modes [ '755', '644' ]
+silly extracting entry docstyle.css
+silly extracting entry .gitignore
+silly extracting entry README.html
+silly extracting entry uglify-js.js
+silly extracting entry package.json
+silly extracting entry README.org
+silly extracting entry lib/squeeze-more.js
+silly extracting entry lib/process.js
+silly extracting entry lib/parse-js.js
+silly extracting entry lib/object-ast.js
+silly extracting entry tmp/instrument.js
+silly extracting entry tmp/test.js
+silly extracting entry tmp/instrument2.js
+silly extracting entry tmp/hoist.js
+silly extracting entry bin/uglifyjs
+silly extracting entry test/testparser.js
+silly extracting entry test/beautify.js
+silly extracting entry test/unit/scripts.js
+silly extracting entry test/unit/compress/test/array2.js
+silly extracting entry test/unit/compress/test/with.js
+silly extracting entry test/unit/compress/test/strict-equals.js
+silly extracting entry test/unit/compress/test/issue16.js
+silly extracting entry test/unit/compress/test/issue11.js
+silly extracting entry test/unit/compress/test/issue21.js
+silly extracting entry test/unit/compress/test/issue54.1.js
+silly extracting entry test/unit/compress/test/if.js
+silly extracting entry test/unit/compress/test/issue48.js
+silly extracting entry test/unit/compress/test/ifreturn2.js
+silly extracting entry test/unit/compress/test/array1.js
+silly extracting entry test/unit/compress/test/issue29.js
+silly extracting entry test/unit/compress/test/var.js
+silly extracting entry test/unit/compress/test/issue50.js
+silly extracting entry test/unit/compress/test/issue14.js
+silly extracting entry test/unit/compress/test/array3.js
+silly extracting entry test/unit/compress/test/issue4.js
+silly extracting entry test/unit/compress/test/issue10.js
+silly extracting entry test/unit/compress/test/array4.js
+silly extracting entry test/unit/compress/test/issue30.js
+silly extracting entry test/unit/compress/test/concatstring.js
+silly extracting entry test/unit/compress/test/issue68.js
+silly extracting entry test/unit/compress/test/issue69.js
+silly extracting entry test/unit/compress/test/mangle.js
+silly extracting entry test/unit/compress/test/issue25.js
+silly extracting entry test/unit/compress/test/assignment.js
+silly extracting entry test/unit/compress/test/issue27.js
+silly extracting entry test/unit/compress/test/issue20.js
+silly extracting entry test/unit/compress/test/const.js
+silly extracting entry test/unit/compress/test/issue34.js
+silly extracting entry test/unit/compress/test/issue28.js
+silly extracting entry test/unit/compress/test/ifreturn.js
+silly extracting entry test/unit/compress/test/issue13.js
+silly extracting entry test/unit/compress/test/empty-blocks.js
+silly extracting entry test/unit/compress/test/issue17.js
+silly extracting entry test/unit/compress/test/issue9.js
+silly extracting entry test/unit/compress/test/issue53.js
+silly extracting entry test/unit/compress/test/forstatement.js
+silly extracting entry test/unit/compress/expected/array2.js
+silly extracting entry test/unit/compress/expected/with.js
+silly extracting entry test/unit/compress/expected/strict-equals.js
+silly extracting entry test/unit/compress/expected/issue16.js
+silly extracting entry test/unit/compress/expected/issue11.js
+silly extracting entry test/unit/compress/expected/issue21.js
+silly extracting entry test/unit/compress/expected/issue54.1.js
+silly extracting entry test/unit/compress/expected/if.js
+silly extracting entry test/unit/compress/expected/issue48.js
+silly extracting entry test/unit/compress/expected/ifreturn2.js
+silly extracting entry test/unit/compress/expected/array1.js
+silly extracting entry test/unit/compress/expected/issue29.js
+silly extracting entry test/unit/compress/expected/var.js
+silly extracting entry test/unit/compress/expected/issue50.js
+silly extracting entry test/unit/compress/expected/issue14.js
+silly extracting entry test/unit/compress/expected/array3.js
+silly extracting entry test/unit/compress/expected/issue4.js
+silly extracting entry test/unit/compress/expected/issue10.js
+silly extracting entry test/unit/compress/expected/array4.js
+silly extracting entry test/unit/compress/expected/issue30.js
+silly extracting entry test/unit/compress/expected/concatstring.js
+silly extracting entry test/unit/compress/expected/issue68.js
+silly extracting entry test/unit/compress/expected/issue69.js
+silly extracting entry test/unit/compress/expected/mangle.js
+silly extracting entry test/unit/compress/expected/issue25.js
+silly extracting entry test/unit/compress/expected/assignment.js
+silly extracting entry test/unit/compress/expected/issue27.js
+silly extracting entry test/unit/compress/expected/issue20.js
+silly extracting entry test/unit/compress/expected/const.js
+silly extracting entry test/unit/compress/expected/issue34.js
+silly extracting entry test/unit/compress/expected/issue28.js
+silly extracting entry test/unit/compress/expected/ifreturn.js
+silly extracting entry test/unit/compress/expected/issue13.js
+silly extracting entry test/unit/compress/expected/empty-blocks.js
+silly extracting entry test/unit/compress/expected/issue17.js
+silly extracting entry test/unit/compress/expected/issue9.js
+silly extracting entry test/unit/compress/expected/issue53.js
+silly extracting entry test/unit/compress/expected/forstatement.js
+silly updated sha bytes 40960
+silly updated sha bytes 26866
+info shasum 150d6b4cb522894369efed6a2101c20bc7f4a4f4
+info shasum /tmp/npm-1345209498692/1345209531873-0.5346390299964696/tmp.tgz
+verbose unpack /tmp/npm-1345209498692/1345209531873-0.5346390299964696/tmp.tgz
+silly gunzTarPerm modes [ '755', '644' ]
+silly extracting entry package.json
+silly extracting entry .npmignore
+silly extracting entry README
+silly extracting entry LICENSE
+silly extracting entry bin/cake
+silly extracting entry bin/coffee
+silly extracting entry CNAME
+silly extracting entry extras/jsl.conf
+silly extracting entry lib/coffee-script/browser.js
+silly extracting entry lib/coffee-script/command.js
+silly extracting entry lib/coffee-script/grammar.js
+silly extracting entry lib/coffee-script/helpers.js
+silly extracting entry lib/coffee-script/index.js
+silly extracting entry lib/coffee-script/coffee-script.js
+silly extracting entry lib/coffee-script/nodes.js
+silly extracting entry lib/coffee-script/optparse.js
+silly extracting entry lib/coffee-script/parser.js
+silly extracting entry lib/coffee-script/repl.js
+silly extracting entry lib/coffee-script/rewriter.js
+silly extracting entry lib/coffee-script/cake.js
+silly extracting entry lib/coffee-script/scope.js
+silly extracting entry lib/coffee-script/lexer.js
+silly extracting entry Rakefile
+verbose caching /tmp/npm-1345209498692/1345209531385-0.4714481891132891/package/package.json
+verbose loadDefaults uglify-js@1.0.7
+verbose from cache /tmp/npm-1345209498692/1345209531385-0.4714481891132891/package/package.json
+verbose tar.pack [ '/root/.npm/uglify-js/1.0.7/package.tgz',
+verbose tar.pack   '/tmp/npm-1345209498692/1345209531385-0.4714481891132891/package' ]
+verbose tarball /root/.npm/uglify-js/1.0.7/package.tgz
+verbose folder /tmp/npm-1345209498692/1345209531385-0.4714481891132891/package
+verbose caching /tmp/npm-1345209498692/1345209531873-0.5346390299964696/package/package.json
+verbose loadDefaults coffee-script@1.3.3
+verbose from cache /tmp/npm-1345209498692/1345209531873-0.5346390299964696/package/package.json
+verbose tar.pack [ '/root/.npm/coffee-script/1.3.3/package.tgz',
+verbose tar.pack   '/tmp/npm-1345209498692/1345209531873-0.5346390299964696/package' ]
+verbose tarball /root/.npm/coffee-script/1.3.3/package.tgz
+verbose folder /tmp/npm-1345209498692/1345209531873-0.5346390299964696/package
+verbose unpack /root/.npm/coffee-script/1.3.3/package.tgz
+silly gunzTarPerm modes [ '755', '644' ]
+silly extracting entry package.json
+silly extracting entry .npmignore
+silly extracting entry README
+silly extracting entry LICENSE
+silly extracting entry bin/coffee
+silly extracting entry bin/cake
+silly extracting entry Rakefile
+silly extracting entry extras/jsl.conf
+silly extracting entry CNAME
+silly extracting entry lib/coffee-script/index.js
+silly extracting entry lib/coffee-script/scope.js
+silly extracting entry lib/coffee-script/nodes.js
+silly extracting entry lib/coffee-script/rewriter.js
+silly extracting entry lib/coffee-script/cake.js
+silly extracting entry lib/coffee-script/command.js
+silly extracting entry lib/coffee-script/parser.js
+silly extracting entry lib/coffee-script/optparse.js
+silly extracting entry lib/coffee-script/browser.js
+silly extracting entry lib/coffee-script/coffee-script.js
+silly extracting entry lib/coffee-script/lexer.js
+silly extracting entry lib/coffee-script/grammar.js
+silly extracting entry lib/coffee-script/repl.js
+silly extracting entry lib/coffee-script/helpers.js
+verbose unpack /root/.npm/uglify-js/1.0.7/package.tgz
+silly gunzTarPerm modes [ '755', '644' ]
+silly extracting entry package.json
+silly extracting entry .npmignore
+silly extracting entry uglify-js.js
+silly extracting entry tmp/instrument.js
+silly extracting entry tmp/instrument2.js
+silly extracting entry tmp/test.js
+silly extracting entry tmp/hoist.js
+silly extracting entry bin/uglifyjs
+silly extracting entry README.html
+silly extracting entry test/testparser.js
+silly extracting entry test/beautify.js
+silly extracting entry test/unit/scripts.js
+silly extracting entry test/unit/compress/test/strict-equals.js
+silly extracting entry test/unit/compress/test/mangle.js
+silly extracting entry test/unit/compress/test/issue28.js
+silly extracting entry test/unit/compress/test/issue14.js
+silly extracting entry test/unit/compress/test/issue16.js
+silly extracting entry test/unit/compress/test/ifreturn2.js
+silly extracting entry test/unit/compress/test/concatstring.js
+silly extracting entry test/unit/compress/test/issue34.js
+silly extracting entry test/unit/compress/test/if.js
+silly extracting entry test/unit/compress/test/assignment.js
+silly extracting entry test/unit/compress/test/issue13.js
+silly extracting entry test/unit/compress/test/issue21.js
+silly extracting entry test/unit/compress/test/issue53.js
+silly extracting entry test/unit/compress/test/empty-blocks.js
+silly extracting entry test/unit/compress/test/issue20.js
+silly extracting entry test/unit/compress/test/forstatement.js
+silly extracting entry test/unit/compress/test/array4.js
+silly extracting entry test/unit/compress/test/issue69.js
+silly extracting entry test/unit/compress/test/const.js
+silly extracting entry test/unit/compress/test/issue50.js
+silly extracting entry test/unit/compress/test/issue11.js
+silly extracting entry test/unit/compress/test/issue54.1.js
+silly extracting entry test/unit/compress/test/issue27.js
+silly extracting entry test/unit/compress/test/issue29.js
+silly extracting entry test/unit/compress/test/var.js
+silly extracting entry test/unit/compress/test/issue4.js
+silly extracting entry test/unit/compress/test/issue17.js
+silly extracting entry test/unit/compress/test/with.js
+silly extracting entry test/unit/compress/test/array3.js
+silly extracting entry test/unit/compress/test/issue48.js
+silly extracting entry test/unit/compress/test/issue30.js
+silly extracting entry test/unit/compress/test/issue68.js
+silly extracting entry test/unit/compress/test/issue25.js
+silly extracting entry test/unit/compress/test/array2.js
+silly extracting entry test/unit/compress/test/array1.js
+silly extracting entry test/unit/compress/test/issue9.js
+silly extracting entry test/unit/compress/test/issue10.js
+silly extracting entry test/unit/compress/test/ifreturn.js
+silly extracting entry test/unit/compress/expected/strict-equals.js
+silly extracting entry test/unit/compress/expected/mangle.js
+silly extracting entry test/unit/compress/expected/issue28.js
+silly extracting entry test/unit/compress/expected/issue14.js
+silly extracting entry test/unit/compress/expected/issue16.js
+silly extracting entry test/unit/compress/expected/ifreturn2.js
+silly extracting entry test/unit/compress/expected/concatstring.js
+silly extracting entry test/unit/compress/expected/issue34.js
+silly extracting entry test/unit/compress/expected/if.js
+silly extracting entry test/unit/compress/expected/assignment.js
+silly extracting entry test/unit/compress/expected/issue13.js
+silly extracting entry test/unit/compress/expected/issue21.js
+silly extracting entry test/unit/compress/expected/issue53.js
+silly extracting entry test/unit/compress/expected/empty-blocks.js
+silly extracting entry test/unit/compress/expected/issue20.js
+silly extracting entry test/unit/compress/expected/forstatement.js
+silly extracting entry test/unit/compress/expected/array4.js
+silly extracting entry test/unit/compress/expected/issue69.js
+silly extracting entry test/unit/compress/expected/const.js
+silly extracting entry test/unit/compress/expected/issue50.js
+silly extracting entry test/unit/compress/expected/issue11.js
+silly extracting entry test/unit/compress/expected/issue54.1.js
+silly extracting entry test/unit/compress/expected/issue27.js
+silly extracting entry test/unit/compress/expected/issue29.js
+silly extracting entry test/unit/compress/expected/var.js
+silly extracting entry test/unit/compress/expected/issue4.js
+silly extracting entry test/unit/compress/expected/issue17.js
+silly extracting entry test/unit/compress/expected/with.js
+silly extracting entry test/unit/compress/expected/array3.js
+silly extracting entry test/unit/compress/expected/issue48.js
+silly extracting entry test/unit/compress/expected/issue30.js
+silly extracting entry test/unit/compress/expected/issue68.js
+silly extracting entry test/unit/compress/expected/issue25.js
+silly extracting entry test/unit/compress/expected/array2.js
+silly extracting entry test/unit/compress/expected/array1.js
+silly extracting entry test/unit/compress/expected/issue9.js
+silly extracting entry test/unit/compress/expected/issue10.js
+silly extracting entry test/unit/compress/expected/ifreturn.js
+silly extracting entry README.org
+silly extracting entry lib/parse-js.js
+silly extracting entry lib/squeeze-more.js
+silly extracting entry lib/object-ast.js
+silly extracting entry lib/process.js
+silly extracting entry docstyle.css
+verbose caching /root/.npm/coffee-script/1.3.3/package/package.json
+verbose loadDefaults coffee-script@1.3.3
+silly updated sha bytes 40960
+silly updated sha bytes 26751
+info shasum 0c7f3112bad22f495dda3bbee8098b4a61ae84c9
+info shasum /root/.npm/coffee-script/1.3.3/package.tgz
+verbose from cache /root/.npm/coffee-script/1.3.3/package/package.json
+verbose chmod /root/.npm/coffee-script/1.3.3/package.tgz 644
+verbose chown [ '/root/.npm/coffee-script/1.3.3/package.tgz', 0, 0 ]
+verbose caching /root/.npm/uglify-js/1.0.7/package/package.json
+verbose loadDefaults uglify-js@1.0.7
+silly updated sha bytes 40960
+silly updated sha bytes 20982
+info shasum 0623fe8ea03e4342d24efb2594b4c95cd16092fb
+info shasum /root/.npm/uglify-js/1.0.7/package.tgz
+verbose from cache /root/.npm/uglify-js/1.0.7/package/package.json
+verbose chmod /root/.npm/uglify-js/1.0.7/package.tgz 644
+verbose chown [ '/root/.npm/uglify-js/1.0.7/package.tgz', 0, 0 ]
+silly resolved [ { author: { name: 'Trevor Burnham', url: 'http://trevorburnham.com' },
+silly resolved     name: 'dep-graph',
+silly resolved     description: 'Simple dependency graph management',
+silly resolved     version: '1.1.0',
+silly resolved     homepage: 'http://github.com/TrevorBurnham/dep-graph',
+silly resolved     repository: 
+silly resolved      { type: 'git',
+silly resolved        url: 'git://github.com/TrevorBurnham/dep-graph.git' },
+silly resolved     main: 'lib/dep-graph.js',
+silly resolved     dependencies: { underscore: '1.2.1' },
+silly resolved     devDependencies: 
+silly resolved      { 'coffee-script': '1.1.2',
+silly resolved        nodeunit: '0.5.4',
+silly resolved        watchit: '>=0.0.1' },
+silly resolved     _id: 'dep-graph@1.1.0',
+silly resolved     optionalDependencies: {},
+silly resolved     engines: { node: '*' },
+silly resolved     _engineSupported: true,
+silly resolved     _npmVersion: '1.1.19',
+silly resolved     _nodeVersion: 'v0.6.18',
+silly resolved     _defaultsLoaded: true,
+silly resolved     dist: { shasum: '00ec1d1b723f6646048bd00d1150630f84a4b64f' },
+silly resolved     _from: 'dep-graph@1.1.0',
+silly resolved     scripts: {} },
+silly resolved   { name: 'coffee-script',
+silly resolved     description: 'Unfancy JavaScript',
+silly resolved     keywords: [ 'javascript', 'language', 'coffeescript', 'compiler' ],
+silly resolved     author: { name: 'Jeremy Ashkenas' },
+silly resolved     version: '1.3.3',
+silly resolved     licenses: 
+silly resolved      [ { type: 'MIT',
+silly resolved          url: 'https://raw.github.com/jashkenas/coffee-script/master/LICENSE' } ],
+silly resolved     engines: { node: '>=0.4.0' },
+silly resolved     directories: { lib: './lib/coffee-script' },
+silly resolved     main: './lib/coffee-script/coffee-script',
+silly resolved     bin: { coffee: './bin/coffee', cake: './bin/cake' },
+silly resolved     homepage: 'http://coffeescript.org',
+silly resolved     bugs: { name: 'https://github.com/jashkenas/coffee-script/issues' },
+silly resolved     repository: 
+silly resolved      { type: 'git',
+silly resolved        url: 'git://github.com/jashkenas/coffee-script.git' },
+silly resolved     devDependencies: { 'uglify-js': '>=1.0.0', jison: '>=0.2.0' },
+silly resolved     _id: 'coffee-script@1.3.3',
+silly resolved     dependencies: {},
+silly resolved     optionalDependencies: {},
+silly resolved     _engineSupported: true,
+silly resolved     _npmVersion: '1.1.19',
+silly resolved     _nodeVersion: 'v0.6.18',
+silly resolved     _defaultsLoaded: true,
+silly resolved     dist: { shasum: '0c7f3112bad22f495dda3bbee8098b4a61ae84c9' },
+silly resolved     _from: 'coffee-script@>=1.1.2',
+silly resolved     scripts: {} },
+silly resolved   { name: 'uglify-js',
+silly resolved     author: 
+silly resolved      { name: 'Mihai Bazon',
+silly resolved        email: 'mihai.bazon@gmail.com',
+silly resolved        url: 'http://mihai.bazon.net/blog' },
+silly resolved     version: '1.0.7',
+silly resolved     main: './uglify-js.js',
+silly resolved     bin: { uglifyjs: './bin/uglifyjs' },
+silly resolved     repository: { type: 'git', url: 'git@github.com:mishoo/UglifyJS.git' },
+silly resolved     _id: 'uglify-js@1.0.7',
+silly resolved     dependencies: {},
+silly resolved     devDependencies: {},
+silly resolved     optionalDependencies: {},
+silly resolved     engines: { node: '*' },
+silly resolved     _engineSupported: true,
+silly resolved     _npmVersion: '1.1.19',
+silly resolved     _nodeVersion: 'v0.6.18',
+silly resolved     _defaultsLoaded: true,
+silly resolved     dist: { shasum: '0623fe8ea03e4342d24efb2594b4c95cd16092fb' },
+silly resolved     _from: 'uglify-js@1.0.7' } ]
+info into /media/sf_workspace/interactiveobject/node_modules/connect-assets/node_modules/snockets dep-graph@1.1.0
+info into /media/sf_workspace/interactiveobject/node_modules/connect-assets/node_modules/snockets coffee-script@1.3.3
+info into /media/sf_workspace/interactiveobject/node_modules/connect-assets/node_modules/snockets uglify-js@1.0.7
+info installOne dep-graph@1.1.0
+info installOne coffee-script@1.3.3
+info installOne uglify-js@1.0.7
+verbose from cache /root/.npm/dep-graph/1.1.0/package/package.json
+info unbuild /media/sf_workspace/interactiveobject/node_modules/connect-assets/node_modules/snockets/node_modules/dep-graph
+verbose from cache /root/.npm/coffee-script/1.3.3/package/package.json
+info unbuild /media/sf_workspace/interactiveobject/node_modules/connect-assets/node_modules/snockets/node_modules/coffee-script
+verbose from cache /root/.npm/uglify-js/1.0.7/package/package.json
+info unbuild /media/sf_workspace/interactiveobject/node_modules/connect-assets/node_modules/snockets/node_modules/uglify-js
+verbose unpack /root/.npm/dep-graph/1.1.0/package.tgz
+verbose unpack /root/.npm/coffee-script/1.3.3/package.tgz
+verbose unpack /root/.npm/uglify-js/1.0.7/package.tgz
+silly gunzTarPerm modes [ '755', '644' ]
+silly gunzTarPerm modes [ '755', '644' ]
+silly gunzTarPerm modes [ '755', '644' ]
+silly extracting entry package.json
+silly extracting entry package.json
+silly extracting entry package.json
+silly extracting entry .npmignore
+silly extracting entry Cakefile
+silly extracting entry .npmignore
+silly extracting entry README
+silly extracting entry .npmignore
+silly extracting entry uglify-js.js
+silly extracting entry test/test.coffee
+silly extracting entry src/dep-graph.coffee
+silly extracting entry LICENSE
+silly extracting entry bin/coffee
+silly extracting entry tmp/instrument.js
+silly extracting entry tmp/instrument2.js
+silly extracting entry README.mdown
+silly extracting entry lib/dep-graph.js
+silly extracting entry docs/docco.css
+silly extracting entry docs/dep-graph.html
+silly extracting entry bin/cake
+silly extracting entry Rakefile
+silly extracting entry extras/jsl.conf
+silly extracting entry CNAME
+silly extracting entry tmp/test.js
+silly extracting entry tmp/hoist.js
+silly extracting entry lib/coffee-script/index.js
+silly extracting entry lib/coffee-script/scope.js
+silly extracting entry lib/coffee-script/nodes.js
+silly extracting entry bin/uglifyjs
+silly extracting entry README.html
+silly extracting entry test/testparser.js
+silly extracting entry test/beautify.js
+silly extracting entry test/unit/scripts.js
+silly extracting entry test/unit/compress/test/strict-equals.js
+silly extracting entry test/unit/compress/test/mangle.js
+silly extracting entry lib/coffee-script/rewriter.js
+silly extracting entry lib/coffee-script/cake.js
+silly extracting entry test/unit/compress/test/issue28.js
+silly extracting entry test/unit/compress/test/issue14.js
+silly extracting entry test/unit/compress/test/issue16.js
+silly extracting entry test/unit/compress/test/ifreturn2.js
+silly extracting entry test/unit/compress/test/concatstring.js
+silly extracting entry test/unit/compress/test/issue34.js
+silly extracting entry test/unit/compress/test/if.js
+silly extracting entry test/unit/compress/test/assignment.js
+silly extracting entry test/unit/compress/test/issue13.js
+silly extracting entry lib/coffee-script/command.js
+silly extracting entry lib/coffee-script/parser.js
+silly extracting entry test/unit/compress/test/issue21.js
+silly extracting entry test/unit/compress/test/issue53.js
+silly extracting entry lib/coffee-script/optparse.js
+silly extracting entry lib/coffee-script/browser.js
+silly extracting entry lib/coffee-script/coffee-script.js
+silly extracting entry test/unit/compress/test/empty-blocks.js
+silly extracting entry test/unit/compress/test/issue20.js
+silly extracting entry lib/coffee-script/lexer.js
+silly extracting entry lib/coffee-script/grammar.js
+silly extracting entry lib/coffee-script/repl.js
+silly extracting entry lib/coffee-script/helpers.js
+silly extracting entry test/unit/compress/test/forstatement.js
+silly extracting entry test/unit/compress/test/array4.js
+silly extracting entry test/unit/compress/test/issue69.js
+silly extracting entry test/unit/compress/test/const.js
+silly extracting entry test/unit/compress/test/issue50.js
+silly extracting entry test/unit/compress/test/issue11.js
+silly extracting entry test/unit/compress/test/issue54.1.js
+silly extracting entry test/unit/compress/test/issue27.js
+silly extracting entry test/unit/compress/test/issue29.js
+silly extracting entry test/unit/compress/test/var.js
+silly extracting entry test/unit/compress/test/issue4.js
+silly extracting entry test/unit/compress/test/issue17.js
+silly extracting entry test/unit/compress/test/with.js
+silly extracting entry test/unit/compress/test/array3.js
+silly extracting entry test/unit/compress/test/issue48.js
+silly extracting entry test/unit/compress/test/issue30.js
+silly extracting entry test/unit/compress/test/issue68.js
+silly extracting entry test/unit/compress/test/issue25.js
+silly extracting entry test/unit/compress/test/array2.js
+silly extracting entry test/unit/compress/test/array1.js
+silly extracting entry test/unit/compress/test/issue9.js
+silly extracting entry test/unit/compress/test/issue10.js
+silly extracting entry test/unit/compress/test/ifreturn.js
+silly extracting entry test/unit/compress/expected/strict-equals.js
+silly extracting entry test/unit/compress/expected/mangle.js
+silly extracting entry test/unit/compress/expected/issue28.js
+silly extracting entry test/unit/compress/expected/issue14.js
+silly extracting entry test/unit/compress/expected/issue16.js
+silly extracting entry test/unit/compress/expected/ifreturn2.js
+silly extracting entry test/unit/compress/expected/concatstring.js
+silly extracting entry test/unit/compress/expected/issue34.js
+silly extracting entry test/unit/compress/expected/if.js
+silly extracting entry test/unit/compress/expected/assignment.js
+silly extracting entry test/unit/compress/expected/issue13.js
+silly extracting entry test/unit/compress/expected/issue21.js
+silly extracting entry test/unit/compress/expected/issue53.js
+silly extracting entry test/unit/compress/expected/empty-blocks.js
+silly extracting entry test/unit/compress/expected/issue20.js
+silly extracting entry test/unit/compress/expected/forstatement.js
+silly extracting entry test/unit/compress/expected/array4.js
+silly extracting entry test/unit/compress/expected/issue69.js
+silly extracting entry test/unit/compress/expected/const.js
+silly extracting entry test/unit/compress/expected/issue50.js
+silly extracting entry test/unit/compress/expected/issue11.js
+silly extracting entry test/unit/compress/expected/issue54.1.js
+silly extracting entry test/unit/compress/expected/issue27.js
+silly extracting entry test/unit/compress/expected/issue29.js
+silly extracting entry test/unit/compress/expected/var.js
+silly extracting entry test/unit/compress/expected/issue4.js
+silly extracting entry test/unit/compress/expected/issue17.js
+silly extracting entry test/unit/compress/expected/with.js
+silly extracting entry test/unit/compress/expected/array3.js
+silly extracting entry test/unit/compress/expected/issue48.js
+silly extracting entry test/unit/compress/expected/issue30.js
+silly extracting entry test/unit/compress/expected/issue68.js
+silly extracting entry test/unit/compress/expected/issue25.js
+silly extracting entry test/unit/compress/expected/array2.js
+silly extracting entry test/unit/compress/expected/array1.js
+silly extracting entry test/unit/compress/expected/issue9.js
+silly extracting entry test/unit/compress/expected/issue10.js
+silly extracting entry test/unit/compress/expected/ifreturn.js
+silly extracting entry README.org
+silly extracting entry lib/parse-js.js
+silly extracting entry lib/squeeze-more.js
+silly extracting entry lib/object-ast.js
+silly extracting entry lib/process.js
+silly extracting entry docstyle.css
+verbose caching /media/sf_workspace/interactiveobject/node_modules/connect-assets/node_modules/snockets/node_modules/dep-graph/package.json
+verbose loadDefaults dep-graph@1.1.0
+info preinstall dep-graph@1.1.0
+verbose from cache /media/sf_workspace/interactiveobject/node_modules/connect-assets/node_modules/snockets/node_modules/dep-graph/package.json
+verbose readDependencies: using package.json deps
+verbose from cache /media/sf_workspace/interactiveobject/node_modules/connect-assets/node_modules/snockets/node_modules/dep-graph/package.json
+verbose readDependencies: using package.json deps
+verbose cache add [ 'underscore@1.2.1', null ]
+silly cache add: name, spec, args [ undefined, 'underscore@1.2.1', [ 'underscore@1.2.1', null ] ]
+verbose parsed url { pathname: 'underscore@1.2.1',
+verbose parsed url   path: 'underscore@1.2.1',
+verbose parsed url   href: 'underscore@1.2.1' }
+silly cache add: name, spec, args [ 'underscore', '1.2.1', [ 'underscore', '1.2.1' ] ]
+verbose parsed url { pathname: '1.2.1', path: '1.2.1', href: '1.2.1' }
+verbose addNamed [ 'underscore', '1.2.1' ]
+verbose addNamed [ '1.2.1', '1.2.1' ]
+verbose raw, before any munging underscore/1.2.1
+verbose url resolving [ 'https://registry.npmjs.org/', './underscore/1.2.1' ]
+verbose url resolved https://registry.npmjs.org/underscore/1.2.1
+http GET https://registry.npmjs.org/underscore/1.2.1
+http 200 https://registry.npmjs.org/underscore/1.2.1
+silly get cb [ 200,
+silly get cb   { vary: 'Accept',
+silly get cb     server: 'CouchDB/1.2.0 (Erlang OTP/R15B)',
+silly get cb     etag: '"40K1C63U0NA0NPNB9TXUJ7GNK"',
+silly get cb     date: 'Fri, 17 Aug 2012 13:14:02 GMT',
+silly get cb     'content-type': 'application/json',
+silly get cb     'content-length': '1093' } ]
+verbose bin dist [ '0.6-ares1.7.5-DEV-evundefined-openssl0.9.8e-fips-rhel5-v83.6.6.25-linux-x64-2.6.18-308.11.1.el5',
+verbose bin dist   { shasum: 'fc5c6b0765673d92a2d4ac8b4dc0aa88702e2bd4',
+verbose bin dist     tarball: 'http://registry.npmjs.org/underscore/-/underscore-1.2.1.tgz' } ]
+verbose addRemoteTarball [ 'https://registry.npmjs.org/underscore/-/underscore-1.2.1.tgz',
+verbose addRemoteTarball   'fc5c6b0765673d92a2d4ac8b4dc0aa88702e2bd4' ]
+verbose fetch to /tmp/npm-1345209498692/1345209545019-0.8306410072837025/tmp.tgz
+http GET https://registry.npmjs.org/underscore/-/underscore-1.2.1.tgz
+silly updated sha bytes 31879
+info shasum fc5c6b0765673d92a2d4ac8b4dc0aa88702e2bd4
+info shasum /tmp/npm-1345209498692/1345209545019-0.8306410072837025/tmp.tgz
+verbose unpack /tmp/npm-1345209498692/1345209545019-0.8306410072837025/tmp.tgz
+silly gunzTarPerm modes [ '755', '644' ]
+silly extracting entry .npmignore
+silly extracting entry index.html
+silly extracting entry index.js
+silly extracting entry LICENSE
+silly extracting entry package.json
+silly extracting entry README
+silly extracting entry underscore-min.js
+silly extracting entry underscore.js
+verbose caching /tmp/npm-1345209498692/1345209545019-0.8306410072837025/package/package.json
+verbose loadDefaults underscore@1.2.1
+verbose from cache /tmp/npm-1345209498692/1345209545019-0.8306410072837025/package/package.json
+verbose tar.pack [ '/root/.npm/underscore/1.2.1/package.tgz',
+verbose tar.pack   '/tmp/npm-1345209498692/1345209545019-0.8306410072837025/package' ]
+verbose tarball /root/.npm/underscore/1.2.1/package.tgz
+verbose folder /tmp/npm-1345209498692/1345209545019-0.8306410072837025/package
+verbose unpack /root/.npm/underscore/1.2.1/package.tgz
+silly gunzTarPerm modes [ '755', '644' ]
+silly extracting entry package.json
+silly extracting entry .npmignore
+silly extracting entry README
+silly extracting entry LICENSE
+silly extracting entry index.js
+silly extracting entry underscore-min.js
+silly extracting entry underscore.js
+silly extracting entry index.html
+verbose caching /root/.npm/underscore/1.2.1/package/package.json
+verbose loadDefaults underscore@1.2.1
+silly updated sha bytes 31898
+info shasum c73a71fa50c145aadfe83007a8d9ccecd658fb97
+info shasum /root/.npm/underscore/1.2.1/package.tgz
+verbose from cache /root/.npm/underscore/1.2.1/package/package.json
+verbose chmod /root/.npm/underscore/1.2.1/package.tgz 644
+verbose chown [ '/root/.npm/underscore/1.2.1/package.tgz', 0, 0 ]
+silly resolved [ { name: 'underscore',
+silly resolved     description: 'JavaScript\'s functional programming helper library.',
+silly resolved     homepage: 'http://documentcloud.github.com/underscore/',
+silly resolved     keywords: [ 'util', 'functional', 'server', 'client', 'browser' ],
+silly resolved     author: { name: 'Jeremy Ashkenas', email: 'jeremy@documentcloud.org' },
+silly resolved     contributors: [],
+silly resolved     dependencies: {},
+silly resolved     repository: 
+silly resolved      { type: 'git',
+silly resolved        url: 'git://github.com/documentcloud/underscore.git' },
+silly resolved     main: 'underscore.js',
+silly resolved     version: '1.2.1',
+silly resolved     _id: 'underscore@1.2.1',
+silly resolved     devDependencies: {},
+silly resolved     optionalDependencies: {},
+silly resolved     engines: { node: '*' },
+silly resolved     _engineSupported: true,
+silly resolved     _npmVersion: '1.1.19',
+silly resolved     _nodeVersion: 'v0.6.18',
+silly resolved     _defaultsLoaded: true,
+silly resolved     dist: { shasum: 'c73a71fa50c145aadfe83007a8d9ccecd658fb97' },
+silly resolved     _from: 'underscore@1.2.1',
+silly resolved     scripts: {} } ]
+info into /media/sf_workspace/interactiveobject/node_modules/connect-assets/node_modules/snockets/node_modules/dep-graph underscore@1.2.1
+info installOne underscore@1.2.1
+verbose from cache /root/.npm/underscore/1.2.1/package/package.json
+info unbuild /media/sf_workspace/interactiveobject/node_modules/connect-assets/node_modules/snockets/node_modules/dep-graph/node_modules/underscore
+verbose unpack /root/.npm/underscore/1.2.1/package.tgz
+silly gunzTarPerm modes [ '755', '644' ]
+silly extracting entry package.json
+silly extracting entry .npmignore
+silly extracting entry README
+silly extracting entry LICENSE
+silly extracting entry index.js
+silly extracting entry underscore-min.js
+silly extracting entry underscore.js
+silly extracting entry index.html
+verbose caching /media/sf_workspace/interactiveobject/node_modules/connect-assets/node_modules/snockets/node_modules/coffee-script/package.json
+verbose loadDefaults coffee-script@1.3.3
+info preinstall coffee-script@1.3.3
+verbose from cache /media/sf_workspace/interactiveobject/node_modules/connect-assets/node_modules/snockets/node_modules/coffee-script/package.json
+verbose readDependencies: using package.json deps
+verbose from cache /media/sf_workspace/interactiveobject/node_modules/connect-assets/node_modules/snockets/node_modules/coffee-script/package.json
+verbose readDependencies: using package.json deps
+silly resolved []
+verbose about to build /media/sf_workspace/interactiveobject/node_modules/connect-assets/node_modules/snockets/node_modules/coffee-script
+info build /media/sf_workspace/interactiveobject/node_modules/connect-assets/node_modules/snockets/node_modules/coffee-script
+verbose from cache /media/sf_workspace/interactiveobject/node_modules/connect-assets/node_modules/snockets/node_modules/coffee-script/package.json
+verbose linkStuff [ false,
+verbose linkStuff   false,
+verbose linkStuff   false,
+verbose linkStuff   '/media/sf_workspace/interactiveobject/node_modules/connect-assets/node_modules/snockets/node_modules' ]
+info linkStuff coffee-script@1.3.3
+verbose linkBins coffee-script@1.3.3
+verbose bins linking [ { coffee: './bin/coffee', cake: './bin/cake' },
+verbose bins linking   '/media/sf_workspace/interactiveobject/node_modules/connect-assets/node_modules/snockets/node_modules/.bin',
+verbose bins linking   false ]
+verbose linkMans coffee-script@1.3.3
+verbose rebuildBundles coffee-script@1.3.3
+info unbuild /media/sf_workspace/interactiveobject/node_modules/connect-assets/node_modules/snockets/node_modules/coffee-script
+verbose from cache /media/sf_workspace/interactiveobject/node_modules/connect-assets/node_modules/snockets/node_modules/coffee-script/package.json
+info preuninstall coffee-script@1.3.3
+info uninstall coffee-script@1.3.3
+verbose unbuild coffee-script@1.3.3 [ false,
+verbose unbuild coffee-script@1.3.3   '/media/sf_workspace/interactiveobject/node_modules',
+verbose unbuild coffee-script@1.3.3   '/media/sf_workspace/interactiveobject/node_modules/connect-assets/node_modules/snockets/node_modules' ]
+verbose binRoot [ '/media/sf_workspace/interactiveobject/node_modules/connect-assets/node_modules/snockets/node_modules/.bin',
+verbose binRoot   { coffee: './bin/coffee', cake: './bin/cake' } ]
+info postuninstall coffee-script@1.3.3
+verbose caching /media/sf_workspace/interactiveobject/node_modules/connect-assets/node_modules/snockets/node_modules/dep-graph/node_modules/underscore/package.json
+verbose loadDefaults underscore@1.2.1
+verbose about to build /media/sf_workspace/interactiveobject/node_modules/connect-assets/node_modules/snockets
+info unbuild /media/sf_workspace/interactiveobject/node_modules/connect-assets/node_modules/snockets
+verbose from cache /media/sf_workspace/interactiveobject/node_modules/connect-assets/node_modules/snockets/package.json
+info preuninstall snockets@1.3.6
+info preinstall underscore@1.2.1
+info uninstall snockets@1.3.6
+verbose unbuild snockets@1.3.6 [ false,
+verbose unbuild snockets@1.3.6   '/media/sf_workspace/interactiveobject/node_modules',
+verbose unbuild snockets@1.3.6   '/media/sf_workspace/interactiveobject/node_modules/connect-assets/node_modules' ]
+info postuninstall snockets@1.3.6
+verbose caching /media/sf_workspace/interactiveobject/node_modules/connect-assets/node_modules/snockets/node_modules/dep-graph/node_modules/underscore/package.json
+verbose readDependencies: using package.json deps
+verbose from cache /media/sf_workspace/interactiveobject/node_modules/connect-assets/node_modules/snockets/node_modules/dep-graph/node_modules/underscore/package.json
+verbose readDependencies: using package.json deps
+silly resolved []
+verbose about to build /media/sf_workspace/interactiveobject/node_modules/connect-assets/node_modules/snockets/node_modules/dep-graph/node_modules/underscore
+info build /media/sf_workspace/interactiveobject/node_modules/connect-assets/node_modules/snockets/node_modules/dep-graph/node_modules/underscore
+verbose from cache /media/sf_workspace/interactiveobject/node_modules/connect-assets/node_modules/snockets/node_modules/dep-graph/node_modules/underscore/package.json
+verbose linkStuff [ false,
+verbose linkStuff   false,
+verbose linkStuff   false,
+verbose linkStuff   '/media/sf_workspace/interactiveobject/node_modules/connect-assets/node_modules/snockets/node_modules/dep-graph/node_modules' ]
+info linkStuff underscore@1.2.1
+verbose linkBins underscore@1.2.1
+verbose linkMans underscore@1.2.1
+verbose rebuildBundles underscore@1.2.1
+info install underscore@1.2.1
+info postinstall underscore@1.2.1
+verbose about to build /media/sf_workspace/interactiveobject/node_modules/connect-assets/node_modules/snockets/node_modules/dep-graph
+info build /media/sf_workspace/interactiveobject/node_modules/connect-assets/node_modules/snockets/node_modules/dep-graph
+info unbuild /media/sf_workspace/interactiveobject/node_modules/connect-assets/node_modules/snockets/node_modules/dep-graph
+ERR! error rolling back snockets@1.3.6 Error: ENOTEMPTY, rmdir '/media/sf_workspace/interactiveobject/node_modules/connect-assets/node_modules/snockets/node_modules/uglify-js/test/unit/compress/test'
+verbose about to build /media/sf_workspace/interactiveobject/node_modules/connect-assets
+info unbuild /media/sf_workspace/interactiveobject/node_modules/connect-assets
+verbose from cache /media/sf_workspace/interactiveobject/node_modules/connect-assets/package.json
+info preuninstall connect-assets@2.2.1
+info uninstall connect-assets@2.2.1
+verbose unbuild connect-assets@2.2.1 [ true,
+verbose unbuild connect-assets@2.2.1   '/media/sf_workspace/interactiveobject/node_modules',
+verbose unbuild connect-assets@2.2.1   '/media/sf_workspace/interactiveobject/node_modules' ]
+info postuninstall connect-assets@2.2.1
+ERR! error rolling back connect-assets@2.2.1 Error: ENOTEMPTY, rmdir '/media/sf_workspace/interactiveobject/node_modules/connect-assets/node_modules/snockets/node_modules/uglify-js/test/unit/compress/test'
+ERR! Error: UNKNOWN, symlink '../coffee-script/bin/coffee'
+ERR! You may report this log at:
+ERR!     <http://github.com/isaacs/npm/issues>
+ERR! or email it to:
+ERR!     <npm-@googlegroups.com>
+ERR! 
+ERR! System Linux 2.6.18-308.11.1.el5
+ERR! command "nodejs" "/usr/bin/npm" "install" "connect-assets"
+ERR! cwd /media/sf_workspace/interactiveobject
+ERR! node -v v0.6.18
+ERR! npm -v 1.1.19
+ERR! path ../coffee-script/bin/coffee
+ERR! code UNKNOWN
+ERR! message UNKNOWN, symlink '../coffee-script/bin/coffee'
+ERR! errno {}
+verbose exit [ 1, true ]
