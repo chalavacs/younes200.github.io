@@ -44,9 +44,9 @@ init = ->
 
 #var sequence = /^\/(\d+)\//.exec(window.location.pathname)[1];
 load_project = (project) ->
-  if selected
+	if selected
     selected.removeClass "selected"
-    unless selected.id is project.id
+    if selected.id == project.id
       document.body.removeChild viewer
     else
       #skip reload current project
@@ -95,7 +95,8 @@ onMenuClick = (event) ->
 		selected.id = project.id
 		selected.addClass "selected"
 		history.pushState project, project.name, "/lab/" + project.id + "/" + project.name.replace(/\ /g, "_").replace(/[:.,\'()%]/g, "")
-		console.log "current sequence", sequence
+		console.log "selected project", project
+		load_project project
 		if sequence
 			leave sequence
 			sequence = null
