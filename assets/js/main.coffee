@@ -6,6 +6,8 @@ selected = null
 viewer = null
 links = []
 wrap = $("#wrap")
+contact_form = $("#contact-form")
+sequence = null
 
 projects = [
   id: 1
@@ -22,9 +24,7 @@ projects = [
 
 init = ->
   generate_menu()
-  
   if window.location.pathname is "/"
-    
     # load the first project 
     load_project projects[0]
   else
@@ -44,9 +44,9 @@ init = ->
 
 #var sequence = /^\/(\d+)\//.exec(window.location.pathname)[1];
 load_project = (project) ->
-  if selected
+	if selected
     selected.removeClass "selected"
-    unless selected.id is project.id
+    if selected.id == project.id
       document.body.removeChild viewer
     else
       #skip reload current project
@@ -84,52 +84,51 @@ generate_menu = ->
 
     $("#labnav").append li
     links[current.id] = link
-  
-  return;
+  return
   
 
 onMenuClick = (event) ->
-      project = $(this).data()
-      unless project.id is selected.id
-        selected.removeClass "selected"
-        selected = links[project.id]
-        selected.id = project.id
-        selected.addClass "selected"
-        history.pushState project, project.name, "/lab/" + project.id + "/" + project.name.replace(/\ /g, "_").replace(/[:.,\'()%]/g, "")
-        if sequence
-          leave sequence
-          sequence = null
-        hide_wrap()
-        true
-      else
-        false
+	project = $(this).data()
+	if project.id != selected.id
+		selected.removeClass "selected"
+		selected = links[project.id]
+		selected.id = project.id
+		selected.addClass "selected"
+		history.pushState project, project.name, "/lab/" + project.id + "/" + project.name.replace(/\ /g, "_").replace(/[:.,\'()%]/g, "")
+		console.log "selected project", project
+		load_project project
+		if sequence
+			leave sequence
+			sequence = null
+			hide_wrap()
+	false
         
         
 # goto the sequence
 leave = (name) ->
-  $("#" + name).removeClass("animate-in").addClass "animate-out"
-  
+  $("#" + name).removeClass("animate-in").addClass("animate-out")
+		
 
 enter = (name) ->
-  $("#" + name).removeClass("animate-out").addClass "animate-in"
+  $("#" + name).removeClass("animate-out").addClass("animate-in")
+	
+
   
 show_wrap = ->
-  unless wrap.hasClass("full-wrap")
-    wrap.addClass "full-wrap"
-    wrap.click ->
-      wrap.removeClass "full-wrap"
-      if sequence
-        leave sequence
-        sequence = null
+	wrap.addClass "full-wrap"
+	wrap.click hide_wrap
+	return;
 
-        
+
 #  Hide global wrapper
 hide_wrap = ->
   wrap.removeClass "full-wrap"
   if sequence
     leave sequence
     sequence = null
-  sequence = null
+  return 
+
+
   
 #  call after resize  
 after_resize = (event) ->
@@ -139,9 +138,10 @@ after_resize = (event) ->
 # On resize
 onResize = (event) ->
   after_resize()
+  return
   
   
-$("#contact-form").submit ->
+contact_form.submit ->
   form = $(this)
   textarea = form.find("textarea[name=message]")
   message = textarea.val()
@@ -159,6 +159,7 @@ $("a[data-sequence]").click (e) ->
   show_wrap()
   enter sequence_name
   sequence = sequence_name
+  true
   
   
   
