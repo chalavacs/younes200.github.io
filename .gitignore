@@ -1,2 +1,22 @@
+node_modules
+.DS_Store
+.sass-cache
+npm-debug.log
 
-/node_modules
+*.log
+=======
+lib-cov
+*.seed
+*.log
+*.csv
+*.dat
+*.out
+*.pid
+*.gz
+*.rdb
+
+pids
+logs
+results
+
+npm-debug.log
