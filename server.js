@@ -19,12 +19,13 @@ var server = http.createServer(app);
 app.configure(function () {
   app.set('views', __dirname + '/views');
   app.set('view engine', 'jade');
+  app.set('view options', { layout : false });
   app.use(express.favicon());
   app.use(express.logger('dev'));
   app.use(express.bodyParser());
   app.use(express.methodOverride());
   //app.use(require('less-middleware')({ src: __dirname + '/public' }));
-  app.use(require('connect-assets')())
+  app.use(require('connect-assets')({build: true}))
   
   //Replace the default connect or express static provider with gzippo's
   app.use(express.static(path.join(__dirname, 'public')));  
@@ -39,6 +40,10 @@ app.configure('development', function(){
 
 app.get('/', function (req, res) {
    res.render('index');
+});
+
+app.get('/about', function (req, res) {
+   res.render('about');
 });
 
 app.get('/lab/*', function (req, res) {

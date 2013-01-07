@@ -2,12 +2,12 @@
   "name":"InteractiveObject",
   "version":"0.0.1",
   "dependencies": {
-		"express": "3.0.x",
+		"express": "*",
 		"underscore": "1.2.x",
 		"notifo" :"",
 		"less": "*",
 		"jade": "*",
-		"connect-assets": "2.2.x",
+		"connect-assets": "https://github.com/lildemon/connect-assets/tarball/master",
 		"coffee-script": "1.3.3"
   },
   "engines": {

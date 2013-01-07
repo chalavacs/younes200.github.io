@@ -1,19 +1,28 @@
 !!! 5
-html
+html(class="no-js preload", lang="en")
   head
     title Interactive Object
     meta(charset="utf-8")
+    meta(name="author", content="Benaomar younes")
+    meta(name="description", content="Younes BENOMAR. Developper.")
+    
     meta(name="viewport", content="width=device-width, initial-scale=1")
     meta(name="robots", content="index, follow")
     meta(name="distribution", content="global")
-    meta(name="description", content="Younes BENOMAR. Developper.")
+    
     meta(name="keywords", content="personal,graphic design, photography, younes benaomar")
-    meta(name="format-detection", content="telephone=no")
-    meta(name="apple-mobile-web-app-capable", content="yes")
-  
-    script(src='http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.1/modernizr.min.js')
-    != css('main.css')
-    script
+    link(rel="apple-touch-icon-precomposed", sizes="114x114", href="/img/icon.png")
+    
+
+    != js('pack') 
+    != css('main')
+   
+  body
+    block content
+    
+    
+    
+   script
       var _gaq = _gaq || [];
       _gaq.push(['_setAccount', 'UA-33129420-1']);
       _gaq.push(['_trackPageview']);
@@ -24,5 +33,5 @@ html
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
       })();
 
-  body
-    block content
+      VS.scaleFix();
+      VS.hideUrlBar();

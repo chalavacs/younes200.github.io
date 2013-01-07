@@ -2,65 +2,71 @@ extends layout
 
 block content
 
-  #wrap
-  ul
-    li
-      #home
-    li
-      #about.about.shape
-        div
-          h1 I design and develop interactive things.
-          span
-            | I love writing and thinking in code and i deeply appreciate all top of the edge, kick ass, interactive stuff.
+  body(itemscope='itemscope', itemtype='http://schema.org/Person')
+  .border
+      nav(role='navigation')
+        .wrapper
+          ul#nav
+            li.active
+              a(href='/') Home
+            li
+              a(href='/about/') Services
+            li
+              a(href='/experiments/') Projects
+            li
+              a(href='mailto:contact@interactive-object.com') Email
+      header(role='banner')
+        .figure
+          a(href='http://interactive-object.com/', itemprop='url', tabindex='-1')
+            img(src='/img/logo.png', alt='Interactive Object')
+        .wrapper
+          h1#heading
+            | Design &
             br
-            | I like modern graphic design, photography and electronic music.
+            | development
+        #swipe
+          .wrapper
+            h2
+              | I believe that all content on the Web should be accessible to anyone using any kind of device to access the Internet.
+              a.next(href='/about/') 
+                | Read more
+                span ?
+      #main(role='main')
+        .wrapper
+          section
+            h3 Service
+            p
+              | I am a
+              span(itemprop='jobTitle') Web Designer
+              | and Developer from Finland who works with the wonderful people at
+              a(href='http://kiskolabs.com/', rel='external', itemprop='affiliation') Kisko Labs
+              | . I've been designing web sites for over a decade.
+            a.readmore(href='http://viljamis.com/about/') View about
+          section
+            h3 Latest from blog
+            p
+              | I wrote an in-depth guide about how to establish an open device lab to Smashing Magazine. It's based on my own experience with the Helsinki lab.
+            a.readmore(href='http://viljamis.com/blog/') View blog
+          section.last
+            h3 Contact me
+            p
+              | If you want a quick reply, send me a tweet on
+              a(href='http://twitter.com/viljamis', rel='external me') Twitter
+              | . If you need more than one hundred and forty characters you can always send an email.
+            a.readmore(href='mailto:me@viljamis.com') Send email
+      footer(role='contentinfo')
+        .wrapper
+          p
+            | &#169; 2012 
+            span(itemprop='name') Viljami Salminen
+            | . All rights reserved.
             br
-            | I love programming and experimenting with new technologies, you will find in Lab section all experimental web app focusing on real time interaction. 
-            br
-            br
-            a(href="javascript:void(0)", data-sequence="contact") Get in Touch &rarr;
+            | Handcrafted in rainy and foggy
+            a(href='http://maps.google.com/maps?q=helsinki,finland&hl=en&sll=37.0625,-95.677068&sspn=58.988897,65.478516&vpsrc=0&hnear=Helsinki,+Finland&t=k&z=12', title='View Helsinki on Google Maps', rel='external') Helsinki
+            | .
+          a.dribbble(href='http://dribbble.com/viljamis', title='Dribbble', rel='external me') Dribbble
+          a.twitter(href='http://twitter.com/viljamis', title='Twitter', rel='external me') Twitter
+
           
-    li
-      #contact.contact.shape
-        div
-          h1 Get in touch!
-          span
-            form#contact-form
-              | Don't be shy, drop me a line!
-              textarea(type="text", name="message", placeholder="")
-              input(type="submit", name="submit", value="Send")
-
-  #menu
-    #logo
-      a(href="/", data-sequence="home") Interactive Object
-    
-    div(style="float: left; height: 100%; width: 5px; background-color: #549584;")
-    div(style="float: left; height: 100%; width: 5px; background-color: #1BE86E;")
-    div(style="float: left; height: 100%; width: 5px; background-color: #A3FB66;")
-
-    div.nav
-      ul
-        li 
-          a(href="javascript:void(0)", data-sequence="about") About
-        li
-          a(href="javascript:void(0)", data-sequence="contact") Get in Touch
-        li
-          a.selected(href="javascript:void(0)", data-sequence="about") Lab
-      
-      ul#labnav
-      
-    
-      
-    #share
-      ul
-        li
-          a.fb(href="https://www.facebook.com/sharer.php?u=http://www.interactive-object.com/", target="_blank", title="Facebook")
-        li
-          a.tt(href="https://twitter.com/intent/tweet?text=http://www.interactive-object.com", target="_blank", title="Twitter")
-        li
-          a.flickr(href="http://www.flickr.com/photos/younes/", target="_blank", title="Flickr")
-        li
-          a.tumblr(href="http://tumblr.interactive-object.com", target="_blank", title="Tumblr")
      
-   
-  != js('main') 
+    != js('main') 
