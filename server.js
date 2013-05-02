@@ -11,8 +11,6 @@ var notification = new Notifo({
 });
 
 
-
-
 // web server
 var server = http.createServer(app);
 
