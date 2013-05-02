@@ -14,14 +14,14 @@ html(class="no-js preload", lang="en")
     link(rel="apple-touch-icon-precomposed", sizes="114x114", href="/img/icon.png")
     
 
-    != js('pack') 
+    
     != css('main')
    
   body
     block content
     
     
-    
+   != js('pack')
    script
       var _gaq = _gaq || [];
       _gaq.push(['_setAccount', 'UA-33129420-1']);

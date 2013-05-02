@@ -45,6 +45,11 @@ window.selectnav = function () {
 ();
 selectnav("nav");
 
+$(document).ready(function() {
+  console.log("here");
+  impress().init();
+});
+
 
 (function (a) {
 	window.VS = window.VS || {};
