@@ -46,8 +46,9 @@ window.selectnav = function () {
 selectnav("nav");
 
 $(document).ready(function() {
-  console.log("here");
   impress().init();
+  VS.scaleFix();
+  VS.hideUrlBar();
 });
 
 
