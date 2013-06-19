@@ -18,7 +18,11 @@
          var h=document.getElementsByTagName("html")[0];h.className+=" wf-loading";var t=setTimeout(function(){h.className=h.className.replace(/(\s|^)wf-loading(\s|$)/g," ");h.className+=" wf-inactive"},config.scriptTimeout);var tk=document.createElement("script"),d=false;tk.src='//use.typekit.net/'+config.kitId+'.js';tk.type="text/javascript";tk.async="true";tk.onload=tk.onreadystatechange=function(){var a=this.readyState;if(d||a&&a!="complete"&&a!="loaded")return;d=true;clearTimeout(t);try{Typekit.load(config)}catch(b){}};var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(tk,s)
          })();
       </script>
-      <link rel='stylesheet' href='/css/main-cd5888b7193fe4c6e5460d67450e8255.css'>
+      <script src='//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js'></script>
+      <script src='//cdnjs.cloudflare.com/ajax/libs/respond.js/1.1.0/respond.min.js'></script>
+      <script src='//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js'></script>
+      <script src='/js/impress.js'></script>
+      <link rel='stylesheet' href='/css/main.css'>
    </head>
    <body>
       <body itemscope="itemscope" itemtype="http://schema.org/Person">
@@ -58,8 +62,13 @@
          </section>
       </div>
    </div>
+<<<<<<< HEAD
    
    </body><script src='/js/pack-596b593d2b4d967ab8ed756851192b67.js'></script><script>var _gaq = _gaq || [];
+=======
+   </body><script src='/js/main.js'></script>
+   <script>var _gaq = _gaq || [];
+>>>>>>> 81b243e9efdd60700a770da4fc285c4f0761aa4d
       _gaq.push(['_setAccount', 'UA-33129420-1']);
       _gaq.push(['_trackPageview']);
       
