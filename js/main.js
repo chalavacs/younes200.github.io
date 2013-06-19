@@ -81,6 +81,27 @@ $(document).ready(function() {
 });
 
 
+$(function(){
+  
+  // Bind an event to window.onhashchange that, when the hash changes, gets the
+  // hash and adds the class "selected" to any matching nav link.
+  $(window).hashchange( function(){
+    var hash = location.hash;
+    
+    // Iterate over all nav links, setting the "selected" class as-appropriate.
+    $('#nav li').each(function(){
+      var that = $(this);
+      that[ that.attr( 'href' ) === hash ? 'addClass' : 'removeClass' ]( 'active' );
+    });
+  })
+  
+  // Since the event is only triggered when the hash changes, we need to trigger
+  // the event now, to handle the hash the page may have loaded with.
+  $(window).hashchange();
+  
+});
+
+
 (function (a) {
 	window.IO = window.IO || {};
 	IO.viewportmeta = a.querySelector && a.querySelector('meta[name="viewport"]');
