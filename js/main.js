@@ -45,29 +45,52 @@ window.selectnav = function () {
 ();
 selectnav("nav");
 
+
+window.matchMedia = window.matchMedia || (function (e, f) {
+		var c,
+		a = e.documentElement,
+		b = a.firstElementChild || a.firstChild,
+		d = e.createElement("body"),
+		g = e.createElement("div");
+		g.id = "mq-test-1";
+		g.style.cssText = "position:absolute;top:-100em";
+		d.appendChild(g);
+		return function (h) {
+			g.innerHTML = '&shy;<style media="' + h + '"> #mq-test-1 { width: 42px; }</style>';
+			a.insertBefore(d, b);
+			c = g.offsetWidth == 42;
+			a.removeChild(d);
+			return {
+				matches : c,
+				media : h
+			}
+		}
+	})(document);
+
+	
 $(document).ready(function() {
   impress().init();
-  VS.scaleFix();
-  VS.hideUrlBar();
+  IO.scaleFix();
+  IO.hideUrlBar();
 });
 
 
 (function (a) {
-	window.VS = window.VS || {};
-	VS.viewportmeta = a.querySelector && a.querySelector('meta[name="viewport"]');
-	VS.ua = navigator.userAgent;
-	VS.scaleFix = function () {
-		if (VS.viewportmeta && /iPhone|iPad|iPod/.test(VS.ua) && !/Opera Mini/.test(VS.ua)) {
-			VS.viewportmeta.content = "width=device-width, minimum-scale=1.0, maximum-scale=1.0";
-			a.addEventListener("gesturestart", VS.gestureStart, false)
+	window.IO = window.IO || {};
+	IO.viewportmeta = a.querySelector && a.querySelector('meta[name="viewport"]');
+	IO.ua = navigator.userAgent;
+	IO.scaleFix = function () {
+		if (IO.viewportmeta && /iPhone|iPad|iPod/.test(IO.ua) && !/Opera Mini/.test(IO.ua)) {
+			IO.viewportmeta.content = "width=device-width, minimum-scale=1.0, maximum-scale=1.0";
+			a.addEventListener("gesturestart", IO.gestureStart, false)
 		}
 	};
-	VS.gestureStart = function () {
-		VS.viewportmeta.content = "width=device-width, minimum-scale=0.25, maximum-scale=1.9"
+	IO.gestureStart = function () {
+		IO.viewportmeta.content = "width=device-width, minimum-scale=0.25, maximum-scale=1.9"
 	};
-	VS.hideUrlBar =
+	IO.hideUrlBar =
 	function () {
-		/iPhone/.test(VS.ua) && (!pageYOffset && !location.hash) && setTimeout(function () {
+		/iPhone/.test(IO.ua) && (!pageYOffset && !location.hash) && setTimeout(function () {
 			window.scrollTo(0, 1)
 		}, 1E3)
 	}
