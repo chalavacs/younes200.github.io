@@ -1,0 +1,10 @@
+{
+  "app": {
+    "name": "Interactive Object"
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "email": "Email"
+  }
+}

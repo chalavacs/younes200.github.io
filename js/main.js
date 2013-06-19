@@ -1,4 +1,3 @@
-
 var docElement = document.documentElement, browserUA = navigator.userAgent.toLowerCase();
 docElement.className = docElement.className.replace(/(^|\s)preload(\s|$)/, "$1$2");
 -1 < browserUA.search("windows phone os 7") && (docElement.className += " winphone");
@@ -43,7 +42,7 @@ window.selectnav = function () {
 	}
 }
 ();
-selectnav("nav");
+
 
 
 window.matchMedia = window.matchMedia || (function (e, f) {
@@ -72,6 +71,13 @@ $(document).ready(function() {
   impress().init();
   IO.scaleFix();
   IO.hideUrlBar();
+  selectnav("nav");
+  
+  i18n.init(function(t) {
+	// translate nav
+	$("body").i18n();
+})
+
 });
 
 
