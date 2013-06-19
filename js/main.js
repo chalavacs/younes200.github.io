@@ -73,7 +73,7 @@ $(document).ready(function() {
   IO.hideUrlBar();
   selectnav("nav");
   
-  i18n.init(function(t) {
+  i18n.init({ fallbackLng: 'en' }, function(t) {
 	// translate nav
 	$("body").i18n();
 })
