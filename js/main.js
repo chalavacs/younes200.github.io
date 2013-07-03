@@ -68,23 +68,17 @@ window.matchMedia = window.matchMedia || (function (e, f) {
 
 	
 $(document).ready(function() {
+  
   impress().init();
   IO.scaleFix();
   IO.hideUrlBar();
   selectnav("nav");
   
   i18n.init({ fallbackLng: 'en' }, function(t) {
-	// translate nav
-	$("body").i18n();
-})
+	  // translate nav
+	  $("body").i18n();
+  });
 
-});
-
-
-$(function(){
-  
-  // Bind an event to window.onhashchange that, when the hash changes, gets the
-  // hash and adds the class "selected" to any matching nav link.
   $(window).hashchange( function(){
     var hash = location.hash;
     
@@ -94,12 +88,10 @@ $(function(){
       that[ that.attr( 'href' ) === hash ? 'addClass' : 'removeClass' ]( 'active' );
     });
   })
-  
-  // Since the event is only triggered when the hash changes, we need to trigger
-  // the event now, to handle the hash the page may have loaded with.
   $(window).hashchange();
   
 });
+
 
 
 (function (a) {
