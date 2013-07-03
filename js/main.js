@@ -82,6 +82,7 @@ $(document).ready(function() {
   $(window).hashchange( function(){
     var hash = location.hash;
     
+    console.log("hash:", hash);
     // Iterate over all nav links, setting the "selected" class as-appropriate.
     $('#nav li').each(function(){
       var that = $(this);
