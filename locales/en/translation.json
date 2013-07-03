@@ -8,6 +8,12 @@
     "email": "Email"
   },
   "home": {
-    "heading": "Design & development"
+    "heading": "Design & development",
+    "description": "We believe that all content on the Web should be accessible to anyone using any kind of device to access the Internet.",
+    "readmore": "Read more ?"
+  },
+  "about": {
+    "heading": "About",
+    "details": "We work on design sotware ans web application web sites specialised in realtime web application."
   }
 }
