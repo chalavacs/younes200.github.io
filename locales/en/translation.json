@@ -6,5 +6,8 @@
     "home": "Home",
     "about": "About",
     "email": "Email"
+  },
+  "home": {
+    "heading": "Design & development"
   }
 }
