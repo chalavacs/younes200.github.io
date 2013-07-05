@@ -73,6 +73,7 @@ $(document).ready(function() {
   IO.scaleFix();
   IO.hideUrlBar();
   selectnav("nav");
+  initCanvas(),
   
   i18n.init({ fallbackLng: 'en' }, function(t) {
 	  // translate nav
@@ -81,12 +82,16 @@ $(document).ready(function() {
 
   $(window).hashchange( function(){
     var hash = location.hash;
-    
-    console.log("hash:", hash);
     // Iterate over all nav links, setting the "selected" class as-appropriate.
     $('#nav li').each(function(){
       var that = $(this);
-      that[ that.attr( 'href' ) === hash ? 'addClass' : 'removeClass' ]( 'active' );
+	  
+	  if(that.find("a:first").attr( 'href' ) === hash ){
+		that.addClass( 'active' );
+	  }else{
+		that.removeClass( 'active' );
+	  }
+	  
     });
   })
   $(window).hashchange();
@@ -115,4 +120,201 @@ $(document).ready(function() {
 		}, 1E3)
 	}
 })(document);
+
+
+var user = {
+	draw : []
+}
+
+var drawbuffer = [],
+	isMouseDown = false,
+	mouse = new Point(),
+	canvas, context,
+	strokeSize = 20,
+	drawIntervalId,
+	resizeIntervalId,
+	brush;
+
+const INK_COLOR = "rgb(0, 0, 0)";
+const REMOTE_INK_COLOR = "rgb(197, 28, 48)";
+const DEFAULT_BRUSH_SIZE = 30;
+const MAX_BRUSH_SIZE = 50;
+const MIN_BRUSH_SIZE = 5;
+const INK_AMOUNT = 20;
+const SPLASH_RANGE = 10;
+const SPLASH_INK_SIZE = 5;
+
+
+
+
+function onDocumentMouseMove(e) {
+	
+	// update the mouse position
+	mouse.set(e.clientX, e.clientY);	
+}
+
+function onDocumentMouseDown(e) {
+	brush.reset();
+	isMouseDown = true;
+}
+
+function onDocumentMouseUp(e) {
+	user.draw.push({
+		path : drawbuffer,
+		size : strokeSize
+	});
+	
+	drawbuffer = [];
+	isMouseDown = false;
+}
+
+// clear button
+function onMousedblclick() {	
+	user.draw = [];
+	if (context) {
+		context.clear();
+	}
+	clearInterval(drawIntervalId);
+}
+
+// main loop for drawing
+function loop() {
+	brush.position(mouse);
+	if (isMouseDown) {
+		// draw the brush on local canvas first
+		brush.draw(context, mouse, INK_COLOR, strokeSize);
+		drawbuffer.push({
+			x : mouse.x,
+			y : mouse.y
+		});
+	}
+}
+
+
+function resizeCanvas() {
+	
+	clearTimeout(resizeIntervalId);
+	resizeIntervalId = setTimeout(doneResizing, 500);
+}
+
+function doneResizing() {
+	canvas.width = window.innerWidth;
+	canvas.height = window.innerHeight;
+}
+
+
+function drawline(ctx, data, color) {
+	// redraw stuff
+	var i = 0;
+	var brush = new Brush(DEFAULT_BRUSH_SIZE, INK_AMOUNT, SPLASH_RANGE, SPLASH_INK_SIZE);
+	brush.position(data.path[0]);
+	brush.reset();
+	for (i = 0; i < data.path.length; i++) {
+		brush.position(data.path[i]);
+		brush.draw(ctx, data.path[i], color, data.size);
+	}
+}
+
+function redraw(ctx, data, color) {
+	// redraw stuff
+	var i = 0;
+	var j = 0;
+	
+	var brush = new Brush(DEFAULT_BRUSH_SIZE, INK_AMOUNT, SPLASH_RANGE, SPLASH_INK_SIZE);
+	
+	for (i = 0; i < data.length; i++) {
+		brush.position(data[i].path[j]);
+		brush.reset();
+		for (j = 0; j < data[i].path.length; j++) {
+			brush.position(data[i].path[j]);
+			brush.draw(ctx, data[i].path[j], color, data[i].size);
+		}
+		j = 0;
+	}
+}
+
+function redraw_with_interval(ctx, data, color) {
+	// redraw stuff
+	clearInterval(drawIntervalId);
+	
+	var i = 0;
+	var j = 0;
+	
+	var brush = new Brush(DEFAULT_BRUSH_SIZE, INK_AMOUNT, SPLASH_RANGE, SPLASH_INK_SIZE);
+	drawIntervalId = setInterval(function () {
+			
+			if (i < data.length) {
+				
+				// reset brush
+				if (j == 0) {
+					brush.position(data[i].path[j]);
+					brush.reset();
+					
+				}
+				brush.position(data[i].path[j]);
+				brush.draw(ctx, data[i].path[j], color, data[i].size);
+				
+				if (j < data[i].path.length - 1) {
+					j++
+				} else if (++i < data.length) {
+					j = 0;
+				} else {
+					clearInterval(drawIntervalId);
+					return;
+				}
+				
+			} else {
+				clearInterval(drawIntervalId);
+				return;
+			}
+			
+		}, 1000 / 60);
+	
+}
+
+
+function initCanvas() {
+	
+	if (Modernizr.canvas) {
+		
+		canvas = document.getElementById('canvas');		
+		// get the context
+		context = canvas.getContext('2d');
+		context.clear = function () {
+			this.clearRect(0, 0, canvas.width, canvas.height);
+		}
+		
+		
+		
+		// resize the canvas to fill browser window dynamically
+		window.addEventListener('resize', resizeCanvas, false);
+		
+		canvas.width = window.innerWidth;
+		canvas.height = window.innerHeight;
+		
+		document.onmousedown = onDocumentMouseDown;
+		document.onmouseup = onDocumentMouseUp;
+		document.onmousemove = onDocumentMouseMove;
+		document.ondblclick = onMousedblclick;
+		
+		brush = new Brush(DEFAULT_BRUSH_SIZE, INK_AMOUNT, SPLASH_RANGE, SPLASH_INK_SIZE);
+		
+		// start draw loop
+		setInterval(loop, 1000 / 60);
+	}
+	
+	/* Tools
+	$("#nav #dots ul li a").click(function (e) {
+		
+		color = $(e.target).css('background-color');
+		
+		$('#nav #dots ul li a').each(function (index) {
+			$(this).removeClass("cur");
+		});
+		$(e.target).addClass("cur");
+	});
+	*/
+	
+}
+
 

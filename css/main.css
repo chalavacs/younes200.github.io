@@ -48,6 +48,63 @@
 	src: url("/font/ptsans/pt_sans-web-regular-webfont.eot?#iefix") format("embedded-opentype"),url("/font/ptsans/pt_sans-web-regular-webfont.woff") format("woff"),url("/font/ptsans/pt_sans-web-regular-webfont.ttf") format("truetype"),url("/font/ptsans/pt_sans-web-regular-webfont.svg#PTSansRegular") format("svg");
 }
 
+@font-face {
+	font-family: 'icons';
+	src:url('/font/icons.eot');
+	src:url('/font/icons.eot?#iefix') format('embedded-opentype'),
+		url('/font/icons.woff') format('woff'),
+		url('/font/icons.ttf') format('truetype'),
+		url('/font/icons.svg#icons') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+/* Use the following CSS code if you want to use data attributes for inserting your icons */
+[data-icon]:before {
+	font-family: 'icons';
+	content: attr(data-icon);
+	speak: none;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+}
+
+
+.i-linkedin, .i-mail, .i-skype, .i-github, .i-flickr, .i-tumblr, .i-twitter {
+	font-family: 'icons';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+}
+.i-linkedin:before {
+	content: "\e003";
+}
+.i-mail:before {
+	content: "\e01e";
+}
+.i-skype:before {
+	content: "\e001";
+}
+.i-github:before {
+	content: "\e002";
+}
+.i-flickr:before {
+	content: "\e000";
+}
+.i-tumblr:before {
+	content: "\e004";
+}
+.i-twitter:before {
+	content: "\e005";
+}
+
+
 *
 {
 	margin: 0;
@@ -70,14 +127,12 @@ article,aside,details,figcaption,.figure,footer,header,hgroup,nav,section
 }
 ::-moz-selection
 {
-	background: #f56906;
-	color: #fefff8;
+	background: transparent;
 	text-shadow: none;
 }
 ::selection
 {
-	background: #f56906;
-	color: #fefff8;
+	background: transparent;
 	text-shadow: none;
 }
 img::selection
@@ -90,20 +145,17 @@ img::-moz-selection
 }
 .cssmask h1::selection
 {
-	background: #50514b;
-	color: transparent;
+	background: transparent;
 	webkit-text-stroke: 1px #fefff8;
 }
 .cssmask .sub h1::selection
 {
-	background: #f56906;
-	color: #fefff8;
+	background: transparent;
 	webkit-text-stroke: 0;
 }
 ::selection:window-inactive,.cssmask h1::selection:window-inactive
 {
-	background: #c9cac4;
-	color: #50514b;
+	background: transparent;
 }
 @-webkit-keyframes arrow
 {
@@ -206,6 +258,28 @@ h1:after
 	margin-left: -0.04em;
 	position: absolute;
 }
+
+
+
+canvas {
+    cursor: cross;
+    display: block;
+    left: 0;
+    position: fixed;
+    top: 0;
+     -webkit-user-select: none;
+}
+
+
+canvas:active {
+  cursor: pointer;
+   -webkit-user-select: none;
+}
+
+#canvas {
+	
+}
+
 .oldie h1:after
 {
 	content: "";
@@ -543,6 +617,7 @@ footer a,footer a:visited
 footer a:hover
 {
 	color: #29251f;
+	text-decoration:none;
 }
 sup a,sup a:hover
 {
@@ -609,7 +684,6 @@ select
 }
 header
 {
-	background: url(../img/top-wide.jpg) top center;
 	height: 99px;
 	z-index: 9;
 }
@@ -750,6 +824,8 @@ footer
 	font: 0.688em/1.6 Arial,Helvetica,"Helvetica Neue",sans-serif;
 	overflow: hidden;
 	padding: 0 7% 40px;
+	bottom: 0;
+	position: absolute;
 	webkit-font-smoothing: antialiased;
 }
 .symbian3 footer
@@ -767,26 +843,20 @@ footer p
 	margin-top: 1em;
 	padding-bottom: 0 !important;
 }
-.twitter,.dribbble
+.social
 {
-	background: transparent url('/img/social_v2.png') no-repeat 0 0;
 	display: block;
 	float: right;
-	height: 27px;
 	margin-top: 3px;
 	moz-transition: opacity .2s ease-in;
 	overflow: hidden;
-	text-indent: -9999px;
 	transition: opacity .2s ease-in;
 	webkit-transition: opacity .2s ease-in;
-	width: 27px;
+	margin-left: 10px;
+	font-size: 2.0em;
 }
-.dribbble
-{
-	background-position: -34px 0;
-	margin-left: 6px;
-}
-.twitter:hover,.dribbble:hover
+
+.social:hover
 {
 	opacity: .7;
 }
@@ -1034,12 +1104,6 @@ aside a,aside a:visited
 }
 
 
-/*
-    Now let's style the presentation steps.
-
-    We start with basics to make sure it displays correctly in everywhere ...
-*/
-
 .step {
     position: relative;
     width: 1140px;
@@ -1056,11 +1120,7 @@ aside a,aside a:visited
     line-height: 1.5;
 }
 
-/*
-    ... and we enhance the styles for impress.js.
 
-    Basically we remove the margin and make inactive steps a little bit transparent.
-*/
 .impress-enabled .step {
     margin: 0;
     opacity: 0.3;
@@ -1074,14 +1134,7 @@ aside a,aside a:visited
 
 .impress-enabled .step.active { opacity: 1 }
 
-/*
-    These 'slide' step styles were heavily inspired by HTML5 Slides:
-    http://html5slides.googlecode.com/svn/trunk/styles.css
 
-    ;)
-
-    They cover everything what you see on first three steps of the demo.
-*/
 .slide {
     display: block;
 
@@ -1258,7 +1311,7 @@ aside a,aside a:visited
 {
 	h1
 	{
-		font-size: 4.6em;
+		font-size: 2.6em;
 	}
 }
 @media screen and (min-width: 540px)
@@ -1296,7 +1349,7 @@ aside a,aside a:visited
 	}
 	.border
 	{
-		background: #29251f url('/img/darkbrown.jpg') repeat -100% 0;
+		background: #c30;
 		height: 7px;
 		width: 100%;
 	}
@@ -1326,7 +1379,7 @@ aside a,aside a:visited
 	}
 	h1
 	{
-		font-size: 8.4em;
+		font-size: 5.4em;
 		margin: 110px auto 20px;
 		text-shadow: -1px 0 0 #f5f6ef,2px 2px 1px rgba(41,37,31,0.06);
 	}
@@ -1734,7 +1787,7 @@ aside a,aside a:visited
 {
 	h1
 	{
-		font-size: 7em;
+		font-size: 5em;
 	}
 	h2
 	{
@@ -1749,7 +1802,7 @@ aside a,aside a:visited
 {
 	h1
 	{
-		font-size: 5.6em;
+		font-size: 4.6em;
 		margin: 0 auto .18em;
 	}
 	h2
@@ -1766,7 +1819,7 @@ aside a,aside a:visited
 {
 	h1
 	{
-		font-size: 6.5em;
+		font-size: 4.5em;
 	}
 }
 
@@ -1774,7 +1827,7 @@ aside a,aside a:visited
 {
 	h1
 	{
-		font-size: 4.6em;
+		font-size: 2.6em;
 	}
 }
 
@@ -1891,7 +1944,7 @@ aside a,aside a:visited
 	}
 	h1
 	{
-		font-size: 10em;
+		font-size: 8em;
 		letter-spacing: 0.03em;
 		margin: 128px auto 26px;
 		padding: 0;
@@ -2147,6 +2200,11 @@ aside a,aside a:visited
 	{
 		width: 1140px;
 	}
+	
+	footer .wrapper {
+		margin-left: 275px;
+	}
+	
 	.sub header
 	{
 		height: 140px;
@@ -2172,7 +2230,7 @@ aside a,aside a:visited
 	}
 	h1
 	{
-		font-size: 11.8em;
+		font-size: 9.8em;
 		letter-spacing: 0.02em;
 		margin: 158px auto 32px;
 	}
@@ -2233,7 +2291,7 @@ aside a,aside a:visited
 	}
 	.figure img
 	{
-		width: 97px;
+		width: 180px;
 	}
 	#main
 	{
