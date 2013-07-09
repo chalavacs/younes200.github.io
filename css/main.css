@@ -262,17 +262,18 @@ h1:after
 
 
 canvas {
-    cursor: cross;
+    cursor: hand;
     display: block;
     left: 0;
     position: fixed;
-    top: 0;
+    top: 0px;
      -webkit-user-select: none;
+	 
 }
 
 
 canvas:active {
-  cursor: pointer;
+  cursor: crosshair;
    -webkit-user-select: none;
 }
 
@@ -731,7 +732,7 @@ nav
 	transition: padding .3s ease;
 	webkit-transition: padding .3s ease;
 	width: 100%;
-	z-index: 10;
+	z-index: 1000;
 }
 .no-js nav,.s60 nav
 {
@@ -821,9 +822,11 @@ section p
 footer
 {
 	color: #919289;
-	font: 0.688em/1.6 Arial,Helvetica,"Helvetica Neue",sans-serif;
+	text-align: center;
+	width: 100%;
+	font: 0.688em/1.2 Arial,Helvetica,"Helvetica Neue",sans-serif;
 	overflow: hidden;
-	padding: 0 7% 40px;
+	padding: 0 0 40px;
 	bottom: 0;
 	position: absolute;
 	webkit-font-smoothing: antialiased;
@@ -845,8 +848,7 @@ footer p
 }
 .social
 {
-	display: block;
-	float: right;
+	display: inline;
 	margin-top: 3px;
 	moz-transition: opacity .2s ease-in;
 	overflow: hidden;
@@ -860,6 +862,8 @@ footer p
 {
 	opacity: .7;
 }
+
+
 .push
 {
 	height: 6em;
@@ -2201,9 +2205,7 @@ aside a,aside a:visited
 		width: 1140px;
 	}
 	
-	footer .wrapper {
-		margin-left: 275px;
-	}
+	
 	
 	.sub header
 	{
