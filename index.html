@@ -1,3 +1,11 @@
+<!--
+
+	Interactive Object
+	@author: Younes Benaomar
+	What are you looking for ? :) The code source are available in Github : https://github.com/interactive-object/interactive-object.github.io
+	Fill free to clone the project and reuse my code
+	
+-->
 <!DOCTYPE html>
 <html lang="en" class="no-js preload">
    <head>
@@ -7,7 +15,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="robots" content="index, follow">
       <meta name="distribution" content="global">
-      <meta name="keywords" content="personal,graphic design, photography, younes benaomar">
+      <meta name="keywords" content="personal,fontend developer, ux designer, graphic design, photography, younes benaomar">
       <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/img/icon.png">
       <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
       <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
@@ -16,16 +24,11 @@
       <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-hashchange/v1.3/jquery.ba-hashchange.min.js"></script>
 	  <script src="/js/helpers.js"></script>
 	  <script src="/js/brush.js"></script>
-
-		
       <link rel='stylesheet' href='/css/main.css'>
    </head>
    <body>
-    
-   
 	<canvas id="canvas"></canvas>
-	
-   <div class="border">
+	<div class="border">
       <nav role="navigation">
          <div class="wrapper">
             <ul id="nav">
@@ -44,39 +47,25 @@
       <div id="impress" class="impress-not-supported">
          <section id="home"  class="step">
             <div class="wrapper">
-               <h1 id="heading"  data-i18n="home.heading"></h1>
+               <h1 id="heading"  data-i18n="[html]home.heading"></h1>
             </div>
             <div id="swipe">
                <div class="wrapper">
-                  <h2 data-i18n="home.description"></h2>
+                  <h2 data-i18n="[html]home.description"></h2>
 				  <div class="push"></div>
                </div>
             </div>
          </section>
-         <section id="about"  data-x="2000"  class="step">
+         <section id="about"  data-x="2000" data-z="200"  data-rotate-y="200"  class="step">
             <div class="wrapper">
                <h1  data-i18n="about.heading"></h1>
                <h2 data-i18n="[html]about.details"></h2>
                <div class="push"></div>
             </div>
          </section>
-		   <section id="contact"  data-x="4000" class="step">
-            <div class="wrapper">
-               <h1  data-i18n="contact.heading"></h1>
-			   
-               <div class="push"></div>
-            </div>
-         </section>
       </div>
-	  
-	   
-	
-
    </div>
-   
-   
 	<footer role="contentinfo">
-		
 		  <a href="mail:contact@interactive-object.com" class="social i-mail" title="Email" rel="external me"></a>
 		  <a href="https://twitter.com/younesbenomar" class="social i-twitter" title="Twitter" rel="external me"></a>
 		  <a href="http://www.flickr.com/photos/younes" class="social i-flickr" title="Flickr" rel="external me"></a>
@@ -84,25 +73,17 @@
 		  <a href="https://github.com/interactive-object" class="social i-github" title="Github" rel="external me"></a>
 		  <a href="skype:youneslive?call" class="social i-skype" title="Skype" rel="external me"></a>
 		  <a href="http://fr.linkedin.com/in/younesbenaomar/" class="social i-linkedin" title="LinkedIn" rel="external me"></a>
-		
 	</footer>
-  
-  
-
       <script src='/js/impress.js'></script>
-      <script src='/js/main.js'></script>
-	  
+      <script src='/js/main.js'></script>	  
 	  <script>var _gaq = _gaq || [];
       _gaq.push(['_setAccount', 'UA-40639281-1']);
       _gaq.push(['_trackPageview']);
-      
       (function() {
         var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
         ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
       })();
    </script>
-   
    </body>
-   
 </html>

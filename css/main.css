@@ -711,7 +711,8 @@ header .wrapper,header .figure
 	float: none;
 	height: auto;
 	margin: 0 auto 25px;
-	width: 88px;
+	width: 180px;
+	
 }
 .sub .figure a
 {
@@ -720,7 +721,7 @@ header .wrapper,header .figure
 .figure img
 {
 	height: auto;
-	width: 88px;
+	width: 180px;
 }
 nav
 {
@@ -1120,7 +1121,7 @@ aside a,aside a:visited
     box-sizing:         border-box;
 
     font-family: 'PT Serif', georgia, serif;
-
+	/*background-color: rgba(207,207,207,0.24);*/
     line-height: 1.5;
 }
 
@@ -1831,6 +1832,10 @@ aside a,aside a:visited
 {
 	h1
 	{
+		font-size: 5.6em;
+	}
+	h2
+	{
 		font-size: 2.6em;
 	}
 }
@@ -1940,7 +1945,7 @@ aside a,aside a:visited
 	}
 	.figure img
 	{
-		width: 84px;
+		width: 180px;
 	}
 	#swipe
 	{
@@ -2234,7 +2239,7 @@ aside a,aside a:visited
 	{
 		font-size: 9.8em;
 		letter-spacing: 0.02em;
-		margin: 158px auto 32px;
+		margin: 80px auto 32px;
 	}
 	.sub h1
 	{
@@ -2247,7 +2252,7 @@ aside a,aside a:visited
 	}
 	h2,h3
 	{
-		font-size: 2em;
+		font-size: 1.8em;
 		margin-bottom: 1.5em;
 		width: 680px;
 	}

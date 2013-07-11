@@ -135,8 +135,7 @@ var drawbuffer = [],
 	resizeIntervalId,
 	brush;
 
-const INK_COLOR = "rgb(0, 0, 0)";
-const REMOTE_INK_COLOR = "rgb(197, 28, 48)";
+const INK_COLOR = "#c30";
 const DEFAULT_BRUSH_SIZE = 30;
 const MAX_BRUSH_SIZE = 50;
 const MIN_BRUSH_SIZE = 5;
