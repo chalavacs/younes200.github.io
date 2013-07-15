@@ -73,7 +73,7 @@ $(document).ready(function() {
   IO.scaleFix();
   IO.hideUrlBar();
   selectnav("nav");
-  initCanvas(),
+  //initCanvas();
   
   i18n.init({ fallbackLng: 'en' }, function(t) {
 	  // translate nav

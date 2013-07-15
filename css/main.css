@@ -203,7 +203,6 @@ html
 {
 	background: #fefff8;
 	ms-text-size-adjust: 100%;
-	overflow-y: scroll;
 	text-size-adjust: 100%;
 	webkit-tap-highlight-color: #919289;
 	webkit-text-size-adjust: 100%;
@@ -733,7 +732,7 @@ nav
 	transition: padding .3s ease;
 	webkit-transition: padding .3s ease;
 	width: 100%;
-	z-index: 1000;
+	z-index: 9000;
 }
 .no-js nav,.s60 nav
 {
@@ -832,6 +831,27 @@ footer
 	position: absolute;
 	webkit-font-smoothing: antialiased;
 }
+
+.social-content {
+	color: #c30;
+	text-align: center;
+	width: 100%;
+	overflow: hidden;
+	padding: 0 0 40px;
+}
+
+.social-content a
+{
+	color: #c30;
+	text-decoration:none;
+}
+
+.social-content a:hover
+{
+	color: #29251f;
+	text-decoration:none;
+}
+
 .symbian3 footer
 {
 	display: none;
@@ -856,7 +876,7 @@ footer p
 	transition: opacity .2s ease-in;
 	webkit-transition: opacity .2s ease-in;
 	margin-left: 10px;
-	font-size: 2.0em;
+	font-size: 3.0em;
 }
 
 .social:hover
