@@ -216,7 +216,6 @@ body
 	min-width: 224px;
 	padding: 0;
 	width: 100%;
-	background: url(../img/paper.jpg);
   overflow: hidden;
 }
 select
@@ -226,10 +225,8 @@ select
 }
 .wrapper
 {
-	/*margin-left: auto;
-	margin-right: auto;
-	max-width: 600px;
-	*/
+	
+	background-color: rgba(255,255,255,0.1);
 }
 h1,h2,h3,h4,h5,h6
 {
@@ -1374,8 +1371,6 @@ aside a,aside a:visited
 	}
 	.border
 	{
-		background: #c30;
-		height: 7px;
 		width: 100%;
 	}
 	.ie6 .border
@@ -1397,6 +1392,7 @@ aside a,aside a:visited
 		margin: 0 auto;
 		max-width: none;
 		position: relative;
+		padding: 10px;
 	}
 	.wrapper,.figure
 	{
@@ -1532,14 +1528,9 @@ aside a,aside a:visited
 	}
 	nav a:link,nav a:hover,nav a:visited
 	{
-		border-radius: 7px;
 		color: #646473;
 		font-size: 1em;
 		letter-spacing: 1.6px;
-		moz-border-radius: 7px;
-		moz-transition: background .2s ease-in;
-		ms-border-radius: 7px;
-		o-border-radius: 7px;
 		padding: 10px 13px 6px;
 		text-decoration: none;
 		transition: background .2s ease-in;
@@ -1558,29 +1549,16 @@ aside a,aside a:visited
 	}
 	nav .active a,nav .active a:visited,nav .active a:hover,.no-js nav .active a,.no-js nav .active a:visited,.no-js nav .active a:hover,.no-js .sub nav .active a,.no-js .sub nav .active a:visited,.no-js .sub nav .active a:hover
 	{
-		background: #29251f url('/img/darkbrown.jpg') repeat;
+		background-color: #29251f;
 		color: #fefff8;
 	}
 	nav .active
 	{
-		background: transparent url('/img/arrow.png') no-repeat 50% 31px;
-		background-size: 23px 24px;
-		margin: 0 0 0 8px;
-		moz-background-size: 23px 24px;
-		moz-transition: all .2s ease-in-out;
-		o-background-size: 23px 24px;
-		padding-bottom: 31px;
-		transition: all .2s ease-in-out;
-		webkit-animation-duration: .5s;
-		webkit-animation-iteration-count: 1;
-		webkit-animation-name: arrow;
-		webkit-animation-timing-function: ease-in-out;
-		webkit-background-size: 23px 24px;
-		webkit-transition: all .2s ease-in-out;
+		background-color:  #29251f;
 	}
 	.ie6 nav .active
 	{
-		background: transparent none;
+		
 	}
 	.sub nav a,.sub nav a:hover,.sub nav a:visited
 	{

@@ -1,9 +1,8 @@
 <!--
 
-	Interactive Object - Younes Benaomar
+	Interactive Object
 	What are you looking for ? :) The code source is available here : https://github.com/interactive-object/interactive-object.github.io
-	Fill free to clone the project and reuse it.
-	
+
 -->
 <!DOCTYPE html>
 <html lang="en" class="no-js preload">
@@ -21,6 +20,7 @@
       <script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.1.0/respond.min.js"></script>
       <script src="//cdn.jsdelivr.net/i18next/1.6.0/i18next-1.6.0.min.js"></script>
       <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-hashchange/v1.3/jquery.ba-hashchange.min.js"></script>
+	  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
 	  <script src="/js/helpers.js"></script>
 	  <script src="/js/brush.js"></script>
       <link rel='stylesheet' href='/css/main.css'>
@@ -47,21 +47,18 @@
          <section id="home"  class="step">
             <div class="wrapper">
                <h1 id="heading"  data-i18n="[html]home.heading"></h1>
+			         <h2 data-i18n="[html]home.description"></h2>
             </div>
-            <div id="swipe">
-               <div class="wrapper">
-                  <h2 data-i18n="[html]home.description"></h2>
-				  <div class="push"></div>
-               </div>
-            </div>
+            
+            
          </section>
-         <section id="about"  data-x="2000" data-z="200"  data-rotate-y="200"  class="step">
+         <section id="about"  data-x="2000"  class="step">
             <div class="wrapper">
                <h1  data-i18n="about.heading"></h1>
                <h2 data-i18n="[html]about.details"></h2>
             </div>
          </section>
-		  <section id="contact"  data-x="2000" data-z="-1000"  data-rotate-y="400"  class="step">
+		  <section id="contact"  data-x="4000" class="step">
             <div class="wrapper">
                <div class="social-content">
 					  <a href="mail:contact@interactive-object.com" class="social i-mail" title="Email" rel="external me"></a>
