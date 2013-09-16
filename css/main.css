@@ -226,7 +226,7 @@ select
 .wrapper
 {
 	
-	background-color: rgba(255,255,255,0.1);
+	
 }
 h1,h2,h3,h4,h5,h6
 {
@@ -236,15 +236,15 @@ h1,h2,h3,h4,h5,h6
 }
 h1
 {
-	color: #c30;
+	color: #4B404F;
 	display: block;
-	font: 3.8em/0.82 "MochaMattari","Helvetica Neue",Helvetica,Calibri,Arial,sans-serif;
+	font: 3.8em/0.82 "TrumpGothicEastBold","Helvetica Neue",Helvetica,Calibri,Arial,sans-serif;
 	letter-spacing: 0.02em;
 	margin: 0 auto .26em;
 	moz-transition: font-size .3s ease;
 	position: relative;
 	text-align: center;
-	text-shadow: 1px 1px 0 rgba(210,90,5,0.3);
+
 	webkit-font-smoothing: antialiased;
 	webkit-transition: font-size .3s ease;
 }
@@ -322,7 +322,7 @@ canvas:active {
 }
 h2
 {
-	color: #646473;
+	color: white;
 	font: 0.938em/1.2 "PTSansRegular","Helvetica Neue",Helvetica,Arial,sans-serif;
 	margin: 0 auto;
 	max-width: 90%;
@@ -830,7 +830,6 @@ footer
 }
 
 .social-content {
-	color: #c30;
 	text-align: center;
 	width: 100%;
 	overflow: hidden;
@@ -839,7 +838,7 @@ footer
 
 .social-content a
 {
-	color: #c30;
+	color: black;
 	text-decoration:none;
 }
 
@@ -1402,7 +1401,7 @@ aside a,aside a:visited
 	{
 		font-size: 5.4em;
 		margin: 110px auto 20px;
-		text-shadow: -1px 0 0 #f5f6ef,2px 2px 1px rgba(41,37,31,0.06);
+
 	}
 	.no-fontface h1
 	{
