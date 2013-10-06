@@ -69,7 +69,7 @@ window.matchMedia = window.matchMedia || (function (e, f) {
 	
 $(document).ready(function() {
   
-  $.backstretch("/img/background.jpg");
+  //$.backstretch("/img/background.jpg");
   impress().init();
   IO.scaleFix();
   IO.hideUrlBar();

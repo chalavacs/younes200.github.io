@@ -8,23 +8,16 @@
 }
 @font-face
 {
-	font-family: 'TrumpGothicEastBold';
+	font-family: 'GothamBold';
 	font-style: normal;
 	font-weight: normal;
 	src: url("/font/trump/trumpgoteasbol-webfont.eot");
 	src: url("/font/trump/trumpgoteasbol-webfont.eot?#iefix") format("embedded-opentype"),url("/font/trump/trumpgoteasbol-webfont.woff") format("woff"),url("/font/trump/trumpgoteasbol-webfont.ttf") format("truetype"),url("/font/trump/trumpgoteasbol-webfont.svg#webfontIEdw22Dw") format("svg");
 }
+
 @font-face
 {
-	font-family: 'TrumpGothicEastMedium';
-	font-style: normal;
-	font-weight: normal;
-	src: url("/font/trump/trumpgoteasmed-webfont.eot");
-	src: url("/font/trump/trumpgoteasmed-webfont.eot?#iefix") format("embedded-opentype"),url("/font/trump/trumpgoteasmed-webfont.woff") format("woff"),url("/font/trump/trumpgoteasmed-webfont.ttf") format("truetype"),url("/font/trump/trumpgoteasmed-webfont.svg#webfontbvGEs1qr") format("svg");
-}
-@font-face
-{
-	font-family: 'TrumpGothicEastRegular';
+	font-family: 'GothamBold';
 	font-style: normal;
 	font-weight: normal;
 	src: url("/font/trump/trumpgoteasreg-webfont.eot");
@@ -46,6 +39,31 @@
 	font-weight: normal;
 	src: url("/font/ptsans/pt_sans-web-regular-webfont.eot");
 	src: url("/font/ptsans/pt_sans-web-regular-webfont.eot?#iefix") format("embedded-opentype"),url("/font/ptsans/pt_sans-web-regular-webfont.woff") format("woff"),url("/font/ptsans/pt_sans-web-regular-webfont.ttf") format("truetype"),url("/font/ptsans/pt_sans-web-regular-webfont.svg#PTSansRegular") format("svg");
+}
+
+@font-face
+{
+	font-family: 'GothamBook';
+	font-style: normal;
+	font-weight: normal;
+	src: url("/font/gotham/gotham-book.eot");
+	src: url("/font/gotham/gotham-book.eot?#iefix")
+			format("embedded-opentype"),url("/font/gotham/gotham-book.woff") 
+			format("woff"),url("/font/gotham/gotham-book.ttf") 
+			format("truetype"),url("/font/gotham/gotham-book.svg#GothamBook") format("svg");
+}
+
+
+@font-face
+{
+	font-family: 'GothamBold';
+	font-style: normal;
+	font-weight: normal;
+	src: url("/font/gotham/gotham-bold.eot");
+	src: url("/font/gotham/gotham-bold.eot?#iefix")
+			format("embedded-opentype"),url("/font/gotham/gotham-bold.woff") 
+			format("woff"),url("/font/gotham/gotham-bold.ttf") 
+			format("truetype"),url("/font/gotham/gotham-bold.svg#GothamBold") format("svg");
 }
 
 @font-face {
@@ -201,7 +219,6 @@ html,body
 }
 html
 {
-	background: #fefff8;
 	ms-text-size-adjust: 100%;
 	text-size-adjust: 100%;
 	webkit-tap-highlight-color: #919289;
@@ -209,9 +226,10 @@ html
 }
 body
 {
-	background-color: transparent;
+	background-image: url("/img/background.png");
+	background-repeat:repeat-x;
 	color: #50514b;
-	font: 100%/1.4 "PTSansRegular","Helvetica Neue",Helvetica,Arial,sans-serif;
+	font: 100%/1.4 "GothamBook","Helvetica Neue",Helvetica,Arial,sans-serif;
 	margin: 0 auto;
 	min-width: 224px;
 	padding: 0;
@@ -231,14 +249,14 @@ select
 h1,h2,h3,h4,h5,h6
 {
 	color: #29251f;
-	font-family: "TrumpGothicEastBold","Arial Narrow",Impact,Calibri,Arial,sans-serif;
+	font-family: "GothamBook","Arial Narrow",Impact,Calibri,Arial,sans-serif;
 	font-weight: normal;
 }
 h1
 {
-	color: #4B404F;
+	color: #e74c3c;
 	display: block;
-	font: 3.8em/0.82 "TrumpGothicEastBold","Helvetica Neue",Helvetica,Calibri,Arial,sans-serif;
+	font: 2.8em/0.82 "GothamBook","Helvetica Neue",Helvetica,Calibri,Arial,sans-serif;
 	letter-spacing: 0.02em;
 	margin: 0 auto .26em;
 	moz-transition: font-size .3s ease;
@@ -358,7 +376,7 @@ h2
 }
 h4
 {
-	font: 1.25em/1.3 "TrumpGothicEastBold","Arial Narrow",Impact,Calibri,Arial,sans-serif;
+	font: 1.25em/1.3 "GothamBold","Arial Narrow",Impact,Calibri,Arial,sans-serif;
 }
 .no-fontface .desc h2,.no-fontface h3,.winphone .desc h2,.winphone h3,.symbian3 .desc h2,.symbian3 h3
 {
@@ -755,14 +773,14 @@ nav li:last-child
 }
 nav a:link,nav a:visited,nav a:hover
 {
-	color: #646473;
+	color: white;
 	font-size: .8125em;
 	padding: 12px 10px;
 	text-decoration: none;
 }
 .no-js nav .active a,.no-js nav .active a:visited,.no-js nav .active a:hover,.s60 nav .active a,.s60 nav .active a:visited,.s60 nav .active a:hover
 {
-	background: #d25a05 url('/img/orange.jpg') repeat -100% 0;
+	/*background: #d25a05 url('/img/orange.jpg') repeat -100% 0;*/
 }
 .no-js .sub nav .active a,.no-js .sub nav .active a:visited,.no-js .sub nav .active a:hover,.s60 .sub nav .active a,.s60 .sub nav .active a:visited,.s60 .sub nav .active a:hover
 {
@@ -838,13 +856,13 @@ footer
 
 .social-content a
 {
-	color: black;
+	color: white;
 	text-decoration:none;
 }
 
 .social-content a:hover
 {
-	color: #29251f;
+	color: #e74c3c;
 	text-decoration:none;
 }
 
@@ -1417,7 +1435,7 @@ aside a,aside a:visited
 	}
 	h2
 	{
-		font: normal 1.45em/1.5em "TrumpGothicEastRegular","Arial Narrow",Impact,Calibri,Arial,sans-serif;
+		font: normal "GothamBold","Arial Narrow",Impact,Calibri,Arial,sans-serif;
 		letter-spacing: 1px;
 		margin-bottom: 15px;
 		text-transform: uppercase;
@@ -1430,7 +1448,7 @@ aside a,aside a:visited
 	}
 	.sub h2
 	{
-		font: 1.45em/1.4 "TrumpGothicEastRegular","Arial Narrow",Impact,Calibri,Arial,sans-serif;
+		font: 1.45em/1.4 "GothamBold","Arial Narrow",Impact,Calibri,Arial,sans-serif;
 		letter-spacing: 1px;
 		margin: 0 0 1.4em;
 		text-align: left;
@@ -1442,7 +1460,7 @@ aside a,aside a:visited
 	}
 	h2 a,h2 a:visited
 	{
-		font: normal 1em/1 "TrumpGothicEastBold","Arial Narrow",Impact,Calibri,Arial,sans-serif;
+		font: normal 1em/1 "GothamBold","Arial Narrow",Impact,Calibri,Arial,sans-serif;
 		letter-spacing: 0;
 	}
 	h2 a span
@@ -1486,15 +1504,15 @@ aside a,aside a:visited
 	{
 		background: transparent none;
 		margin-right: 0;
-		margin-top: 18px;
+		margin-top: 0px;
 		padding: 0;
 		position: absolute;
 		right: 0;
-		top: 32px;
+		top: 0px;
 	}
 	.ie7 nav
 	{
-		top: 30px;
+		top: 0px;
 	}
 	nav select
 	{
@@ -1504,7 +1522,7 @@ aside a,aside a:visited
 	{
 		display: block;
 		float: right;
-		font: 1.358em/1.4 "TrumpGothicEastRegular","Arial Narrow",Impact,Calibri,Arial,sans-serif;
+		font: 1.358em/1.4 "GothamBold","Arial Narrow",Impact,Calibri,Arial,sans-serif;
 		list-style: none;
 		margin-right: 0;
 		text-transform: uppercase;
@@ -1527,9 +1545,9 @@ aside a,aside a:visited
 	}
 	nav a:link,nav a:hover,nav a:visited
 	{
-		color: #646473;
-		font-size: 1em;
-		letter-spacing: 1.6px;
+		color: white;
+		font-size: 0.5em;
+		letter-spacing: 0px;
 		padding: 10px 13px 6px;
 		text-decoration: none;
 		transition: background .2s ease-in;
@@ -1538,9 +1556,9 @@ aside a,aside a:visited
 	}
 	nav a:hover
 	{
-		background: rgba(41,37,31,0.1);
-		color: #C30;
-		text-shadow: 0 2px 1px rgba(41,37,31,0.2);
+		background: #e74c3c;
+		color: white;
+		text-shadow: none;
 	}
 	nav .active a:active
 	{
@@ -1548,12 +1566,12 @@ aside a,aside a:visited
 	}
 	nav .active a,nav .active a:visited,nav .active a:hover,.no-js nav .active a,.no-js nav .active a:visited,.no-js nav .active a:hover,.no-js .sub nav .active a,.no-js .sub nav .active a:visited,.no-js .sub nav .active a:hover
 	{
-		background-color: #29251f;
+		
 		color: #fefff8;
 	}
 	nav .active
 	{
-		background-color:  #29251f;
+		background-color:  #e74c3c;
 	}
 	.ie6 nav .active
 	{
@@ -1617,7 +1635,7 @@ aside a,aside a:visited
 	{
 		color: #484944;
 		float: left;
-		font: 52px "TrumpGothicEastBold","Arial Narrow",Impact,Calibri,Arial,sans-serif;
+		font: 52px "GothamBold","Arial Narrow",Impact,Calibri,Arial,sans-serif;
 		letter-spacing: 0;
 		line-height: 38px;
 		margin: 0.20em 0.2em 0 0;
@@ -2224,7 +2242,7 @@ aside a,aside a:visited
 	nav
 	{
 		font-size: 1.1em;
-		top: 20px;
+		top: 0px;
 		
 	}
 	nav .active
@@ -2234,9 +2252,10 @@ aside a,aside a:visited
 	}
 	h1
 	{
-		font-size: 9.8em;
-		letter-spacing: 0.02em;
+		font-size: 4.8em;
+		letter-spacing: -0.1em;
 		margin: 80px auto 32px;
+		text-transform: uppercase;
 	}
 	.sub h1
 	{
@@ -2249,7 +2268,7 @@ aside a,aside a:visited
 	}
 	h2,h3
 	{
-		font-size: 1.8em;
+		font-size: 1.3em;
 		margin-bottom: 1.5em;
 		width: 680px;
 	}
