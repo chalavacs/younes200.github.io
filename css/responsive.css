@@ -12,25 +12,17 @@ img {
 	margin: 0 auto;
 	margin-bottom: 25px;
 }
-#logo .app-icon-1 {
+#logo .logoicon {
   margin: 0 auto;
   height: 100px;
   width: 100px;
   font-size: 50px;
 }
-#logo .app-icon-1 p {
+#logo .logoicon p {
   text-align: center;
 }
-.app-icon-1 {
-  background: #2ecc71;
-  border: 1px solid #29b765;
-  text-shadow: 0px 0px 0 #25a25a,1px 1px 0 #25a25a,2px 2px 0 #25a25a,3px 3px 0 #25a25a,4px 4px 0 #25a25a,5px 5px 0 #25a25a,6px 6px 0 #25a25a,7px 7px 0 #25a25a,8px 8px 0 #25a25a,9px 9px 0 #25a25a,10px 10px 0 #25a25a,11px 11px 0 #25a25a,12px 12px 0 #25a25a,13px 13px 0 #25a25a,14px 14px 0 #25a25a,15px 15px 0 #25a25a,16px 16px 0 #25a25a,17px 17px 0 #25a25a,18px 18px 0 #25a25a,19px 19px 0 #25a25a,20px 20px 0 #25a25a,21px 21px 0 #25a25a,22px 22px 0 #25a25a,23px 23px 0 #25a25a,24px 24px 0 #25a25a,25px 25px 0 #25a25a,26px 26px 0 #25a25a,27px 27px 0 #25a25a,28px 28px 0 #25a25a,29px 29px 0 #25a25a,30px 30px 0 #25a25a,31px 31px 0 #25a25a,32px 32px 0 #25a25a,33px 33px 0 #25a25a,35px 35px 0 rgba(0, 0, 0, 0),37px 37px 0 #25a25a,39px 39px 0 #25a25a,42px 42px 0 #25a25a,45px 45px 0 #25a25a;
-font-family: 'Open sans' sans-serif;
-font-weight: 800;
-font-size: 50px;
-letter-spacing: -4px;
-border-radius: 5px;
-color: #FAFAFA;
+.logoicon {
+
 }
 div {
   overflow: hidden;
@@ -163,20 +155,23 @@ img {
 		max-width:100%;
 height:auto;
 }
+
+.menu {
+    background-color: #252525;
+    height: auto;
+    position: fixed;
+    top: 0px;
+    width: 100%;
+	height: 100px;
+    z-index: 100;
+}
+
 #logo {
 	padding-top: 10px;
 	width: 100%;
 	margin: 0 auto;
 }
-#logo .app-icon-1 {
-	margin: 0 auto;
-	height: 100px;
-	width: 100px;
-	font-size: 50px;
-}
-#logo .app-icon-1 p {
-	text-align: center;
-}
+
 
 #nav {
 	width:100%;
@@ -242,7 +237,7 @@ height:auto;
 	width: 35%;
 	margin: 20px 10px;
 }
-.btn-wg {
+.btn-more , .btn-send  {
 	padding: 10px 20px 10px 20px;
 }
 
@@ -371,41 +366,17 @@ height:auto;
 	padding: 10px;
 }
 
-.app-icon-1 {
-  background: #2ecc71;
-  border: 1px solid #29b765;
-  text-shadow: 0px 0px 0 #25a25a,1px 1px 0 #25a25a,2px 2px 0 #25a25a,3px 3px 0 #25a25a,4px 4px 0 #25a25a,5px 5px 0 #25a25a,6px 6px 0 #25a25a,7px 7px 0 #25a25a,8px 8px 0 #25a25a,9px 9px 0 #25a25a,10px 10px 0 #25a25a,11px 11px 0 #25a25a,12px 12px 0 #25a25a,13px 13px 0 #25a25a,14px 14px 0 #25a25a,15px 15px 0 #25a25a,16px 16px 0 #25a25a,17px 17px 0 #25a25a,18px 18px 0 #25a25a,19px 19px 0 #25a25a,20px 20px 0 #25a25a,21px 21px 0 #25a25a,22px 22px 0 #25a25a,23px 23px 0 #25a25a,24px 24px 0 #25a25a,25px 25px 0 #25a25a,26px 26px 0 #25a25a,27px 27px 0 #25a25a,28px 28px 0 #25a25a,29px 29px 0 #25a25a,30px 30px 0 #25a25a,31px 31px 0 #25a25a,32px 32px 0 #25a25a,33px 33px 0 #25a25a,35px 35px 0 rgba(0, 0, 0, 0),37px 37px 0 #25a25a,39px 39px 0 #25a25a,42px 42px 0 #25a25a,45px 45px 0 #25a25a;
-font-family: 'Open sans' sans-serif;
-font-weight: 800;
-font-size: 50px;
-letter-spacing: -4px;
-border-radius: 5px;
-color: #FAFAFA;
-}
-div {
-  overflow: hidden;
-}
-}
-/* Mobile */
-@media screen and (max-width: 768px) {
-
-img {
-		max-width:100%;
-height:auto;
-}
 #logo {
 	padding-top: 10px;
 	width: 100%;
 	margin: 0 auto;
 }
-#logo .app-icon-1 {
+#logo .brand {
 	margin: 0 auto;
-	height: 100px;
-	width: 100px;
-	font-size: 50px;
-}
-#logo .app-icon-1 p {
-	text-align: center;
+	background-image: url("/img/logo.png");
+	background-size: contain;
+	height: 80px;
+	width: 80px;;
 }
 
 #nav {

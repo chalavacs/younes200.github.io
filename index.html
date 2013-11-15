@@ -1,125 +1,102 @@
-<!--
-
-	Interactive Object
-	What are you looking for ? :) The code source is available here : https://github.com/interactive-object/interactive-object.github.io
-
--->
 <!DOCTYPE html>
 <html lang="en" class="no-js preload">
    <head>
       <title>Interactive Object</title>
       <meta charset="utf-8">
-      <meta name="description" content="Personal home page and protfolio of Younes BENAOMAR, UI developer">
+      <meta name="description" content="">
       <meta name="viewport" content="width=device-width, initial-scale = 1.0, user-scalable = no">
       <meta name="robots" content="index, follow">
       <meta name="distribution" content="global">
-      <meta name="keywords" content="personal,fontend developer, ux designer, graphic design, photography, younes benaomar">
+      <meta name="keywords" content="">
       <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/img/icon.png">
 	  
       <!-- css/stylesheets -->
-	<link rel="stylesheet" href="css/normalize.css" type="text/css" media="screen">
-	<link rel="stylesheet" href="css/grid.css" type="text/css" media="screen">
-	<link rel="stylesheet" href="css/style.css" type="text/css" media="screen">
-	<link rel="stylesheet" href="css/reset.css"/>
-	<link rel="stylesheet" href="css/responsive.css" type="text/css" media="screen">
-	<link rel="stylesheet" href="css/icomoon/style.css" type="text/css" media="screen">
+			<link rel="stylesheet" href="css/normalize.css" type="text/css" media="screen">
+			<link rel="stylesheet" href="css/grid.css" type="text/css" media="screen">
+			<link rel="stylesheet" href="css/style.css" type="text/css" media="screen">
+			<link rel="stylesheet" href="css/reset.css"/>
+			<link rel="stylesheet" href="css/responsive.css" type="text/css" media="screen">
+			<link rel="stylesheet" href="css/icomoon/style.css" type="text/css" media="screen">
 	
-	<!--[if IE]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+			<!--[if IE]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 
-	  <!-- typography -->
-	 <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700|Montserrat:400,700|Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+			<!-- typography -->
+			<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700|Montserrat:400,700|Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
 	 
-	 <!-- favicon -->
-	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-	<link rel="icon" href="/favicon.ico" type="image/x-icon">
-	<script src="//cdn.jsdelivr.net/i18next/1.6.0/i18next-1.6.0.min.js"></script>
-	 <script>var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-40639281-1']);
-      _gaq.push(['_trackPageview']);
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-   </script>
+			<!-- favicon -->
+			<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+			<link rel="icon" href="/favicon.ico" type="image/x-icon">
+			<script src="//cdn.jsdelivr.net/i18next/1.6.0/i18next-1.6.0.min.js"></script>
+			<script>var _gaq = _gaq || [];
+					_gaq.push(['_setAccount', 'UA-40639281-1']);
+					_gaq.push(['_trackPageview']);
+					(function() {
+						var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+						ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+						var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+					})();
+			</script>
    
    </head>
    <body>
 	
 	<div id="sidr">
 	  <!-- Your content -->
-	  <ul>
-		
-				<li data-slide="1"><a href="#">Home</a></li>
-				<li data-slide="2"><a href="#" >About</a></li>
-				<li data-slide="4"><a href="#" >Work</a></li>
-				<li><a href="http://blog.wadegarrett.com">Blog</a></li>
-				<li data-slide="5"><a href="#" >Contact</a></li>
-		
+	  <ul class="navigation">
+		<li data-slide="1"><a href="#slide1">Home</a></li>
+		<li data-slide="2"><a href="#slide2">About</a></li>
+		<li data-slide="3"><a href="#slide2">Service</a></li>
+		<li data-slide="4"><a href="#slide4">Work</a></li>
+		<li><a href="http://blog.wadegarrett.com">Blog</a></li>
+		<li data-slide="5" ><a href="#slide5">Contact</a></li>
 	  </ul>
 	</div>
 
 	<div class="menu">
-	<a id="button-sidebar" href="#sidr" class="icon-menu"></a>
+		<div class="clearfix">
+			<div id="logo">
+				<div class="brand"></div>
+			</div>
+		</div>
+		<a id="button-sidebar" href="#sidr" class="icon-menu"></a>
+	</div>
 	
-	<div class="container clearfix">
-		<div id="logo" class="grid_4">
-			<div class='app-icon-1'>
-				<p>
-					WG
-				</p>
+	<div class="slide" id="slide1" data-slide="1" data-stellar-background-ratio="0.5">
+		<div class="container clearfix">
+			<div id="content" class="grid_12">
+				<h1 id="title1">We are</h1>
+				<h1 id="title2">We do</h1>
+				<h1 id="title3">We design</h1>
+				<h1 id="title4">We create</h1>
+				<h2 id="heading1">A Internet compagny </h2>
+				<h2 id="heading2">Design and development software</h2>
+				<h2 id="heading3">Interactive software for device and connected object</h2>
+				<h2 id="heading4">software including mobile and backoffice solution</h2>
+				<div  id="header-btn">
+					<p>
+						<button class="btn btn-more">SEE MORE</button>
+					</p>
+				</div>
 			</div>
 		</div>
-	</div>
-</div>
-<div class="slide" id="slide1" data-slide="1" data-stellar-background-ratio="0.5">
-	<div class="container clearfix">
-		<div id="content" class="grid_12">
-			<h1>I build websites</h1>
-			<h2>I'm a web designer &amp; front-end developer living in Birmingham, AL.</h2>
-			<div class="color-7" id="btn-click">
-				<p>
-					<button class="btn btn-more">SEE MORE</button>
-				</p>
-			</div>
-		</div>
-	</div>
 </div>
 <div class="slide" id="slide2" data-slide="2" data-stellar-background-ratio="0.5">
 	<div class="container clearfix">
 		<div class="grid_12">
-			<h1>About Me</h1>
-			<h4>Front-End Web Developer &amp; Web Designer</h4>
-			<p class="avatar">
-				<img src="img/avatar_200.png" alt="Wade Garrett Avatar"/>
-			</p>
-			<p class="social">
-				<a href="https://twitter.com/younesbenomar" class="icon-twitter" title="Twitter" rel="external me"></a>
-				<a href="http://tumblr.interactive-object.com" class="icon-tumblr" title="Tumblr" rel="external me"></a>
-				<a href="http://www.flickr.com/photos/younes" class="icon-flickr" title="Flickr" rel="external me"></a>
-			</p>
+			<h1>About</h1>
+			<h4>Internet Software compagny </h4>
+			
 		</div>
 		<div class="grid_12">
 			<p>
-				I'm <a href="https://plus.google.com/u/0/110553095431689900023?rel=author">Wade Garrett</a>, a front-end web developer and designer living in Birmingham, Alabama and working <a href="http://mcleodsoftware.com" target="_blank">@McLeodSoftware</a>; a fully integrated operations, dispatch, accounting, and imaging solution for anyone in the transportation industry.
+				We are Internet Software compagny located in Toulouse, France specialist in the design, development of interactive web experiences.
 			</p>
 			<p>
-				My websites are built from the ground up using technologies like  HTML5, CSS3, and jQuery. Over the past year I've shifted my focus towards <span class="highlight">Responsive Web Design</span> or <span class="highlight">RWD</span>. So, why Responsive Web Design? Well to help you better visualize the importance of RWD all you really need to see are the numbers. The following shows you the percent mobile traffic accounts for based off all web traffic in the World from the past 3 years. In Q1 of 2011 mobile web traffic only accounted for <span class="purple">4.5%</span>. A year later you see that percentage jump from <span class="purple">4.5%</span> to <span class="blue">13.14%</span> in Q1 of 2012. In Q1 of 2013 mobile traffic continues to grow (<span class="green">23.86%</span>) and analysts are predicting that mobile traffic will overtake desktop traffic in 2014.
+				We are built from the ground up using edge technology. Over the past year I've shifted my focus towards <span class="highlight">Responsive Web Design</span> or <span class="highlight">RWD</span>. So, why Responsive Web Design? Well to help you better visualize the importance of RWD all you really need to see are the numbers. The following shows you the percent mobile traffic accounts for based off all web traffic in the World from the past 3 years. In Q1 of 2011 mobile web traffic only accounted for <span class="purple">4.5%</span>. A year later you see that percentage jump from <span class="purple">4.5%</span> to <span class="blue">13.14%</span> in Q1 of 2012. In Q1 of 2013 mobile traffic continues to grow (<span class="green">23.86%</span>) and analysts are predicting that mobile traffic will overtake desktop traffic in 2014.
 			</p>
-			<h2>Random</h2>
-			<p>
-				<strong>Things I Like</strong>: Android, café, <a href="http://callofduty.com" target="_blank">Call of Duty</a>, <a href="http://the-league.co" target="_blank">fantasy football</a>, lemon juice, sushi, the Tide (Alabama Crimson Tide), and traveling.
-			</p>
-			<p>
-				You can also check out <a href="http://blog.wadegarrett.com.com">my blog</a>, built using <a href="http://jekyllrb.com/" target="_blank">Jekyll</a> and <a href="http://octopress.org" target="_blank">Octopress</a>. You can also check out my website on <a href="http://onepagemania.com/top" target="_blank">OnePageMania.com</a> and <a href="http://flattrendz.com/top-10-flat-design-websites/" target="_blank">FlatTrendz.com</a> Top 10 Websites, or at <a href="http://onepagelove.com/wade-garrett" target="_blank">OnePageLove.com</a>, <a href="http://www.csswinner.com/details/wade-garrett/5913/" target="_blank">CSSWinner.com</a>, and <a href="http://cssreel.com/Website/wade-garrett" target="_blank">CSSReel.com</a> where my website's been nominated. I'd like to thank each of you for posting my website.
-			</p>
-				Want to work together on an upcoming project? Get in touch with me.
-			</p>
+
 			<p class="me">
-				<strong>EMAIL&nbsp;</strong>&nbsp; &nbsp;<a href="mailto:wade@wadegarrett.com">&nbsp;wade@wadegarrett.com</a>
-			</p>
-			<p class="me">
-				<strong>PHONE&nbsp;</strong>&nbsp; &nbsp;<a href="tel:+12055381646">&nbsp;+1 205.538.1646</a>
+				<strong>EMAIL&nbsp;</strong>&nbsp; &nbsp;<a href="mailto:hello@interactive-object.com">&nbsp;hello@interactive-object.com</a>
 			</p>
 		</div>
 	</div>
@@ -129,10 +106,10 @@
 		<div class="container clearfix">
 			<div id="content" class="grid_12">
 				<h1>Services</h1>
-				<h4>What I Do, What I Use, and How I Do It</h4>
+				<h4>What We Do, What We Use, and How We Do It</h4>
 				<div id="content" class="grid_12">
 					<p>
-						We live in a <span class="highlight">mobile</span> World that's full of exciting new products and services, and with that the adoption rate of mobile devices has quickly become the fastest growing consumer-driven technology of <span class="hightlight">all-time</span>. With the ever changing mobile landscape it's critical for your website to be fluid, and have the ability to adapt to whatever device the viewer's using.</p>
+						We live in a <span class="highlight">connected</span> World that's full of exciting new products and services, and with that the adoption rate of devices has quickly become the fastest growing consumer-driven technology of <span class="hightlight">all-time</span>. With the ever changing mobile landscape it's critical for your website to be fluid, and have the ability to adapt to whatever device the viewer's using.</p>
 
 						<p> This process is called <span class="highlight">Responsive Web Design</span> or <span class="highlight">RWD</span> and, coincidently, this is where I come in.
 						Instead of me talk about, what may sound like a foreign language, common <span class="highlight">RWD</span> practices such as <em>break points</em>, <em>frameworks</em>, and <em>media queries</em> I'm just going to show you.</p>
@@ -142,34 +119,18 @@
 					<p>
 						 What I strive to do is build websites that provide <span class="highlight">your customers'</span> the best possible user experience when they're viewing your website &dash; whether they're using a 3.5" smartphone or a 30" display. I'm not <em>just</em> building you a website, but also providing you a value-added service to help attract and retain new customers by giving them a enjoyable experience while viewing your website.
 					</p>
-					<h2>Workspace</h2>
-					<p>
-						I work on a 15" <a href="http://www.apple.com/macbook-pro/features/" target="_blank">MacBook Pro</a> with two 24" <a href="#">Samsung LED displays</a>, <a href="http://www.apple.com/keyboard/" target="_blank">Apple's Bluetooth Keyboard</a>, and my irreplaceable <a href="http://www.logitech.com/en-us/support/4259" target="_blank">Logitech MX518</a> optical mouse.
-					</p>
-					<p>
-						Testing is a critical process in RWD so I'll here are some of the most useful and beneficial tools I use to make my life a little easier: <a href="http://screensiz.es/phone" target="_blank">Screensiz.es</a>, <a href="http://lab.maltewassermann.com/viewport-resizer/">Viewport Resizer</a>, an amazing bookmarklet for testing different view ports (screen sizes). However, sometimes you can't replace a physical device, in which case I use my <span class="strike">Samsung Galaxy Nexus</span>
-<a href="http://www.google.com/nexus/4/" target="_blank">LG Nexus 4</a> and <span class="strike">ASUS Nexus 7</span>
-<a href="http://www.google.com/nexus/7/" target="_blank">ASUS Nexus 7 (2013)</a>.
-						<h2>Colophon</h2>
-						<p>
-							This website was built using <a href="https://github.com/jalxob/cool-kitten" target="_blank">Jaxob's</a> framework, coded in <span class="strike">Sublime Text 2</span> <a href="http://www.sublimetext.com/" target="_blank">Sublime Text 3</a>, along with fonts provided by <a href="http://www.google.com/fonts" target="_blank">Google Web Fonts</a>. Other tools I couldn't live without when working on any of my web projects include: <a href="http://incident57.com/codekit/">CodeKit</a>, Adobe's <a href="http://html.adobe.com/edge/inspect/" target="_blank">Edge Inspect</a>, <a href="https://db.tt/KZmGvQgU	" target="_blank">Dropbox</a>, <a href="http://livereload.com/" target="_blank">LiveReload</a>, <a href="http://panic.com/transmit/" target="_blank">Transmit 4</a>, and lastly two apps that make local web development a breeze &dash; <a href="http://hammerformac.com" target="_blank">Hammer</a> &amp; <a href="http://anvilformac.com" target="_blank">Anvil</a> built by the people over at <a href="http://riothq.com" target="_blank">RIOT Studios</a>.
-
-						</p>
+					
 						</div>
 					</div>
 				</div>
 			</div>
 		<div class="slide" id="slide4" data-slide="4" data-stellar-background-ratio="0.5">
 			<div class="container clearfix">
+				<h1>Works</h1>
 				<div id="gallery">
 					<p>
 						<ul class="content">
-							<li><a href="http://falconpro.wadegarrett.com" target="_blank"><img src="img/falcon-pro.jpg" alt="Falcon Pro for Twitter Original Website"></a></li>
-							<li><a href="http://flyneapp.wadegarrett.com" target="_blank"><img src="img/flyne-app.jpg" alt="Flyne, the offline reader for your Twitter lists"></a></li>
-							<li><a href="http://manuscriptcritique.com" target="_blank"><img src="img/manuscript-critique.jpg" alt="Manuscript Critique by Michael Garrett"></a></li>
-							<li><a href="http://the-league.co" target="_blank"><img src="img/the-league.jpg" alt="The League Fantasy Football"></a></li>
-							<li><a href="#"><img src="img/wade-garrett.jpg" alt="Wade Garrett Portfolio"></a></li>
-							<li><a href="http://blockofrooms.com" target="_blank"><img src="img/block-of-rooms.jpg" alt="Block of Rooms"></a></li>
+							<li><a href="http://sociabilic.com target="_blank"><img src="img/falcon-pro.jpg" alt="Sociabilic, social messaging service"></a></li>
 						</ul>
 					</p>
 				</div>
@@ -179,8 +140,8 @@
 		<div class="container clearfix">
 			<div id="content" class="grid_12">
 				<h1>Get in touch</h1>
-				<h5>I'd love to hear from you.</h5>
-				<form action="https://www.startlogic.com/scripts/formsender.html" enctype="application/x-www-form-urlencoded" method="post">
+				<h5>We'd love to hear from you.</h5>
+				<form id="contact-form" method="post">
 					<div class="grid_6">
 						<input type="text" id="name" name="name" placeholder="Name"/>
 					</div>
@@ -205,7 +166,7 @@
 		<div class="container clearfix">
 			<div id="content" class="grid_12">
 				<p class="footer">
-					This website was designed &amp; built by <a class "wg" href="mailto:contact@interactive-object.com"> Younès BENAOMAR</a>
+					© 2013 Interactive Object. All Rights Reserved.
 				</p>
 				<p class="social">
 					<a href="https://twitter.com/younesbenomar" class="icon-twitter" title="Twitter" rel="external me"></a>
@@ -220,61 +181,13 @@
 		</div>
 	</div>
 	
-	<!--
-	<div class="border">
-      <nav role="navigation">
-         <div class="wrapper">
-            <ul id="nav">
-               <li class="active"><a href="#/home" data-i18n="nav.home">home</a></li>
-               <li><a href="#/about" data-i18n="nav.about">about</a></li>
-			   <li><a href="#/contact" data-i18n="nav.contact">contact</a></li>
-            </ul>
-         </div>
-      </nav>
-      <header role="banner">
-         <div class="figure">
-            <a href="#/home" itemprop="url" tabindex="-1">
-            <img src="/img/logo.png" alt="Interactive Object"></a>
-         </div>
-      </header>
-      <div id="impress" class="impress-not-supported">
-         <section id="home"  class="step">
-            <div class="wrapper">
-               <h1 id="heading"  data-i18n="[html]home.heading"></h1>
-			         <h2 data-i18n="[html]home.description"></h2>
-            </div>
-            
-            
-         </section>
-         <section id="about"  data-x="2000"  class="step">
-            <div class="wrapper">
-               <h1  data-i18n="about.heading"></h1>
-               <h2 data-i18n="[html]about.details"></h2>
-            </div>
-         </section>
-		  <section id="contact"  data-x="4000" class="step">
-            <div class="wrapper">
-               <div class="social-content">
-					  <a href="mail:contact@interactive-object.com" class="social i-mail" title="Email" rel="external me"></a>
-					  <a href="https://twitter.com/younesbenomar" class="social i-twitter" title="Twitter" rel="external me"></a>
-					  <a href="http://www.flickr.com/photos/younes" class="social i-flickr" title="Flickr" rel="external me"></a>
-					  <a href="http://tumblr.interactive-object.com" class="social i-tumblr" title="Tumblr" rel="external me"></a>
-					  <a href="https://github.com/interactive-object" class="social i-github" title="Github" rel="external me"></a>
-					  <a href="skype:youneslive?call" class="social i-skype" title="Skype" rel="external me"></a>
-					  <a href="http://fr.linkedin.com/in/younesbenaomar/" class="social i-linkedin" title="LinkedIn" rel="external me"></a>
-				</footer>
-            </div>
-         </section>
-      </div>
-   </div>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
    
-   -->
-   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-   
-
 	<script type="text/javascript" src="js/jquery.stellar.min.js"></script>
 	<script type="text/javascript" src="js/waypoints.min.js"></script>
 	<script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
+	<script type="text/javascript" src="js/jquery.scrollTo.min.js"></script>
+	<script type="text/javascript" src="js/jquery.localscroll.min.js"></script>
 	<script type="text/javascript" src="js/jquery.sidr.min.js"></script>
 	
 	<script type="text/javascript" src="js/scripts.js"></script>
